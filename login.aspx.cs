@@ -24,20 +24,21 @@ public partial class login : System.Web.UI.Page
     protected void giris_Click(object sender, EventArgs e){
 
         tCon.Open();
+        
 
         tCon.Close();
 
 
-        tSQL = "SELECT * FROM version"
-        tCommand = New NpgsqlCommand(tSQL, tCon)
-        tCon.Open()
-        tDataReader = tCommand.ExecuteReader
-        While tDataReader.Read
-            tVersionOffline = tDataReader("offlineversion")
-            tVersionOfflineDate = tDataReader("offlineversiondate")
-            tVersionDB = tDataReader("dbversion")
-        End While
-        tCon.Close()
+        //tSQL = "SELECT * FROM version"
+        //tCommand = New NpgsqlCommand(tSQL, tCon)
+        //tCon.Open()
+        //tDataReader = tCommand.ExecuteReader
+        //While tDataReader.Read
+        //    tVersionOffline = tDataReader("offlineversion")
+        //    tVersionOfflineDate = tDataReader("offlineversiondate")
+        //    tVersionDB = tDataReader("dbversion")
+        //End While
+        //tCon.Close()
         //try{
         //    string veri = "select * from kayit where eposta='" + kullaniciadi.Text + "' and sifre='" + sifre.Text + "'";
         //    con.Open();

@@ -59,15 +59,14 @@
         <div class="paylasimayar" id="paylasimayar">
             <div class="paylasimHeaderayar">
                 <div class="ayarheadersol">
-                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad"></asp:Label>
-                    <asp:Label ID="lblpaylasimHeaderSoyAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text=" Soyad"></asp:Label>
+                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad Soyad" ></asp:Label>
                 </div>
                 <div class="ayarheadersag">
                     <button runat="server" id="kabulEt" onserverclick="PaylasimiSil_OnClick" class="kabulEt" title="Onayla">
                         <i class="fa fa-check fa-2x"> </i>
                     </button>
                      <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="reddet" title="Sil">
-                        <i class="fa fa-ban fa-2x"> </i>
+                        <i class="fa fa-trash fa-2x"> </i>
                     </button>
                 </div>
             </div>
@@ -75,35 +74,35 @@
             <div class="paylasimIcerikayar">
                 <asp:Table ID="kisibilgi" runat="server">
                      <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell>TC Kimlik Numarası: </asp:TableCell>
+                           <asp:TableCell><b>Kimlik Numarası:</b>  </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="TcKimlikNo" CssClass="kisiBilgi" runat="server" Text="Tc Kimlik Numarası"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
                     <asp:TableRow ID="TableRow1" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell>Firma Bilgisi :</asp:TableCell>
+                           <asp:TableCell><b>Firma Bilgisi :</b></asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="firma" CssClass="kisiBilgi" runat="server" Text="Firma Bilgisi"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
                     <asp:TableRow ID="TableRow2" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell>Baro Bilgisi: </asp:TableCell>
+                           <asp:TableCell><b>Baro Bilgisi:</b>  </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="baroBilgi" CssClass="kisiBilgi" runat="server" Text="Baro Bilgisi"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
                      <asp:TableRow ID="TableRow3" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell>Sicil Numarası: </asp:TableCell>
+                           <asp:TableCell><b> Numarası: </b></asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="sicilNo" CssClass="kisiBilgi" runat="server" Text="Sicil Numarası"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
                      <asp:TableRow ID="TableRow4" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell>Birlik Sicil Numarası: </asp:TableCell>
+                           <asp:TableCell><b>Birlik Sicil Numarası: </b></asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="birlikSicilNumarası" CssClass="kisiBilgi" runat="server" Text="Birlik Sicil Bilgisi"></asp:Label>
                             </asp:TableCell>
