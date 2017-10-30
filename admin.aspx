@@ -21,7 +21,6 @@
         </button>
     </div>
 
-
     <div id="analizdiv" class="analizdiv">
         <button runat="server" id="btnanaliz" onserverclick="Analiz_OnClick" class="navbutton" title="Kayıt">
            <i class="fa fa-user-plus fa-2x"></i>Kayıt</button>
@@ -57,58 +56,53 @@
 
 <asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
      <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
-        <%--  Paylaşım silme paneli anasayfadakine benzer--%>
-
         <div class="paylasimayar" id="paylasimayar">
             <div class="paylasimHeaderayar">
-
                 <div class="ayarheadersol">
-                  <%--  <asp:Image ID="imgpaylasimHeaderResim" CssClass="imgpaylasimHeaderResim" runat="server" ImageUrl="image/1.jpg"/>--%>
-                    <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad"></asp:Label>
+                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad"></asp:Label>
                     <asp:Label ID="lblpaylasimHeaderSoyAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text=" Soyad"></asp:Label>
                 </div>
                 <div class="ayarheadersag">
-                    <button runat="server" id="kabulEt" onserverclick="PaylasimiSil_OnClick" class="trash paylasimisil" title="Onayla">
+                    <button runat="server" id="kabulEt" onserverclick="PaylasimiSil_OnClick" class="kabulEt" title="Onayla">
                         <i class="fa fa-check fa-2x"> </i>
                     </button>
-                     <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="trash paylasimisil" title="Sil">
+                     <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="reddet" title="Sil">
                         <i class="fa fa-ban fa-2x"> </i>
                     </button>
                 </div>
             </div>
 
-
             <div class="paylasimIcerikayar">
                 <asp:Table ID="kisibilgi" runat="server">
-                     <asp:TableRow ID="Label" runat="server">
+                     <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell>TC Kimlik Numarası: </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="TcKimlikNo" CssClass="kisiBilgi" runat="server" Text="Tc Kimlik Numarası"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
-                    <asp:TableRow ID="TableRow1" runat="server">
+                    <asp:TableRow ID="TableRow1" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell>Firma Bilgisi :</asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="firma" CssClass="kisiBilgi" runat="server" Text="Firma Bilgisi"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
-                    <asp:TableRow ID="TableRow2" runat="server">
+                    <asp:TableRow ID="TableRow2" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell>Baro Bilgisi: </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="baroBilgi" CssClass="kisiBilgi" runat="server" Text="Baro Bilgisi"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
-                     <asp:TableRow ID="TableRow3" runat="server">
+                     <asp:TableRow ID="TableRow3" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell>Sicil Numarası: </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="sicilNo" CssClass="kisiBilgi" runat="server" Text="Sicil Numarası"></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
-                     <asp:TableRow ID="TableRow4" runat="server">
+                     <asp:TableRow ID="TableRow4" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell>Birlik Sicil Numarası: </asp:TableCell>
                             <asp:TableCell> 
                                 <asp:Label ID="birlikSicilNumarası" CssClass="kisiBilgi" runat="server" Text="Birlik Sicil Bilgisi"></asp:Label>
@@ -117,15 +111,6 @@
                 </asp:Table>
                 
             </div>
-
-
-
-            <div class="paylasimFooterayar">
-                <asp:ImageButton ID="imgPaylasimiBegenButton" CssClass="imgPaylasimiBegenButton" ImageUrl="image/liked.png" runat="server"/> <%-- Beğen butonuna tıklanınca url "image/liked.png" olacak --%>
-                <asp:Label ID="lblBegenmeSayisi" CssClass="lblBegenmeSayisi" runat="server" Text="10 Kişi beğendi"></asp:Label>
-                <asp:Label ID="lblPaylasimTarihi" CssClass="lblPaylasimTarihi" runat="server" Text="14.11.1994"></asp:Label>
-            </div>
-
 
         </div>
 </asp:Panel>
