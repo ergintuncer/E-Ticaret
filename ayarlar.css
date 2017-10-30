@@ -1,0 +1,315 @@
+﻿body { }
+
+.ayarnav {
+    position: fixed;
+    width: 15%;
+    height: 90%;
+    float: left;
+    background-color: #00BFA5;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    color: white;
+}
+
+i {
+    margin-right: 5%;
+    margin-left: 5%;
+    color: white;
+}
+
+.navbutton {
+    float: left;
+    background-color: #00BFA5;
+    border: none;
+    text-align: left;
+    transition: 0.5s;
+    padding-right: 10%;
+    padding-bottom: 10%;
+    padding-top: 10%;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.navbutton:hover {
+    background-color: #1DE9B6;
+    transition: 0.5s;
+}
+
+.paneldiv {
+    width: auto;
+    height: 100%;
+    margin-left: 21.5%;
+    margin-top: 0.5%;
+}
+
+.panel {
+    position: fixed;
+    color: gray;
+    background-color: white;
+    width: 58.5%;
+    height: 100%;
+    float: left;
+    overflow: auto;
+}
+
+.sifredegistirtablo {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: auto;
+    height: 60%;
+    margin-left: 28%;
+}
+
+.profilguncelletablo { margin-left: 20%; }
+
+.tg-midle {
+    text-align: center;
+    font-size: 200%;
+    border-bottom: thin silver solid;
+}
+
+.tg-right { text-align: center; }
+
+.inputnesnesi {
+    text-align: center;
+    width: 100%;
+}
+
+.profilguncelletablo {
+    padding-top: 20%;
+    width: 60%;
+    height: 60%;
+}
+
+.ayarlarprofilresmi { border-radius: 20px; }
+
+
+.paylasimayar {
+    width: 100%; /*Paylaşım boyutunu değiştirmek için kullan*/
+    height: 45%;
+    background-color: white;
+    float: left;
+    margin-right: 0.3%;
+    margin-left: 0.3%;
+    margin-bottom: 10%;
+    /*border: thin solid silver;*/
+    border-radius: 10px;
+}
+
+.paylasimHeaderayar {
+    width: 100%;
+    height: 50px;
+    background-color: #00ee88;
+    float: left;
+    /*border-bottom: thin solid silver;*/
+    line-height: 50px;
+    margin-bottom: 1%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.ayarheadersol {
+    float: left;
+    width: 75%;
+    height: auto;
+}
+
+.ayarheadersag {
+    float: right;
+    width: 20%;
+    height: auto;
+    text-align: right;
+    padding-right: 5%;
+    line-height: 50px;
+}
+
+.paylasimisil {
+    width: auto;
+    height: 50px;
+    background-color: #00ee88;
+    border: none;
+    color: white;
+}
+
+.trashetkinlikisil {
+    float: right;
+    padding-right: 20px;
+    width: auto;
+    height: 50px;
+    background-color: #9b59b6;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.fa-trash-o:hover { color: silver; }
+
+.imgpaylasimHeaderResim {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    border-radius: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.paylasimIcerikayar {
+    width: 96%;
+    height: auto;
+    background-color: white;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+}
+
+.imgpaylasimresim {
+    width: 200px;
+    height: 200px;
+    float: left;
+    border: thin solid silver;
+    line-height: 200px;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.lblPaylasimIcerik { vertical-align: middle; }
+
+.paylasimFooterayar {
+    width: 100%;
+    height: 40px;
+    float: left;
+    background-color: #e0e0e0;
+    line-height: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.imgPaylasimiBegenButton {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 2%;
+    float: left;
+}
+
+.lblBegenmeSayisi {
+    text-align: center;
+    float: left;
+    margin-left: 2%;
+}
+
+.lblPaylasimTarihi {
+    float: right;
+    text-align: right;
+    margin-right: 2%;
+}
+
+
+.etkinlikdiv {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    float: left;
+    margin-top: 1%;
+}
+
+.etkinlikheader {
+    width: 100%;
+    height: 50px;
+    background-color: #9b59b6;
+    float: left;
+    line-height: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.etkinlikheadersol {
+    width: 21%;
+    height: 50px;
+    float: left;
+    text-align: left;
+    border-right: solid white thin;
+    color: white;
+}
+
+.etkinliksahibi {
+    width: 35px;
+    height: 35px;
+    float: left;
+    line-height: 35px;
+    border-radius: 100%;
+    margin: 7px;
+}
+
+.etkinlikheaderorta {
+    width: 40%;
+    height: 10px;
+    float: left;
+    text-align: left;
+    line-height: 50px;
+    color: white;
+    padding-left: 1%;
+    font-size: 130%;
+}
+
+.etkinlikheadersag {
+    width: 30%;
+    height: 50px;
+    float: right;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    border-left: thin white solid;
+}
+
+.etkinlikicerikdiv {
+    width: 100%;
+    float: left;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.etkinliksol {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+.etkinlikposter {
+    float: left;
+    width: 200px;
+    height: 100%;
+    margin-left: 1%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.etkinliksag {
+    width: 78%;
+    height: 100%;
+    float: left;
+    margin-left: 1%;
+    text-align: left;
+}
+
+.etkinlikfooter {
+    width: 100%;
+    height: 40px;
+    float: left;
+    text-align: left;
+    background-color: #e0e0e0;
+    line-height: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.lbl_etkinlikkonumu {
+    margin-left: 2%;
+    float: left;
+    text-align: left;
+}

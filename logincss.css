@@ -1,0 +1,105 @@
+﻿@charset "utf-8";
+
+body {
+    font-family: Calibri Light;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 110%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    
+}
+
+.girisdivi {
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 35%;
+    right: 35%;
+    width: 100%;
+    height: 100%;
+    /*width: 100%;
+    height: 100%;*/
+    transition: 0.5s;
+    text-align: center;
+    filter: opacity(80%); /*Arkaplan Görünürlüğünü düşürdük*/
+   
+    /* filter: opacity(60%);Arkaplan Görünürlüğünü düşürdük*/
+}
+
+
+.giristablo {
+    padding: 3%;
+    width: auto;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.tg-midle {
+    text-align: center;
+    font-size: 200%;
+    border-bottom: thin silver solid;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 5%;
+}
+
+.hataMesajı { color: red; }
+
+.tg-right {
+    text-align: center;
+    width: 80%;
+    height: 100%;
+}
+
+.tg-left {
+    text-align: left;
+    width: 20%;
+    height: 100%;
+}
+
+input {
+    background-color: #ffffff;
+    padding: 5%;
+    width: 90%;
+    float: left;
+    text-align: left;
+    border-radius: 50px;
+    border: thin silver solid;
+}
+
+input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+    background-color: yellow;
+    outline: none;
+}
+
+.button {
+    width: 48%;
+    margin-left: 1%;
+    text-align: center;
+    background-color: #e74c3c;
+    color: white;
+    border-style: none;
+}
+
+.button:hover {
+    background-color: #c0392b;
+    color: white;
+    transition: 0.5s;
+    outline: none;
+}
