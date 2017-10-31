@@ -166,11 +166,8 @@ public partial class login : System.Web.UI.Page
         tSQL = "INSERT INTO kisi_bilgi(ad,soyad) VALUES ('" + kullaniciadi.Text + "','" + sifre.Text + "')";
         PublicExecuteNonQuery();
 
-
-
-       
-        //Session.Add("kullanici", 1);
-        //Response.Redirect("admin.aspx");
+        Session.Add("kullanici", 1);
+        Response.Redirect("admin.aspx");
       
     }
 
