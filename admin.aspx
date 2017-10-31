@@ -53,7 +53,7 @@
 </div>   <%--Sol menü--%>
 <div class="adminmain">
 <div class="paneldiv">
-
+<asp:ListView ID="list1" runat="server">
 <asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
      <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
         <div class="paylasimayar" id="paylasimayar">
@@ -112,8 +112,9 @@
             </div>
 
         </div>
-</asp:Panel>
+     </asp:Panel>
     </asp:Panel>
+    </asp:ListView>
 </div>
 </div>
 </div>
