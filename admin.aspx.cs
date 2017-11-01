@@ -149,6 +149,7 @@ public partial class admin : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+      
         try {
             // sesion kontolü
             if (Session["kullanici"] != null)
@@ -164,9 +165,9 @@ public partial class admin : System.Web.UI.Page
         //postback
         if (!Page.IsPostBack)
         {
-       
+                listView_yukle();
 
-        }
+            }
 
         }
         catch
@@ -194,48 +195,57 @@ public partial class admin : System.Web.UI.Page
 
     protected void Analiz_OnClick(object sender, EventArgs e)
     {
-        try { 
-        
-        }
-        catch
-        {
-
-        }
+      //kayit
     }
 
-    //protected void KullaniciAyarlari_OnClick(object sender, EventArgs e)
-    //{
-       
-    //}
+    protected void KullaniciAyarlari_OnClick(object sender, EventArgs e)
+    {
+        
 
-    //protected void EtkinlikAyarlari_OnClick(object sender, EventArgs e)
-    //{
-       
-    //}
+    }
 
-    //protected void PaylasimAyarlari_OnClick(object sender, EventArgs e)
-    //{
-    //}
-    //protected void PaylasimiSil_OnClick(object sender, EventArgs e)
-    //{
-    //}
+    protected void EtkinlikAyarlari_OnClick(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void PaylasimAyarlari_OnClick(object sender, EventArgs e)
+    {
+    }
+    protected void PaylasimiSil_OnClick(object sender, EventArgs e)
+    {
+    }
 
     protected void listView_yukle()
     {
 
-       tSQL ="SELECT adi &' ' & soyadi as adi_soyadi ,resim,etkinlik_bas,etkinlik_tarih,etkinlik_saat,etkinlik_resim,etkinlik_konum,etkinlik_icerik FROM kayit, etkinlik where kayit.eposta = etkinlik.etkinlik_kullanici order by etkinlik_tarih DESC";
+       tSQL = "select ad  || ' ' || soyad as ad_soyad,firma, tck from kisi_bilgi";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
         tDataReader = tCommand.ExecuteReader();
+        list2.DataSource = tDataReader;
+        list2.DataBind();
+        tCon.Close();
 
-
-        con.Open();
-        OleDbCommand cmd = new OleDbCommand(veri, con);
-        OleDbDataReader oku = cmd.ExecuteReader();
-        list1.DataSource = oku;
-        list1.DataBind();
-        con.Close();
+        
+        //con.Open();
+        //OleDbCommand cmd = new OleDbCommand(veri, con);
+        //OleDbDataReader oku = cmd.ExecuteReader();
+        //list1.DataSource = oku;
+        //list1.DataBind();
+        //con.Close();
     }
 
+    protected void Onayla_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect("kayıt.aspx");
+        //throw new NotImplementedException();
+    }
+
+    protected void sil_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect("login.aspx");
+        //throw new NotImplementedException();
+    }
 }

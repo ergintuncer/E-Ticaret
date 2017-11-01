@@ -53,37 +53,41 @@
 </div>   <%--Sol menü--%>
 <div class="adminmain">
 <div class="paneldiv">
-<asp:ListView ID="list1" runat="server">
-<asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
-     <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
-        <div class="paylasimayar" id="paylasimayar">
-            <div class="paylasimHeaderayar">
-                <div class="ayarheadersol">
-                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad Soyad" ></asp:Label>
-                </div>
-                <div class="ayarheadersag">
-                    <button runat="server" id="kabulEt" onserverclick="PaylasimiSil_OnClick" class="kabulEt" title="Onayla">
-                        <i class="fa fa-check fa-2x"> </i>
-                    </button>
-                     <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="reddet" title="Sil">
-                        <i class="fa fa-trash fa-2x"> </i>
-                    </button>
-                </div>
-            </div>
 
-            <div class="paylasimIcerikayar">
+<asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
+
+     <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
+
+         <asp:ListView ID="list2" runat="server">
+              <ItemTemplate>
+                   <div class="paylasimayar" id="paylasimayar">
+                       <div class="paylasimHeaderayar">
+                          <div class="ayarheadersol">
+                             <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("ad_soyad") %>' ></asp:Label>
+                          </div>
+                          <div class="ayarheadersag" id="kabuşEt">
+                              <button runat="server" id="kabulEt" onserverclick="Onayla_OnClick" class="kabulEt" title="Onayla">
+                                <i class="fa fa-check fa-2x"> </i>
+                              </button>
+                              <button runat="server" id="reddet" onserverclick="sil_OnClick" class="reddet" title="Sil">
+                               <i class="fa fa-trash fa-2x"> </i>
+                              </button>
+                          </div>
+                       </div>
+
+                       <div class="paylasimIcerikayar">
                 <asp:Table ID="kisibilgi" runat="server">
                      <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell><b>Kimlik Numarası:</b>  </asp:TableCell>
                             <asp:TableCell> 
-                                <asp:Label ID="TcKimlikNo" CssClass="kisiBilgi" runat="server" Text="Tc Kimlik Numarası"></asp:Label>
+                                <asp:Label ID="TcKimlikNo" CssClass="kisiBilgi" runat="server" Text='<%#Eval("tck") %>'></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
                     <asp:TableRow ID="TableRow1" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell><b>Firma Bilgisi :</b></asp:TableCell>
                             <asp:TableCell> 
-                                <asp:Label ID="firma" CssClass="kisiBilgi" runat="server" Text="Firma Bilgisi"></asp:Label>
+                                <asp:Label ID="firma" CssClass="kisiBilgi" runat="server" Text='<%#Eval("firma") %>'></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 
@@ -111,10 +115,15 @@
                 
             </div>
 
-        </div>
+                   </div>
+
+             </ItemTemplate>
+         </asp:ListView>
+
      </asp:Panel>
-    </asp:Panel>
-    </asp:ListView>
+
+</asp:Panel>
+     
 </div>
 </div>
 </div>

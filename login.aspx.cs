@@ -155,6 +155,7 @@ public partial class login : System.Web.UI.Page
     // -----------------------------------------------------------------------------------------------------------
 
     protected void Page_Load(object sender, EventArgs e){
+        //tCon.Open();
     }
 
     //OleDbConnection con =
@@ -163,8 +164,8 @@ public partial class login : System.Web.UI.Page
 
     protected void giris_Click(object sender, EventArgs e){
 
-        tSQL = "INSERT INTO kisi_bilgi(ad,soyad) VALUES ('" + kullaniciadi.Text + "','" + sifre.Text + "')";
-        PublicExecuteNonQuery();
+        //tSQL = "INSERT INTO kisi_bilgi(ad,soyad) VALUES ('" + kullaniciadi.Text + "','" + sifre.Text + "')";
+        //PublicExecuteNonQuery();
 
         Session.Add("kullanici", 1);
         Response.Redirect("admin.aspx");

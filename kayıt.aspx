@@ -48,6 +48,14 @@
             <td class="tg-right">
                 <input id="soyadi" class="input" type="text" runat="server" placeholder="Soyadi"/>
             </td>
+        </tr> 
+            <tr>
+            <td class="tg-left">
+                <asp:Label CssClass="label" runat="server">Tc No:</asp:Label>
+            </td>
+            <td class="tg-right">
+                <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" maxlength="11"/>
+            </td>
         </tr>
         <tr>
             <td class="tg-left">
@@ -59,10 +67,10 @@
         </tr>
         <tr>
             <td class="tg-left">
-                <asp:Label CssClass="label" runat="server">Tc No:</asp:Label>
+                <asp:Label CssClass="label" runat="server"> Baro Bilgisi: </asp:Label>
             </td>
             <td class="tg-right">
-                <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" maxlength="11"/>
+                <asp:DropDownList ID="baro" CssClass="drplist" runat="server"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -85,10 +93,10 @@
             <!--
         <tr>
             <td class="tg-left">
-                <asp:Label CssClass="label" runat="server"> Üniversiteniz: </asp:Label>
+                <asp:Label CssClass="label" runat="server"> Baro Bilgisi: </asp:Label>
             </td>
             <td class="tg-right">
-                <asp:DropDownList ID="universite" CssClass="drplist" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="baroq" CssClass="drplist" runat="server"></asp:DropDownList>
             </td>
         </tr>
            -->
