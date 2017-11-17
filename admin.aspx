@@ -56,7 +56,9 @@
 
 <asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
 
-     <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
+    <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
+        <asp:ListView ID="list2" runat="server">
+            <ItemTemplate>
         <div class="paylasimayar" id="paylasimayar">
             <div class="paylasimHeaderayar">
                 <div class="ayarheadersol">

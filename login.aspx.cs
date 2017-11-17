@@ -150,22 +150,15 @@ public partial class login : System.Web.UI.Page
         //return tCommand.ExecuteScalar();
     }
     // -----------------------------------------------------------------------------------------------------------
-
-    protected void Page_Load(object sender, EventArgs e){
-    }
-
-    private static int tSayilarToplami;
-
+    
+   
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
         }
     }
-
-        tSQL = "INSERT INTO kisi_bilgi(ad,soyad) VALUES ('" + kullaniciadi.Text + "','" + sifre.Text + "')";
-        PublicExecuteNonQuery();
-
+    
     protected void giris_Click(object sender, EventArgs e)
     {
         tSQL =

@@ -21,13 +21,13 @@
 <img id="bgimg" src="image/lawyer.jpg" alt=""/>
 <form id="kayit" runat="server">
     <div class="kayitdivi">
-        <table class="kayittablo" id="kayittablo" border="0">
-            <tbody>
-            <tr>
-                <td class="tg-midle" colspan="2">
-                    <asp:Label CssClass="label" runat="server"> Avukat Kayıt </asp:Label>
-                </td>
-            </tr>
+    <table class="kayittablo" id="kayittablo" border="0">
+        <tbody>
+        <tr>
+            <td class="tg-midle" colspan="2">
+                <asp:Label CssClass="label" runat="server"> Avukat Kayıt </asp:Label>
+            </td>
+        </tr>
             <tr>
             <td class="tg-midlealt" colspan="2">
                 <asp:Label ID="Label1" CssClass="hataMesajı" runat="server" Text=""></asp:Label>
@@ -38,7 +38,7 @@
                 <asp:Label CssClass="label" runat="server"> Adı:</asp:Label>
             </td>
             <td class="tg-right">
-                <input id="adi" class="input" type="text" runat="server" placeholder="Adı"/>
+                <input id="adi" class="input" type="text" runat="server" placeholder="Adı"  MaxLength="10" />
             </td>
         </tr>
         <tr>
@@ -46,7 +46,15 @@
                 <asp:Label CssClass="label" runat="server"> Soyadı: </asp:Label>
             </td>
             <td class="tg-right">
-                <input id="soyadi" class="input" type="text" runat="server" placeholder="Soyadi"/>
+                <input id="soyadi" class="input" type="text" runat="server" placeholder="Soyadi"  MaxLength="10"/>
+            </td>
+        </tr> 
+            <tr>
+            <td class="tg-left">
+                <asp:Label CssClass="label" runat="server">Tc No:</asp:Label>
+            </td>
+            <td class="tg-right">
+                <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" MaxLength="11"/>
             </td>
         </tr>
         <tr>
@@ -54,15 +62,15 @@
                 <asp:Label CssClass="label" runat="server">Firma:</asp:Label>
             </td>
             <td class="tg-right">
-                <input id="firma" class="input" type="text" runat="server" placeholder="Firma"/>
+                <input id="firma" class="input" type="text" runat="server" placeholder="Firma" MaxLength="10"/>
             </td>
         </tr>
         <tr>
             <td class="tg-left">
-                <asp:Label CssClass="label" runat="server">Tc No:</asp:Label>
+                <asp:Label CssClass="label" runat="server"> Baro Bilgisi: </asp:Label>
             </td>
             <td class="tg-right">
-                <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" maxlength="11"/>
+                <asp:DropDownList ID="baro" CssClass="drplist" runat="server"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -70,7 +78,7 @@
                   <asp:Label CssClass="label" runat="server">Sicil no:</asp:Label>
             </td>
             <td class="tg-right">
-                <input id="sicilno" class="input" type="text" runat="server" placeholder="Sicil no"/>
+                <input id="sicilno" class="input" type="text" runat="server" placeholder="Sicil no" MaxLength="10"/>
             </td>
         </tr>
         <tr>
@@ -79,16 +87,16 @@
 
             </td>
             <td class="tg-right">
-                <input id="birliksicilno" class="input" type="text" runat="server" placeholder="Birlik sicil no"/>
+                <input id="birliksicilno" class="input" type="text" runat="server" placeholder="Birlik sicil no" MaxLength="10"/>
             </td>
         </tr>
             <!--
         <tr>
             <td class="tg-left">
-                <asp:Label CssClass="label" runat="server"> Üniversiteniz: </asp:Label>
+                <asp:Label CssClass="label" runat="server"> Baro Bilgisi: </asp:Label>
             </td>
             <td class="tg-right">
-                <asp:DropDownList ID="universite" CssClass="drplist" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="baroq" CssClass="drplist" runat="server"></asp:DropDownList>
             </td>
         </tr>
            -->
