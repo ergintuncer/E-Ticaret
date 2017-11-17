@@ -57,29 +57,20 @@
 <asp:Panel ID="AnalizPanel" CssClass="panel" runat="server" z-index="1">
 
      <asp:Panel ID="PaylasimSilmePanel" CssClass="panel" runat="server" z-index="3">
-
-         <asp:ListView ID="list2" runat="server">
-              <ItemTemplate>
-                   <div class="paylasimayar" id="paylasimayar">
-                       <div class="paylasimHeaderayar">
-                          <div class="ayarheadersol">
-                             <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("ad_soyad") %>' ></asp:Label>
-                          </div>
-                           <div class="ayarheadersag">
-                               <%--<button runat="server" id="kabulEt" onserverclick="PaylasimOnayla_OnClick" class="kabulEt" title="Onayla">
-                                   <i class="fa fa-check fa-2x"></i>
-                               </button>--%>
-                             <%--  <button runat="server" id="kabul" onserverclick="Onayla_OnClick" class="kabulEt" title="Onayla">
-                                   <i class="fa fa-check fa-2x"></i>--%>
-                                   <a href="admin.aspx?islem=ekle&kisiid=<%#Eval("kisiid") %>"> <img src="image/if_Tick_Mark_1398911.png" /> </a>
-                              <%-- </button>--%>
-
-                              <%-- <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="reddet" title="Sil">
-                                   <i class="fa fa-trash fa-2x"></i>--%>
-                                   <a href="admin.aspx?islem=sil&kisiid=<%#Eval("kisiid") %>"> <img src="image/1482007936_Close_Icon.png" /> </a>
-                               <%--</button>--%>
-                           </div>
-                       </div>
+        <div class="paylasimayar" id="paylasimayar">
+            <div class="paylasimHeaderayar">
+                <div class="ayarheadersol">
+                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad Soyad" ></asp:Label>
+                </div>
+                <div class="ayarheadersag">
+                    <button runat="server" id="kabulEt" onserverclick="PaylasimiSil_OnClick" class="kabulEt" title="Onayla">
+                        <i class="fa fa-check fa-2x"> </i>
+                    </button>
+                     <button runat="server" id="reddet" onserverclick="PaylasimiSil_OnClick" class="reddet" title="Sil">
+                        <i class="fa fa-trash fa-2x"> </i>
+                    </button>
+                </div>
+            </div>
 
                        <div class="paylasimIcerikayar">
                 <asp:Table ID="kisibilgi" runat="server">

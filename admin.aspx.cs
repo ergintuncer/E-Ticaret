@@ -167,10 +167,9 @@ public partial class admin : System.Web.UI.Page
             //postback
             if (!Page.IsPostBack)
         {
-           
-            sil();
+       
 
-            }
+        }
 
         }
         catch
@@ -198,84 +197,8 @@ public partial class admin : System.Web.UI.Page
 
     protected void Analiz_OnClick(object sender, EventArgs e)
     {
-        PaylasimSilmePanel.Visible = true;
-        listView_yukle();
-       
-        //kayit
-    }
-
-    protected void KullaniciAyarlari_OnClick(object sender, EventArgs e)
-    {
-        PaylasimSilmePanel.Visible = false;
-
-    }
-
-    protected void EtkinlikAyarlari_OnClick(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void PaylasimAyarlari_OnClick(object sender, EventArgs e)
-    {
-    }
-    protected void PaylasimiSil_OnClick(object sender, EventArgs e)
-    {
-        PaylasimSilmePanel.Visible = false;
-        lblAdminAdi.Text = "fatih";
-    }
-
-  
-
-    protected void listView_yukle()
-    {
-
-       tSQL = "select kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid=avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_giris.bloke=false";
-        tCon.Open();
-        tCommand.Connection = tCon;
-        tCommand.CommandText = tSQL;
-        tDataReader = tCommand.ExecuteReader();
-        list2.DataSource = tDataReader;
-        list2.DataBind();
-        tCon.Close();
-
+        try { 
         
-        //con.Open();
-        //OleDbCommand cmd = new OleDbCommand(veri, con);
-        //OleDbDataReader oku = cmd.ExecuteReader();
-        //list1.DataSource = oku;
-        //list1.DataBind();
-        //con.Close();
-    }
-
-
-    string kisiid;
-    string islem;
-    int id2;
-    void sil()
-    {
-        try
-        {
-            kisiid = Request.QueryString["kisiid"];
-            islem = Request.QueryString["islem"];
-            if (ID != null)
-            {
-                id2 = int.Parse(kisiid);
-            }
-
-            if (islem == "sil")
-            {
-                tSQL = "DELETE FROM kisi_bilgi WHERE kisiid="+id2;
-                PublicExecuteNonQuery();
-
-            }
-            else if (islem == "ekle")
-            {
-                tSQL = "UPDATE kisi_giris SET bloke=True   WHERE kisiid ="+ id2;
-                PublicExecuteNonQuery();
-
-            }
-
-            listView_yukle();
         }
         catch
         {
@@ -283,8 +206,39 @@ public partial class admin : System.Web.UI.Page
         }
     }
 
-    protected void Onayla_OnClick(object sender, EventArgs e)
+    //protected void KullaniciAyarlari_OnClick(object sender, EventArgs e)
+    //{
+       
+    //}
+
+    //protected void EtkinlikAyarlari_OnClick(object sender, EventArgs e)
+    //{
+       
+    //}
+
+    //protected void PaylasimAyarlari_OnClick(object sender, EventArgs e)
+    //{
+    //}
+    //protected void PaylasimiSil_OnClick(object sender, EventArgs e)
+    //{
+    //}
+
+    protected void listView_yukle()
     {
-        //throw new NotImplementedException();
+
+       tSQL ="SELECT adi &' ' & soyadi as adi_soyadi ,resim,etkinlik_bas,etkinlik_tarih,etkinlik_saat,etkinlik_resim,etkinlik_konum,etkinlik_icerik FROM kayit, etkinlik where kayit.eposta = etkinlik.etkinlik_kullanici order by etkinlik_tarih DESC";
+        tCon.Open();
+        tCommand.Connection = tCon;
+        tCommand.CommandText = tSQL;
+        tDataReader = tCommand.ExecuteReader();
+
+
+        con.Open();
+        OleDbCommand cmd = new OleDbCommand(veri, con);
+        OleDbDataReader oku = cmd.ExecuteReader();
+        list1.DataSource = oku;
+        list1.DataBind();
+        con.Close();
     }
+
 }
