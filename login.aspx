@@ -1,21 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Giriş</title>
     <link href="logincss.css" rel="stylesheet" type="text/css"/>
-
-    <style type="text/css">
-        .auto-style1 {
-            margin-bottom: 0px;
-        }
-    </style>
-
 </head>
 <body>
-
 <img id="bgimg" src="image/lwbg.jpg" alt=""/>
 <form id="form1" runat="server">
     <div class="girisdivi">
@@ -24,7 +14,6 @@
             <tr>
                 <td class="tg-midle" colspan="2">
                     <asp:Label CssClass="ustpanelyazi" runat="server"> Avukat Giriş </asp:Label>
-
                 </td>
             </tr>
             <tr>
@@ -37,7 +26,7 @@
                     <asp:Label CssClass="ustpanelyazi" runat="server"> Tc No:</asp:Label>
                 </td>
                 <td class="tg-right">
-                    <asp:TextBox ID="kullaniciadi" CssClass="auto-style1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="kullaniciadi" CssClass="auto-style1" runat="server" MaxLength="11"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -45,9 +34,17 @@
                     <asp:Label CssClass="ustpanelyazi" runat="server"> Şifre: </asp:Label>
                 </td>
                 <td class="tg-right">
-                    <asp:TextBox ID="sifre" CssClass="input" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="sifre" CssClass="input" runat="server" MaxLength="11"></asp:TextBox>
                 </td>
             </tr>
+            <tr>
+                <td class="tg-left">
+                </td>
+                <td class="tg-right">
+                    <asp:Button ID="Button1" CssClass="sifremiunuttum" runat="server" Text="Şifremi unuttum " OnClick="sifremiUnuttum_Click"/>
+                </td>
+            </tr>
+
             <tr>
                 <td class="tg-left">
                 </td>
@@ -58,7 +55,6 @@
             </tr>
             </tbody>
         </table>
-
     </div>
 </form>
 </body>

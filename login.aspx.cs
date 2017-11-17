@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,8 +10,9 @@ using Npgsql;
 
 public partial class login : System.Web.UI.Page
 {
+    NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager
+        .ConnectionStrings["NpgsqlConnectionStrings"].ConnectionString);
 
-    NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["NpgsqlConnectionStrings"].ConnectionString);
     NpgsqlCommand tCommand = new NpgsqlCommand();
     NpgsqlDataReader tDataReader;
     String tSQL;
@@ -41,7 +43,7 @@ public partial class login : System.Web.UI.Page
     public int PublicExecuteScalarInteger()
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int tInteger;
+        int tInteger = 0;
 
         if (tCon.State == System.Data.ConnectionState.Open)
         {
@@ -54,15 +56,13 @@ public partial class login : System.Web.UI.Page
         tCommand.CommandText = tSQL;
 
 
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
 
         tCon.Close();
-        return Convert.ToInt32(tCommand.ExecuteScalar());
-
+        return tInteger;
     }
     // -----------------------------------------------------------------------------------------------------------
 
@@ -92,7 +92,6 @@ public partial class login : System.Web.UI.Page
 
         tCon.Close();
         return Convert.ToDouble(tCommand.ExecuteScalar());
-
     }
     // -----------------------------------------------------------------------------------------------------------
 
@@ -121,15 +120,14 @@ public partial class login : System.Web.UI.Page
 
         tCon.Close();
         return Convert.ToString(tCommand.ExecuteScalar());
-
     }
     // -----------------------------------------------------------------------------------------------------------
 
     // Select sorugular için Boolean
-        public Boolean PublicExecuteScalarBoolean()
+    public Boolean PublicExecuteScalarBoolean()
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int Boolean;
+        bool Bool = false;
 
         if (tCon.State == System.Data.ConnectionState.Open)
         {
@@ -142,36 +140,61 @@ public partial class login : System.Web.UI.Page
         tCommand.CommandText = tSQL;
 
 
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            Bool = Convert.ToBoolean(tCommand.ExecuteScalar());
+        }
 
         tCon.Close();
-        return Convert.ToBoolean(tCommand.ExecuteScalar());
-
+        return Bool;
+        //return tCommand.ExecuteScalar();
     }
     // -----------------------------------------------------------------------------------------------------------
 
-    protected void Page_Load(object sender, EventArgs e){
+
+    private static int tSayilarToplami;
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+        }
     }
 
-    //OleDbConnection con =
-    //    new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; DATA Source=" +
-    //                        HttpContext.Current.Server.MapPath("sosyal.mdb"));
 
-    protected void giris_Click(object sender, EventArgs e){
+    protected void giris_Click(object sender, EventArgs e)
+    {
+        tSQL =
+            "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
+            kullaniciadi.Text + "'";
+        if (PublicExecuteScalarBoolean())
+        {
+            tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + kullaniciadi.Text + "' and tck='" + sifre.Text +
+                   "'";
+            if (PublicExecuteScalarInteger() > 0)
+            {
+                Session.Add("kullanici", kullaniciadi.Text);
+                Response.Redirect("admin.aspx");
+            }
+            else
+            {
+                lbl1.Text = "Kullanıcı Adınız ve/veya Şifreniz Yanlış Girişmiştir. Lütfen Kontrol Ediniz";
+            }
+        }
+        else
+        {
+            lbl1.Visible = true;
 
-        tSQL = "INSERT INTO kisi_bilgi(ad,soyad) VALUES ('" + kullaniciadi.Text + "','" + sifre.Text + "')";
-        PublicExecuteNonQuery();
-
-        Session.Add("kullanici", 1);
-        Response.Redirect("admin.aspx");
-      
+            lbl1.Text = "Şuan Bloke Edilmişsiniz";
+        }
     }
 
-    protected void kayitol_Click(object sender, EventArgs e){
+    protected void kayitol_Click(object sender, EventArgs e)
+    {
         Response.Redirect("kayıt.aspx");
+    }
+    protected void sifremiUnuttum_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/Sayfalar/sifremiunuttum.aspx");
     }
 }

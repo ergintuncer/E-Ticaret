@@ -19,7 +19,7 @@ img {
     height: auto;
     z-index: -100;
     transform: translateX(-50%) translateY(-50%);
-    background-size: cover;    
+    background-size: cover;
 }
 
 .girisdivi {
@@ -30,13 +30,9 @@ img {
     right: 35%;
     width: 100%;
     height: 100%;
-    /*width: 100%;
-    height: 100%;*/
     transition: 0.5s;
     text-align: center;
-    filter: opacity(80%); /*Arkaplan Görünürlüğünü düşürdük*/
-   
-    /* filter: opacity(60%);Arkaplan Görünürlüğünü düşürdük*/
+    filter: opacity(80%); 
 }
 
 
@@ -56,9 +52,12 @@ img {
     padding-bottom: 5%;
 }
 
-.hataMesajı { color: red; }
+.hataMesajı {
+    color: red;
+}
 
 .tg-right {
+    
     text-align: center;
     width: 80%;
     height: 100%;
@@ -80,27 +79,23 @@ input {
     border: thin silver solid;
 }
 
-input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
-    background-color: yellow;
-    outline: none;
-}
-.sifremiunuttum {
-    color: #2196f3;
-    border-style: none;
-    text-align: center;
-}
+    input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+        background-color: yellow;
+        outline: none;
+    }
+
 .button {
-    width: 48%;
-    margin-left: 1%;
+    width: 70%;
+    margin-left: 14%;
     text-align: center;
-    background-color: #03A9F4;
+    background-color: #F44336;
     color: white;
     border-style: none;
 }
 
-.button:hover {
-    background-color: #2196F3;
-    color: white;
-    transition: 0.5s;
-    outline: none;
-}
+    .button:hover {
+        background-color: #E91E63;
+        color: white;
+        transition: 0.5s;
+        outline: none;
+    }

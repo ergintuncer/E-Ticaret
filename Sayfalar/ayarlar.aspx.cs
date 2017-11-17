@@ -9,9 +9,7 @@ using System.IO;
 
 public partial class ayarlar : System.Web.UI.Page
 {
-    string ID;
-    string islem;
-    int id2;
+    
     OleDbConnection con = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; DATA Source=" + HttpContext.Current.Server.MapPath("sosyal.mdb"));
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -268,6 +266,10 @@ public partial class ayarlar : System.Web.UI.Page
         }
     }
 
+
+    string ID;
+    string islem;
+    int id2;
     void sil()
     {
         try { 
