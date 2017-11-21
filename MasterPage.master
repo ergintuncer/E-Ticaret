@@ -6,76 +6,70 @@
     <meta charset="utf-8">
     <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
     </asp:ContentPlaceHolder>
-    <title>Sosyal Kampüs</title>
-
-    <link href="StyleSheet.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="jquery.min.js" type="text/javascript"></script>
-    <script>
-        function ayarcak() {
-            var ekranGenisligi = $(window).width();
-            var sidebarGenisligi = $('.solNav').css("width").split("px")[0];
-            var sagNavGenisligi = $('.sagNav').css("width").split("px")[0];
-            var mainSolaBosluk = $('.main').css("padding-left").split("px")[0];
-            $('.main').css('width', ekranGenisligi - sidebarGenisligi - sagNavGenisligi - mainSolaBosluk - 20 + 'px');
-        }
-
-        window.onresize = function(event) { ayarcak(); };
-        window.onload = window.onresize;
-    </script>
-
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Admin</title>
+    <link href="/masterpageadmin.css" rel="stylesheet"/>
+    
 </head>
 
 <body>
 <form id="form2" runat="server">
-    <div id="solNav" class="solNav">
-        <img src="image/logo.png" width="100" height="100" id="profilepic" alt=""/>
-        <a href="#" id="kuladi" class="kuladi"></a>
-
-        <a href="Default.aspx"><i class="fa fa-home"></i> Anasayfa</a>
-        <a href="Profil.aspx"><i class="fa fa-user"></i> Profil</a>
-        <a href="Etkinlik.aspx"><i class="fa fa-headphones"></i> Etkinlik</a>
-        <a href="Ayarlar.aspx"><i class="fa fa-cog"></i> Ayarlar</a>
-        <a href="login.aspx" id="logout"><i class="fa fa-sign-out"></i> Çıkış</a>
+<div class="admindiv">
+<div class="nav">
+    <div id="profildiv" class="profildiv">
+        <img id="adminimg" class="adminimg" src="/image/lawyerpng.png" alt=""/>
+        <button runat="server" id="btnyonetici" class="btnyonetici" onserverclick="Profil_OnClick" title="Admin"> <%--resim değişecek--%>
+            <asp:Label ID="lblAdminAdi" CssClass="lblAdminAdi" runat="server">Avukat Adı</asp:Label>
+            <br/>
+            <asp:Label ID="lbladminstatu" CssClass="lbladminstatu" runat="server"> Yönetici </asp:Label>
+        </button>
     </div>
+
+    <div id="blokeli_div" class="blokeli_div">
+        <button runat="server" id="btnBlokeliKullanici" onserverclick="btnBlokeliKullanici_Onclick" class="navbutton" title="Blokeli Kullanıcı Bilgileri">
+           <i class="fa fa-user-plus fa-2x"></i>Blokeli Kullanıcı</button>
+    </div>
+
+    <div id="kisiler_div" class="kisiler_div">
+        <button runat="server" id="btnKisiler" onserverclick="btnKisiler_OnClick" class="navbutton" title="Kişi Bilgileri">
+            <i class="fa fa-users fa-2x"></i> Kişiler
+        </button>
+    </div>
+
+    <div id="baro_div" class="baro_div">
+        <button runat="server" id="btnBaro" onserverclick="btnBaro_OnClick" class="navbutton" title="Baro Bilgileri">
+            <i class="fa fa-calendar-check-o fa-2x"></i> Baro
+        </button>
+    </div>
+
+    <div id="adliye_div" class="adliye_div">
+        <button runat="server" id="btnAdliye" onserverclick="btnAdliye_Onclick" class="navbutton" title="Adliye Bilgileri">
+            <i class="fa fa-share-square-o fa-2x"></i> Adliye
+        </button>
+    </div>
+    <div id="mahkeme_div" class="mahkeme_div">
+        <button runat="server" id="btnMahkeme" onserverclick="btnMahkeme_Onclick" class="navbutton" title="Mahkeme Bilgileri">
+            <i class="fa fa-share-square-o fa-2x"></i> Mahkeme
+        </button>
+    </div>
+    <div id="cikisdiv" class="cikisdiv">
+        <button runat="server" id="btncikis" class="navbutton" onserverclick="Profil_Cikis_OnClick" title="Çıkış yap">
+            <i class="fa fa-sign-out fa-rotate-180 fa-2x"></i> Çıkış yap
+        </button>
+    </div>
+</div>   <%--Sol menü--%>
+<div class="adminmain">
+<div class="paneldiv">
+
     <div class="ortaAlan" id="ortaAlan">
-        <div id="header" class="header">
-            <input type="search" id="ara" placeholder="Arama">
-            <a href="#" id="msg">
-                <i class="fa fa-commenting fa-2x"></i>
-            </a>
-            <a href="#" id="view">
-                <i class="fa fa-eye fa-2x"></i>
-            </a>
-        </div>
         <div class="main">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div id="sagNav" class="sagNav">
-            <div class="sagNavbaslik" id="sagNavbaslik">Yaklaşan Etkinlikler</div>
-            <div class="etkinlikler">
-                <asp:ListView ID="list" runat="server">
-                    <ItemTemplate>
-                        <div class="etkinlik">
-                            <div class="etkinlikbaslik">
-                                <asp:Label Text='<%#Eval("etkinlik_bas") %>' runat="server"></asp:Label>
-                            </div>
-                            <div class="etkinlikicerik">
-                                <asp:Label Text='<%#Eval("etkinlik_icerik") %>' runat="server"></asp:Label>
-                            </div>
-                            <div class="etkinlikalt">
-                                <asp:Label CssClass="etkinlikyer" Text='<%#Eval("etkinlik_konum") %>' runat="server"></asp:Label>
-                                <br/>
-                                <asp:Label CssClass="etkinliktarih" Text='<%#Eval("etkinlik_tarih") %>' runat="server"></asp:Label>
-
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:ListView>
-            </div>
+    </div>
         </div>
     </div>
+</div>
 </form>
 </body>
 </html>

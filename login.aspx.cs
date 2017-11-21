@@ -171,7 +171,7 @@ public partial class login : System.Web.UI.Page
             if (PublicExecuteScalarInteger() > 0)
             {
                 Session.Add("kullanici", kullaniciadi.Text);
-                Response.Redirect("admin.aspx");
+                Response.Redirect("/Admin/kisiler.aspx");
             }
             else
             {
