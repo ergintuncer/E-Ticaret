@@ -1,4 +1,6 @@
 ﻿body {
+    overflow: auto;
+    position: center;
 }
 .ustpanelyazi {
     text-align: center;

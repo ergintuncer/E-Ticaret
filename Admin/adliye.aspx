@@ -9,7 +9,7 @@
         <asp:Label CssClass="ustpanelyazi" runat="server"> Yeni Adliye </asp:Label>
         <div class="adliyesol">
             <asp:Table ID="adliyetablosol" runat="server">
-     <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
+                <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
                     <asp:TableCell>
                         <b>Adliye Adı:</b>
                     </asp:TableCell>
@@ -88,82 +88,81 @@
         </div>
     </div>
 
-  <%--  <asp:ListView ID="list2" runat="server">
-        <ItemTemplate>--%>
-            <div class="paylasimayar" id="paylasimayar">
-                <div class="paylasimHeaderayar">
-                    <div class="ayarheadersol">
-                        <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Adliye Adı"></asp:Label>
-                    </div>
-                    <div class="ayarheadersag">
-                        <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
-                            <i class="fa fa-check fa-2x"> </i>
-                        </button>
-
-                    </div>
-                </div>
-
-                <div class="paylasimIcerikayar">
-                    <asp:Table ID="kisibilgi" runat="server">
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>İl: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("il") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>İlçe: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("ilce") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Adres Adı: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("adresadi") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Adres: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lbladres" CssClass="lbladres" runat="server" Text='<%#Eval("adres") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Açıklama: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblaciklama" CssClass="lblaciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Aktif mi: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblaktif" CssClass="lblaktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                    </asp:Table>
-                </div>
+     <asp:ListView ID="list2" runat="server">
+        <ItemTemplate>
+    <div class="paylasimayar" id="paylasimayar">
+        <div class="paylasimHeaderayar">
+            <div class="ayarheadersol">
+                <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Adliye Adı"></asp:Label>
+            </div>
+            <div class="ayarheadersag">
+                <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
+                    <i class="fa fa-check fa-2x"> </i>
+                </button>
 
             </div>
+        </div>
 
-      <%--  </ItemTemplate>
-    </asp:ListView>--%>
+        <div class="paylasimIcerikayar">
+            <asp:Table ID="kisibilgi" runat="server">
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>İl: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("il") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
 
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>İlçe: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("ilce") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
 
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>Adres Adı: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("adresadi") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>Adres: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lbladres" CssClass="lbladres" runat="server" Text='<%#Eval("adres") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>Açıklama: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lblaciklama" CssClass="lblaciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow class="kisiBilgitablerow" runat="server">
+                    <asp:TableCell>
+                        <b>Aktif mi: </b>
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:Label ID="lblaktif" CssClass="lblaktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </div>
+
+    </div>
+
+      </ItemTemplate>
+    </asp:ListView>
+    
 </asp:Content>

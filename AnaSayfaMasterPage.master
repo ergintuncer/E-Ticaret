@@ -1,0 +1,68 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AnaSayfaMasterPage.master.cs" Inherits="AnaSayfaMasterPage" %>
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Ana Sayfa</title>
+    <link href="/masterpageadmin.css" rel="stylesheet"/>
+    
+</head>
+
+<body>
+<form id="form2" runat="server">
+<div class="admindiv">
+<div class="nav">
+    <div id="profildiv" class="profildiv">
+        <img id="adminimg" class="adminimg" src="/image/law1600.png" alt=""/>
+        <br/>
+         <asp:Label ID="lblAdminAdi" CssClass="lblAdminAdi" runat="server">Kullanıcı Adı</asp:Label> 
+    </div>
+
+    <div id="profil_div" class="profil_div">
+        <button runat="server" id="btnnavProfil" onserverclick="btnProfil_Onclick" class="navbutton" title="Profil Bilgileri">
+           <i class="fa fa-user fa-2x"></i>Profil</button>
+    </div>
+
+    <div id="Dava_div" class="Dava_div">
+        <button runat="server" id="btnDava" onserverclick="btnDava_OnClick" class="navbutton" title="Dava Bilgileri">
+            <i class="fa fa-book fa-2x"></i> Dava
+        </button>
+    </div>
+
+    <div id="paraTransferi_div" class="paraTransferidiv">
+        <button runat="server" id="btnParaTransferi" onserverclick="btnParaTransferi_OnClick" class="navbutton" title="Para Transfer Bilgileri">
+            <i class="fa fa-money fa-2x"></i> Para Transfer
+        </button>
+    </div>
+
+    <div id="kisiler_div" class="kisiler_div">
+        <button runat="server" id="btnKisiler" onserverclick="btnKisiler_Onclick" class="navbutton" title="Kişiler">
+            <i class="fa fa-users fa-2x"></i> Kişiler
+        </button>
+    </div>
+    <div id="cikisdiv" class="cikisdiv">
+        <button runat="server" id="btncikis" class="navbutton" onserverclick="Profil_Cikis_OnClick" title="Çıkış yap">
+            <i class="fa fa-sign-out fa-rotate-180 fa-2x"></i> Çıkış yap
+        </button>
+    </div>
+</div>   <%--Sol menü--%>
+<div class="masterPageMain">
+<div class="scrollbar" id="scrollbar-custom">
+    <div class="ortaAlan" id="ortaAlan">
+        <div class="main">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                
+
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</form>
+</body>
+</html>

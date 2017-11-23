@@ -4,10 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.OleDb;
 using Npgsql;
-public partial class MasterPage : System.Web.UI.MasterPage
+public partial class AnaSayfaMasterPage : System.Web.UI.MasterPage
 {
+
+    protected void Profil_OnClick(object sender, EventArgs e)
+    {
+    }
+
+
+    protected void btnProfil_Onclick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Kullanici/profil.aspx");
+    }
+
+    protected void btnDava_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Kullanici/dava.aspx");
+    }
+
+    protected void btnParaTransferi_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Kullanici/paratransferi.aspx");
+    }
+
+    protected void btnKisiler_Onclick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Kullanici/kisiler.aspx");
+    }
+    protected void Yonetici_OnClick(object sender, EventArgs e)
+    {
+    }
+
+
+    protected void Profil_Cikis_OnClick(object sender, EventArgs e)
+    {
+        try
+        {
+            Response.Redirect("/login.aspx");
+        }
+        catch
+        {
+
+        }
+    }
     NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager
         .ConnectionStrings["NpgsqlConnectionStrings"].ConnectionString);
 
@@ -26,73 +66,30 @@ public partial class MasterPage : System.Web.UI.MasterPage
             else
             {
                 //kullaniciTcNo = "123";
-                Response.Redirect("login.aspx");
+                Response.Redirect("/login.aspx");
             }
 
-
+           
             if (!IsPostBack)
             {
-
+               
             }
             tSQL = "SELECT ad,soyad " +
                    "FROM kisi_bilgi " +
                    "WHERE kisi_bilgi.tck = '" + Session["kullanici"] + "'";
-
+            
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
             tDataReader = tCommand.ExecuteReader();
             if (tDataReader.Read())
             {
-                lblAdminAdi.Text ="Admin<br/>"+ (String)tDataReader["ad"] + " " + (String)tDataReader["soyad"];
-
+                lblAdminAdi.Text = (String)tDataReader["ad"] +" "+ (String)tDataReader["soyad"];
             }
-
-
             tCon.Close();
         }
         catch
         {
         }
     }
-
-    protected void btnBlokeliKullanici_Onclick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Admin/blokelikullanici.aspx");
-    }
-
-    protected void btnKisiler_OnClick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Admin/kisiler.aspx");
-    }
-
-    protected void btnBaro_OnClick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Admin/baro.aspx");
-    }
-
-    protected void btnAdliye_Onclick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Admin/adliye.aspx");
-    }
-    protected void btnMahkeme_Onclick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Admin/mahkeme.aspx");
-
-    }
-
-
-    protected void Profil_Cikis_OnClick(object sender, EventArgs e)
-    {
-        try
-        {
-            Response.Redirect("/login.aspx");
-        }
-        catch
-        {
-
-        }
-    }
-
-    
 }

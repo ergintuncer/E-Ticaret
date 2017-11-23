@@ -3,6 +3,13 @@
     margin: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+}
+/* container properties */
+.scrollbar {
+    width:99%;
+    height:100%;
+    overflow-y:scroll;
 }
 
 .img {
@@ -17,12 +24,10 @@
     transform: translateX(-50%) translateY(-50%);
     background-size: cover;
     filter: blur(4px);
-    overflow: hidden;
 }
 
 .admindiv {
     float: left;
-    position: absolute;
 }
 
 .nav {
@@ -53,16 +58,16 @@
 }
 
 .adminimg {
-    background-color: #2c3e50;
-    width: 50px;
-    height: 50px;
+    background-color: white;
+    width: 100px;
+    height: 100px;
     border: 2px solid white;
     border-radius: 50px;
 }
 
 .lblAdminAdi {
-    color: #4CAF50;
-    font-size: 120%;
+    color: white;
+    font-size: 150%;
 }
 
 .lbladminstatu {
@@ -113,16 +118,16 @@ i {
     margin-top: 83%;
 }
 
-.adminmain {
+.masterPageMain {
+    
     width: 85%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     margin-left: 15%;
     float: left;
     background-color: rgba(192, 192, 192, 0.1);
     padding: 1%;
 }
-
 .paneldiv {
     z-index: 0;
     width: 100%;
@@ -130,13 +135,11 @@ i {
 }
 
 .panel {
-    position: fixed;
     color: gray;
     background-color: white;
     width: 83%;
     height: 96%;
     float: left;
-    overflow: auto;
     text-align: left;
     border-radius: 10px;
 }
@@ -391,15 +394,7 @@ i {
     float: left;
 }
 
-.etkinlikposter {
-    float: left;
-    width: 200px;
-    height: 100%;
-    margin-left: 1%;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
+
 
 .etkinliksag {
     width: 78%;
@@ -550,8 +545,9 @@ i {
     margin-bottom: 2%;
 }
 input {
+    width: 100%;
     background-color: #ffffff;
-    padding: 5%;
+    padding: 4%;
     float: left;
     text-align: left;
     border-radius: 20px;
@@ -559,7 +555,7 @@ input {
 }
 
     input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
-        background-color: sandybrown;
+        background-color: yellow;
         outline: none;
     }
 
