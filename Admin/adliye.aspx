@@ -8,7 +8,7 @@
     <div class="paylasimayar" id="paylasimayar">
         <asp:Label CssClass="ustpanelyazi" runat="server"> Yeni Adliye </asp:Label>
         <div class="adliyesol">
-            <asp:Table ID="adliyetablosol" runat="server">
+            <asp:Table ID="adliyetablosol" runat="server" Width="249px">
      <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
                     <asp:TableCell>
                         <b>Adliye Adı:</b>
@@ -23,7 +23,7 @@
                         <b>İl :</b>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList ID="drpil" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="drpil" runat="server" OnSelectedIndexChanged="drpil_OnSelectedIndexChanged" OnTextChanged="drpil_OnTextChanged"></asp:DropDownList>
                     </asp:TableCell>
                 </asp:TableRow>
 
@@ -88,12 +88,12 @@
         </div>
     </div>
 
-  <%--  <asp:ListView ID="list2" runat="server">
-        <ItemTemplate>--%>
+    <asp:ListView ID="list2" runat="server">
+        <ItemTemplate>
             <div class="paylasimayar" id="paylasimayar">
                 <div class="paylasimHeaderayar">
                     <div class="ayarheadersol">
-                        <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Adliye Adı"></asp:Label>
+                        <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("adliyead") %>'></asp:Label>
                     </div>
                     <div class="ayarheadersag">
                         <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
@@ -110,7 +110,7 @@
                                 <b>İl: </b>
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("il") %>'></asp:Label>
+                                <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("ilad") %>'></asp:Label>
                             </asp:TableCell>
                         </asp:TableRow>
 
@@ -119,7 +119,7 @@
                                 <b>İlçe: </b>
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("ilce") %>'></asp:Label>
+                                <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("ilcead") %>'></asp:Label>
                             </asp:TableCell>
                         </asp:TableRow>
 
@@ -128,7 +128,7 @@
                                 <b>Adres Adı: </b>
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("adresadi") %>'></asp:Label>
+                                <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("adliyeadresad") %>'></asp:Label>
                             </asp:TableCell>
                         </asp:TableRow>
 
@@ -162,8 +162,8 @@
 
             </div>
 
-      <%--  </ItemTemplate>
-    </asp:ListView>--%>
+        </ItemTemplate>
+    </asp:ListView>
 
 
 </asp:Content>

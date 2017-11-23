@@ -42,8 +42,8 @@
 
     </div>
 
-    <%--  <asp:ListView ID="list2" runat="server">
-        <ItemTemplate>--%>
+      <asp:ListView ID="list2" runat="server">
+        <ItemTemplate>
     <div class="paylasimayar" id="paylasimayar">
         <div class="paylasimHeaderayar">
             <div class="ayarheadersol">
@@ -65,7 +65,7 @@
                             <b>Baro Adı: </b>
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lblBaroAdi" runat="server" Text='<%#Eval("baroadi") %>'></asp:Label>
+                            <asp:Label ID="lblBaroAdi" runat="server" Text='<%#Eval("baroad") %>'></asp:Label>
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
@@ -88,8 +88,8 @@
 
     </div>
 
-    <%--  </ItemTemplate>
-    </asp:ListView>--%>
+      </ItemTemplate>
+    </asp:ListView>
 
 
 </asp:Content>

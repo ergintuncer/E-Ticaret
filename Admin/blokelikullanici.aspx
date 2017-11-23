@@ -12,9 +12,10 @@
                    <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad Soyad" ></asp:Label>
                 </div>
                 <div class="ayarheadersag">
-                    <button runat="server" id="kabulEt" onserverclick="KullaniciSil_OnClick" class="kabulEt" title="Onayla">
+                    <%--<button runat="server" id="kabulEt" onserverclick="KullaniciSil_OnClick" class="kabulEt" title="Onayla">
                         <i class="fa fa-check fa-2x"> </i>
-                    </button>
+                    </button>--%>
+                    <a href="blokelikullanici.aspx?islem=ekle&kisiid=<%#Eval("kisiid") %>"> <img src="/image/if_Tick_Mark_1398911.png" /> </a>
                      <button runat="server" id="reddet" onserverclick="KullaniciOnayla_OnClick" class="reddet" title="Sil">
                         <i class="fa fa-trash fa-2x"> </i>
                     </button>
