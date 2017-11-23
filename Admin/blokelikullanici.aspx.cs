@@ -1,6 +1,5 @@
 ﻿using System;
 using Npgsql;
-
 namespace Admin
 {
     public partial class Admin_kayit: System.Web.UI.Page

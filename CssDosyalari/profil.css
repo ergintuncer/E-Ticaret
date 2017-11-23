@@ -1,0 +1,137 @@
+﻿body {
+    font-family: Calibri Light;
+}
+
+.ustprofil {
+    box-shadow: 0px 0px 3px #888888;
+    border-radius: 10px;
+    width: 99%;
+    height: auto;
+    padding: 1%;
+    background: white;
+    float: left;
+}
+
+.ustprofiltablo {
+    padding-top: 2%;
+    padding-left: 1%;
+    width: auto;
+    height: auto;
+    float: left;
+    text-align: left;
+}
+.altprofil {
+    text-align: right;
+    width: 100%;
+    float: right;
+}
+.profilDuvar {
+    float: left;
+    text-align: left;
+}
+
+.profilPaylasim {
+    width: 50%;
+    height: auto;
+    background-color: white;
+    float: left;
+    margin-top: 1%;
+    margin-left: 40%;
+}
+.buttonn {
+    width: 20%;
+    height: 35px;
+    margin-left: 1%;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #888888;
+    background-color: #2ecc71;
+    color: white;
+    border-style: none;
+}
+
+    .buttonn:hover {
+        background-color: #27ae60;
+        color: white;
+        transition: 0.5s;
+        outline: none;
+    }
+
+.pnlProfilDuzenle {
+    width: 99%;
+}
+.profilDuzenle_Div {
+    border-radius: 10px;
+    width: 97%;
+    border: solid thin silver;
+    background-color: white;
+}
+
+.profilGenelTablo {
+    width: 99%;
+}
+.pnlProfilDuzenle {
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    padding: 10px;
+    box-shadow: 0px 0px 3px #888888;
+    /*border: solid thin silver;*/
+    border-radius: 10px;
+}
+
+.prfilDuzenleTablo {
+    margin: 10px;
+    width: 100%;
+}
+.tblAlt {
+    width: 100%;
+}
+.altTabloSol {
+    width: 8%;
+}
+.altTabloSag {
+    position: inherit;
+    width: 30%;
+    height: 50px;
+}
+.profilValid {
+    text-align: center;
+    
+}
+.TexBoxCss {
+    width: 80%;
+    background-color: #ffffff;
+    padding: 2%;
+    float: left;
+    text-align: left;
+    border-radius: 10px;
+    border: thin silver solid;
+}
+
+    .TexBoxCss:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+        background-color: #69F0AE;
+        outline: none;
+    }
+.btnKaydet {
+    margin-left: 40%;
+    width: 20%;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #03A9F4;
+    color: white;
+    border-style: none;
+    line-height: 20px;
+    box-shadow: 0px 0px 3px #888888;
+}
+
+.btnKaydet:hover {
+    background-color: #2196F3;
+    color: white;
+    transition: 0.5s;
+    outline: none;
+}
+.validationSummary {
+    color: red;
+}
