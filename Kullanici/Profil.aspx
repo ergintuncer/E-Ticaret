@@ -5,8 +5,8 @@
     <link href="/CssDosyalari/profil.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="profilMainDiv">
-    <table class="profilGenelTablo" id="ustprofiltgtablo" border="0">
+<div class="profilMainDiv">
+<table class="profilGenelTablo" id="ustprofiltgtablo" border="0">
 <tbody>
 <tr>
     <td class="tblUst">
@@ -99,7 +99,7 @@
     </td>
     <td class="altTabloSag">
         <asp:TextBox CssClass="TexBoxCss" ID="txtAdi" runat="server"></asp:TextBox>
-        
+
     </td>
     <td class="altTabloSol">
         <asp:Label ID="Label26" runat="server" Text="Soyadı: "></asp:Label>
@@ -288,7 +288,7 @@
         <asp:Label ID="Label36" runat="server" Text="Açıklama: "></asp:Label>
     </td>
     <td class="altTabloSag">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAciklama" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCssM" ID="txtAciklama"  runat="server" TextMode="MultiLine"></asp:TextBox>
     </td>
 </tr>
 <tr class="altTabloSatir">
@@ -302,7 +302,7 @@
         <asp:Label ID="Label38" runat="server" Text="Adres: "></asp:Label>
     </td>
     <td class="altTabloSag">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCssM" ID="txtAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
     </td>
 </tr>
 <tr class="altTabloSatir">
@@ -356,14 +356,14 @@
     <td class="altTabloSol">
     </td>
     <td class="altTabloSag">
-       
+
     </td>
 </tr>
 
 </tbody>
 </table>
 <div class="profilValid">
-    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Lütfen Geçerli Bir Mail Adresi Giriniz" ControlToValidate="txtMailadresi"  ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"></asp:RegularExpressionValidator>
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Lütfen Geçerli Bir Mail Adresi Giriniz" ControlToValidate="txtMailadresi" ValidationExpression="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"></asp:RegularExpressionValidator>
     <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Lütfen Geçerli Bir Web Adresi Giriniz" ControlToValidate="txtWebAdresi"  ValidationExpression="(http(s)?://)?([\\w-]+\\.)+[\\w-]+(/[\\w- ;,./?%&=]*)?"></asp:RegularExpressionValidator>--%>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtAdi" ErrorMessage="İsim Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtSoyadi" ErrorMessage="Soyisim Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
@@ -377,9 +377,9 @@
     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtMailAdi" ErrorMessage="E-Mail Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="validationSummary"/>
 </div>
-    <button runat="server" id="btnKaydet" class="btnKaydet" OnServerClick="btnKaydet_Click" Text="Kaydet">
-            <i class="fa fa-save fa-2x"></i>Kaydet
-        </button>
+<button runat="server" id="btnKaydet" class="btnKaydet" OnServerClick="btnKaydet_Click" Text="Kaydet">
+    <i class="fa fa-save fa-2x"></i>Kaydet
+</button>
 
 </asp:Panel>
 
@@ -387,7 +387,6 @@
 </tr>
 </tbody>
 </table>
-
 
 
 </div>

@@ -1,0 +1,91 @@
+﻿body {
+}
+.bankaBilgiDiv {
+    height: 88%;
+    width: 78%;
+    background-color: white;
+    padding: 5%;
+    padding-left: 20%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px #888888;
+    position: fixed;
+    text-align: center;
+}
+.bankaBilgiTable {
+    width: 60%;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.tg-midlee {
+    text-align: center;
+    font-size: 200%;
+    width: 80%;
+    height: 100%;
+    padding-bottom: 5%;
+}
+
+.tg-right {
+    text-align: left;
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.tg-left {
+    text-align: left;
+    width: 25%;
+    float: left;
+    height: 10%;
+    margin-bottom:10px;
+}
+
+.label {
+    color: gray;
+}
+input {
+    background-color: #ffffff;
+    padding: 5%;
+    width: 90%;
+    float: left;
+    text-align: left;
+    border-radius: 50px;
+    border: thin silver solid;
+}
+
+    input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+        background-color: yellow;
+        outline: none;
+    }
+.TextBoxCssMulti {
+    background-color: #ffffff;
+    max-width: 98%;
+    min-width: 98%;
+    max-height: 100px;
+    padding: 5%;
+    width: 90%;
+    float: left;
+    text-align: left;
+    border-radius: 5px;
+    border: thin silver solid;
+}
+.tg-buton{
+    text-align: center;
+    padding-top: 5%;
+}
+.btnBankaKaydet {
+    border-radius: 50px;
+    width: 25%;
+    height: 100%;
+    text-align: center;
+    background-color: #03A9F4;
+    color: white;
+    border-style: none;
+}
+
+    .btnBankaKaydet:hover {
+        background-color: #2196F3;
+        color: white;
+        transition: 0.5s;
+        outline: none;
+    }
