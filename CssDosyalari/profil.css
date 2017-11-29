@@ -113,6 +113,18 @@
         background-color: #69F0AE;
         outline: none;
     }
+.TexBoxCssM {
+    background-color: #ffffff;
+    max-width: 80%;
+    min-width: 80%;
+    max-height: 100px;
+    padding: 2%;
+    width: 80%;
+    float: left;
+    text-align: left;
+    border-radius: 5px;
+    border: thin silver solid;
+}
 .btnKaydet {
     margin-left: 40%;
     width: 20%;

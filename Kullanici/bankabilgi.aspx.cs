@@ -11,4 +11,10 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
     {
 
     }
+
+    protected void btnKaydet_Click(object sender, EventArgs e)
+    {
+        
+
+    }
 }
