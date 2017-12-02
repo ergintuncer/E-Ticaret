@@ -152,17 +152,18 @@ public partial class Admin_Adliye : System.Web.UI.Page
 
 
     
-    int[] TilID = new int[81];
-    int[] TilceID = new int[81];
-    private int i=0 ,j= 0;
+    static int[] TilID = new int[1000];
+    static int[] TilceID = new int[15000];
+    static int i=0 ,j= 0;
 
     protected void Page_Load(object sender, EventArgs e)
     {
         listView_yukle();
-
+        bloke();
         if (!Page.IsPostBack)
         {
-            tSQL = "select ilad,ilid from il_bilgi";
+           
+            tSQL = "select ilad,ilid from il_bilgi order by ilad asc";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
@@ -171,9 +172,11 @@ public partial class Admin_Adliye : System.Web.UI.Page
             {
                 drpil.Items.Add("" + tDataReader["ilad"]);
                 TilID[i] = Convert.ToInt16(tDataReader["ilid"]) ;
+                //txtaciklama.Text = txtaciklama.Text + TilID[i];
                 i++;
             }
             tCon.Close();
+           
         }
 
     }
@@ -189,7 +192,9 @@ public partial class Admin_Adliye : System.Web.UI.Page
 
         if (txtadliyeadi.Text != "")
         {
-            tSQL = "INSERT INTO adliye_bilgi(adliyead,aktif,ilid,ilceid) VALUES ('" + txtadliyeadi.Text.Trim() + "' , " + tAktif + ",1,1);";
+            tSQL = "INSERT INTO adliye_bilgi(adliyead,aktif,ilid,ilceid) VALUES ('" + txtadliyeadi.Text.Trim() + "' , " + tAktif + ","+ TilID[drpil.SelectedIndex]  + ","+ TilceID[drpilce.SelectedIndex] + ");";
+            tSQL += "INSERT INTO adliye_adres(adliyeid,adliyeadresad,adres,aciklama,aktif) VALUES ((select max(adliyeid) from adliye_bilgi),'" + txtadresadi.Text.Trim() + "' , '" + txtadres.Text.Trim() + "','" + txtaciklama.Text.Trim() + "',true);";
+
             PublicExecuteNonQuery();
         }
 
@@ -217,21 +222,21 @@ public partial class Admin_Adliye : System.Web.UI.Page
         //tCon.Close();
         //txtaciklama.Text = ""+ drpil.SelectedValue;
         //drpil.Items.Add("");
-        txtaciklama.Text = "asass";
+        //txtaciklama.Text = "asass";
         //throw new NotImplementedException();
     }
 
     protected void drpil_OnTextChanged(object sender, EventArgs e)
     {
-        txtaciklama.Text = "asass";
-        throw new NotImplementedException();
+        //txtaciklama.Text = "asass";
+        //throw new NotImplementedException();
     }
 
 
     protected void listView_yukle()
     {
 
-        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on il_bilgi.ilid=ilce_bilgi.ilid  ";
+        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead, adliye_bilgi.adliyeid from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on il_bilgi.ilid=ilce_bilgi.ilid  ";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -241,6 +246,68 @@ public partial class Admin_Adliye : System.Web.UI.Page
         tCon.Close();
 
 
+    }
+
+
+    //protected void OnSelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    txtaciklama.Text = "asass";
+
+    //    throw new NotImplementedException();
+    //}
+
+    //static int bellek;
+
+    protected void drpil_OnSelectedIndexChanged2(object sender, EventArgs e)
+    {
+        //bellek = TilID[drpil.SelectedIndex];
+        //txtaciklama.Text = bellek + "";
+
+        drpilce.Items.Clear();
+        tSQL = "select ilcead,ilceid from ilce_bilgi where ilid=" + TilID[drpil.SelectedIndex];
+        tCon.Open();
+        tCommand.Connection = tCon;
+        tCommand.CommandText = tSQL;
+        tDataReader = tCommand.ExecuteReader();
+        while (tDataReader.Read())
+        {
+            drpilce.Items.Add("" + tDataReader["ilcead"]);
+            TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
+            j++;
+        }
+        tCon.Close();
+
+        //if (!Page.IsPostBack)
+        //{
+        //   
+
+        //txtaciklama.Text = "" + TilID[1];
+        //drpil.Items.Add("");
+
+    }
+
+
+    string kisiid;
+    string islem;
+    int id2;
+    void bloke()
+    {
+
+        kisiid = Request.QueryString["kisiid"];
+        islem = Request.QueryString["islem"];
+        if (kisiid != null)
+        {
+            id2 = int.Parse(kisiid);
+        }
+
+        if (islem == "bloke")
+        {
+            tSQL = "UPDATE adliye_bilgi set aktif=false WHERE adliyeid=" + id2;
+            PublicExecuteNonQuery();
+
+        }
+
+        listView_yukle();
     }
 
 

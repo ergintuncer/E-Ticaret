@@ -23,7 +23,8 @@
                         <b>İl :</b>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList ID="drpil" runat="server" OnSelectedIndexChanged="drpil_OnSelectedIndexChanged" OnTextChanged="drpil_OnTextChanged"></asp:DropDownList>
+                        <asp:DropDownList ID="drpil" runat="server" OnSelectedIndexChanged="drpil_OnSelectedIndexChanged2" AutoPostBack = "true"></asp:DropDownList>
+
                     </asp:TableCell>
                 </asp:TableRow>
 
@@ -96,9 +97,10 @@
                         <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("adliyead") %>'></asp:Label>
                     </div>
                     <div class="ayarheadersag">
-                        <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
+                        <a href="adliye.aspx?islem=bloke&kisiid=<%#Eval("adliyeid") %>"> <img src="/image/if_Tick_Mark_1398911.png" /> BLOKE </a>
+                        <%--<button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
                             <i class="fa fa-check fa-2x"> </i>
-                        </button>
+                        </button>--%>
 
                     </div>
                 </div>

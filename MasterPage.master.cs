@@ -26,7 +26,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             else
             {
                 //kullaniciTcNo = "123";
-                Response.Redirect("login.aspx");
+                Response.Redirect("/login.aspx");
             }
 
 

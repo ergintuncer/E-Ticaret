@@ -155,6 +155,15 @@ public partial class Admin_Baro : System.Web.UI.Page
     {
         listView_yukle();
 
+        if (!Page.IsPostBack)
+        {
+
+            aktif();
+
+        }
+       
+
+
     }
     protected void btnKaydet_Onclick(object sender, EventArgs e)
     {
@@ -182,7 +191,7 @@ public partial class Admin_Baro : System.Web.UI.Page
     protected void listView_yukle()
     {
 
-        tSQL = "select baroad,aktif from baro_bilgi order by baroad asc";
+        tSQL = "select baroid,baroad,aktif from baro_bilgi order by baroad asc";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -193,6 +202,36 @@ public partial class Admin_Baro : System.Web.UI.Page
 
 
       
+    }
+
+    string baroid;
+    string islem;
+    int id2;
+    void aktif()
+    {
+        try
+        {
+            baroid = Request.QueryString["baroid"];
+            islem = Request.QueryString["islem"];
+            if (ID != null)
+            {
+                id2 = int.Parse(baroid);
+            }
+
+            if (islem == "aktif")
+            {
+                tSQL = "UPDATE baro_bilgi set aktif=true where baroid="+ id2;
+                PublicExecuteNonQuery();
+
+            }
+           
+
+            listView_yukle();
+        }
+        catch
+        {
+
+        }
     }
 
 }

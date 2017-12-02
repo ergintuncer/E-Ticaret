@@ -25,7 +25,7 @@ public partial class AnaSayfaMasterPage : System.Web.UI.MasterPage
 
     protected void btnParaTransferi_OnClick(object sender, EventArgs e)
     {
-        Response.Redirect("/Kullanici/paratransferi.aspx");
+        Response.Redirect("/Kullanici/bankabilgi.aspx");
     }
 
     protected void btnKisiler_Onclick(object sender, EventArgs e)
