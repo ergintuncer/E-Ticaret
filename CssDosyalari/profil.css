@@ -105,14 +105,48 @@
     padding: 2%;
     float: left;
     text-align: left;
-    border-radius: 10px;
+    border-radius: 20px;
     border: thin silver solid;
 }
 
     .TexBoxCss:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
-        background-color: #69F0AE;
+        border: thin #E91E63 solid;
         outline: none;
     }
+.drplist {
+    background-color: #ffffff;
+    padding:1%;
+    padding-left: 3%;
+    width: 84%;
+    height: 75%;
+    float: left;
+    color:darkslategrey;
+    text-align: left;
+    border-radius: 20px;
+    border: thin silver solid;
+    
+}
+    .drplist:focus {
+        border: thin #E91E63 solid;
+        outline: none;
+    }
+.TextBoxCssMulti {
+    background-color: #ffffff;
+    max-width: 10px;
+    min-width: 78%;
+    max-height: 40px;
+    min-height: 40px;
+    padding: 3%;
+    float: left;
+    text-align: left;
+    border-radius: 10px;
+    border: thin silver solid;
+}
+
+.TextBoxCssMulti:focus {
+    border: thin #E91E63 solid;
+    outline: none;
+}
 .btnKaydet {
     margin-left: 40%;
     width: 20%;
@@ -131,6 +165,13 @@
     color: white;
     transition: 0.5s;
     outline: none;
+}
+input:only-of-type[type=radio] {
+    float: none;
+    width: 20px;
+}
+input:only-of-type[type=radio]:focus {
+    background-color: white;
 }
 .validationSummary {
     color: red;

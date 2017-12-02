@@ -193,5 +193,6 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
     protected void Aktiflik_OnClick(object sender, EventArgs e)
     {
         throw new NotImplementedException();
+
     }
 }

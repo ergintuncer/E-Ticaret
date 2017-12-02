@@ -55,11 +55,12 @@
                 <td class="tg-left">Banka Açıklama: </td>
                 <td class="tg-right">
                     <asp:TextBox ID="txtBankaAciklama" runat="server" TextMode="MultiLine"></asp:TextBox>
+
                 </td>
             </tr>
             <tr>
                 <td class="tg-left">Banka Aktif mi: </td>
-                <td class="tg-right">
+                <td class="tgright">
                     <asp:CheckBox ID="chckBankaAktif" runat="server"/>
                 </td>
             </tr>
@@ -71,8 +72,6 @@
                 </td>
             </tr>
         </table>
-        
-        
          <asp:ListView ID="list2" runat="server">
         <ItemTemplate>
             <div class="paylasimayar" id="paylasimayar">
@@ -153,7 +152,4 @@
 
 
     </div>
-    
-   
-
 </asp:Content>

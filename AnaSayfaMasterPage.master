@@ -8,7 +8,7 @@
     </asp:ContentPlaceHolder>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Ana Sayfa</title>
-    <link href="/masterpageadmin.css" rel="stylesheet"/>
+    <link href="/CssDosyalari/anaSayfaMasterPage.css" rel="stylesheet"/>
     
 </head>
 
@@ -26,16 +26,29 @@
         <button runat="server" id="btnnavProfil" onserverclick="btnProfil_Onclick" class="navbutton" title="Profil Bilgileri">
            <i class="fa fa-user fa-2x"></i>Profil</button>
     </div>
-
     <div id="Dava_div" class="Dava_div">
         <button runat="server" id="btnDava" onserverclick="btnDava_OnClick" class="navbutton" title="Dava Bilgileri">
             <i class="fa fa-book fa-2x"></i> Dava
         </button>
     </div>
-
-    <div id="paraTransferi_div" class="paraTransferidiv">
-        <button runat="server" id="btnParaTransferi" onserverclick="btnParaTransferi_OnClick" class="navbutton" title="Para Transfer Bilgileri">
-            <i class="fa fa-money fa-2x"></i> Para Transfer
+    <div id="Dava_div" class="Dava_div">
+        <button runat="server" id="btnDavaTuru" onserverclick="btnDavaTuru_OnClick" class="navbutton" title="Dava Tür Bilgileri">
+            <i class="fa fa-book fa-2x"></i> Dava Türü
+        </button>
+    </div>
+    <div id="BankaHesapTur_div" class="BankaHesapTur_div">
+        <button runat="server" id="btnBankaHesapTur" onserverclick="btnBankaHesapTur_OnClick" class="navbutton" title="Banka Hesap Türü">
+            <i class="fa fa-linode fa-2x"></i> Banka Hesap Türü
+        </button>
+    </div>
+    <div id="BankaHesap_div" class="BankaHesap_div">
+        <button runat="server" id="btnBankaHesap" onserverclick="btnBankaHesap_OnClick" class="navbutton" title="Banka Hesap">
+            <i class="fa fa-book fa-2x"></i> Banka Hesap
+        </button>
+    </div>
+    <div id="bankaBilgi_div" class="BankaBilgidiv">
+        <button runat="server" id="btnBankaBilgi" onserverclick="btnBankaBilgi_OnClick" class="navbutton" title="BankaBilgisi">
+            <i class="fa fa-money fa-2x"></i> BankaBilgisi
         </button>
     </div>
 
