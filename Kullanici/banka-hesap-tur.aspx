@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
     <title>Banka Kesap Türü</title>
-    <link href="/CssDosyalari/davaTur.css" rel="stylesheet"/>
+    <link href="/CssDosyalari/bankaHesapTuru.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <div class="Dava_div">
@@ -10,7 +10,7 @@
         <table class="bankaBilgiTable" border="0">
             <tr>
                 <td class="tg-midlee" colspan="2">
-                    <asp:Label CssClass="label" runat="server"> Bank Hesap Türü</asp:Label>
+                    <asp:Label CssClass="label" runat="server"> Banka Hesap Türü</asp:Label>
                 </td>
             </tr>
             <tr>
@@ -43,7 +43,7 @@
                         <asp:Table ID="kisibilgi" CssClass="AltDivTablo" runat="server">
                             <asp:TableRow runat="server">
                                 <asp:TableCell CssClass="tblSol">
-                                    <b>Dava Türü: </b>
+                                    <b>Banka Hesap Türü: </b>
                                 </asp:TableCell>
                                 <asp:TableCell>
                                     <asp:Label ID="lblBankaHesapTuru" runat="server" Text='<%#Eval("hesaptur") %>'></asp:Label>
@@ -51,7 +51,7 @@
                             </asp:TableRow>
                             <asp:TableRow runat="server">
                                 <asp:TableCell CssClass="tblSol">
-                                    <b>Dava Açıklama: </b>
+                                    <b>Hesap Türü Hakkında: </b>
                                 </asp:TableCell>
                                 <asp:TableCell>
                                     <asp:Label ID="lblBankaHesapAciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>

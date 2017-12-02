@@ -26,10 +26,14 @@
         <button runat="server" id="btnnavProfil" onserverclick="btnProfil_Onclick" class="navbutton" title="Profil Bilgileri">
            <i class="fa fa-user fa-2x"></i>Profil</button>
     </div>
-
     <div id="Dava_div" class="Dava_div">
         <button runat="server" id="btnDava" onserverclick="btnDava_OnClick" class="navbutton" title="Dava Bilgileri">
             <i class="fa fa-book fa-2x"></i> Dava
+        </button>
+    </div>
+    <div id="Dava_div" class="Dava_div">
+        <button runat="server" id="btnDavaTuru" onserverclick="btnDavaTuru_OnClick" class="navbutton" title="Dava Tür Bilgileri">
+            <i class="fa fa-book fa-2x"></i> Dava Türü
         </button>
     </div>
     <div id="BankaHesapTur_div" class="BankaHesapTur_div">

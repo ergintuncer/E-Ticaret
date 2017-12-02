@@ -53,7 +53,7 @@
             </tr>
             <tr>
                 <td class="tg-left">Banka Aktif mi: </td>
-                <td class="tg-right">
+                <td class="tgright">
                     <asp:CheckBox ID="chckBankaAktif" runat="server"/>
                 </td>
             </tr>

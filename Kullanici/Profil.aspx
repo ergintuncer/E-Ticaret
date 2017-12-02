@@ -302,7 +302,7 @@
         <asp:Label ID="Label36" runat="server" Text="Açıklama: "></asp:Label>
     </td>
     <td class="altTabloSag">
-        <asp:TextBox CssClass="TexBoxCssM" ID="txtAciklama"  runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama"  runat="server" TextMode="MultiLine"></asp:TextBox>
     </td>
 </tr>
 <tr class="altTabloSatir">
@@ -316,7 +316,7 @@
         <asp:Label ID="Label38" runat="server" Text="Adres: "></asp:Label>
     </td>
     <td class="altTabloSag">
-        <asp:TextBox CssClass="TexBoxCssM" ID="txtAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
     </td>
 </tr>
 <tr class="altTabloSatir">

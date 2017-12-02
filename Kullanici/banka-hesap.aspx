@@ -70,7 +70,7 @@
             </tr>
             <tr>
                 <td class="tg-left">Hesap Aktif mi: </td>
-                <td class="tg-right">
+                <td class="tgright">
                     <asp:CheckBox ID="chckHesapAktif" runat="server" Checked="True"/>
                 </td>
             </tr>

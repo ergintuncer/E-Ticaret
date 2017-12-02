@@ -18,9 +18,9 @@ public partial class AnaSayfaMasterPage : System.Web.UI.MasterPage
         Response.Redirect("/Kullanici/profil.aspx");
     }
 
-    protected void btnDava_OnClick(object sender, EventArgs e)
+    protected void btnDavaTuru_OnClick(object sender, EventArgs e)
     {
-        Response.Redirect("/Kullanici/dava.aspx");
+        Response.Redirect("/Kullanici/dava-turu.aspx");
     }
 
     protected void btnKisiler_Onclick(object sender, EventArgs e)
@@ -103,5 +103,11 @@ public partial class AnaSayfaMasterPage : System.Web.UI.MasterPage
     protected void btnBankaBilgi_OnClick(object sender, EventArgs e)
     {
         Response.Redirect("/Kullanici/bankabilgi.aspx");
+    }
+
+    protected void btnDava_OnClick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Kullanici/dava.aspx");
+
     }
 }
