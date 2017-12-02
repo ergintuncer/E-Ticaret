@@ -130,17 +130,22 @@
         border: thin #E91E63 solid;
         outline: none;
     }
-.TexBoxCssM {
+.TextBoxCssMulti {
     background-color: #ffffff;
-    max-width: 80%;
-    min-width: 80%;
-    max-height: 100px;
-    padding: 2%;
-    width: 80%;
+    max-width: 10px;
+    min-width: 78%;
+    max-height: 40px;
+    min-height: 40px;
+    padding: 3%;
     float: left;
     text-align: left;
-    border-radius: 5px;
+    border-radius: 10px;
     border: thin silver solid;
+}
+
+.TextBoxCssMulti:focus {
+    border: thin #E91E63 solid;
+    outline: none;
 }
 .btnKaydet {
     margin-left: 40%;
