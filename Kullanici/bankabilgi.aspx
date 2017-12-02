@@ -48,7 +48,14 @@
             <tr>
                 <td class="tg-left">Banka Adres: </td>
                 <td class="tg-right">
-                    <asp:TextBox ID="txtBankaAdres" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtBankaAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-left">Banka Açıklama: </td>
+                <td class="tg-right">
+                    <asp:TextBox ID="txtBankaAciklama" runat="server" TextMode="MultiLine"></asp:TextBox>
+
                 </td>
             </tr>
             <tr>
@@ -65,6 +72,83 @@
                 </td>
             </tr>
         </table>
+         <asp:ListView ID="list2" runat="server">
+        <ItemTemplate>
+            <div class="paylasimayar" id="paylasimayar">
+                <div class="paylasimHeaderayar">
+                    <div class="ayarheadersol">
+                        <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("bankaad") %>'></asp:Label>
+                    </div>
+                    <div class="ayarheadersag">
+                        <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
+                            <i class="fa fa-check fa-2x"> </i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="paylasimIcerikayar">
+                    <asp:Table ID="kisibilgi" runat="server">
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Banka: </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("bankaad") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Şube: </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("bankasubead") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Şube Kodu: </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("bankasubekod") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Telefon </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lbladres" CssClass="lbladres" runat="server" Text='<%#Eval("bankasubetel1") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Adres: </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lblaciklama" CssClass="lblaciklama" runat="server" Text='<%#Eval("bankasubeadres") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
+                            <asp:TableCell>
+                                <b>Açıklama: </b>
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:Label ID="lblaktif" CssClass="lblaktif" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                </div>
+
+            </div>
+
+        </ItemTemplate>
+    </asp:ListView>
+    
 
 
     </div>

@@ -181,7 +181,7 @@ namespace Admin
         protected void listView_yukle()
         {
 
-            tSQL = "select kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid=avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_giris.bloke=false";
+            tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid WHERE kisi_giris.bloke=false";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;

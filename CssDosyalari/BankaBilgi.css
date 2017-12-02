@@ -1,6 +1,7 @@
 ﻿body {
 }
 .bankaBilgiDiv {
+
     width: 78%;
     background-color: white;
     padding: 1%;
@@ -28,6 +29,7 @@
     width: 50%;
     height: 100%;
 }
+
 .tgright {
     text-align: left;
     float: left;

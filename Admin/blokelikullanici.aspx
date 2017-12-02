@@ -9,7 +9,7 @@
         <div class="paylasimayar" id="paylasimayar">
             <div class="paylasimHeaderayar">
                 <div class="ayarheadersol">
-                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text="Ad Soyad" ></asp:Label>
+                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("ad_soyad") %>'></asp:Label>
                 </div>
                 <div class="ayarheadersag">
                     <%--<button runat="server" id="kabulEt" onserverclick="KullaniciSil_OnClick" class="kabulEt" title="Onayla">
@@ -41,7 +41,7 @@
                     <asp:TableRow ID="TableRow2" class="kisiBilgitablerow" runat="server">
                            <asp:TableCell><b>Baro Bilgisi:</b>  </asp:TableCell>
                             <asp:TableCell> 
-                                <asp:Label ID="baroBilgi" CssClass="kisiBilgi" runat="server" Text=" "></asp:Label>
+                                <asp:Label ID="baroBilgi" CssClass="kisiBilgi" runat="server" Text='<%#Eval("baroad") %>'></asp:Label>
                             </asp:TableCell>
                      </asp:TableRow>
 

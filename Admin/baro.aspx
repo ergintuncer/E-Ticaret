@@ -50,9 +50,10 @@
                 <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server"></asp:Label>
             </div>
             <div class="ayarheadersag">
-                <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
-                    <i class="fa fa-check fa-2x"> </i>
-                </button>
+               <%-- <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">--%>
+                    <a href="baro.aspx?islem=aktif&baroid=<%#Eval("baroid") %>"> <img src="/image/if_Tick_Mark_1398911.png" /> </a>
+                   <%-- <i class="fa fa-check fa-2x"> </i>--%>
+               <%-- </button>--%>
 
             </div>
         </div>

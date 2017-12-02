@@ -109,7 +109,7 @@ public partial class Admin_kisiler : System.Web.UI.Page
             //postback
             if (!Page.IsPostBack)
             {
-                sil();
+                bloke();
             }
         }
         catch
@@ -119,7 +119,7 @@ public partial class Admin_kisiler : System.Web.UI.Page
 
     protected void listView_yukle()
     {
-        tSQL = "select kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid=avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid=kisi_giris.kisiid ";
+        tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -132,36 +132,27 @@ public partial class Admin_kisiler : System.Web.UI.Page
     string kisiid;
     string islem;
     int id2;
-    void sil()
+    void bloke()
     {
-        try
-        {
+        
             kisiid = Request.QueryString["kisiid"];
             islem = Request.QueryString["islem"];
-            if (ID != null)
+            if (kisiid != null)
             {
                 id2 = int.Parse(kisiid);
             }
 
-            if (islem == "sil")
+            if (islem == "bloke")
             {
-                tSQL = "DELETE FROM kisi_bilgi WHERE kisiid=" + id2;
+                tSQL = "UPDATE kisi_giris set bloke=false WHERE kisiid=" + id2;
                 PublicExecuteNonQuery();
 
             }
-            else if (islem == "ekle")
-            {
-                tSQL = "UPDATE kisi_giris SET bloke=True   WHERE kisiid =" + id2;
-                PublicExecuteNonQuery();
-
-            }
+           
             listView_yukle();
         }
-        catch
-        {
-
-        }
-    }
+      
+    
 
     protected void KullaniciOnayla_OnClick(object sender, EventArgs e)
     {
