@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AnaSayfaMaster.master.cs" Inherits="AnaSayfaMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Ana Sayfa</title>
+    <link href="/CssDosyalari/anaSayfaMaster.css" rel="stylesheet"/>
+</head>
+<body>
+<aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+        <ul class="nano-content">
+            <li>
+                <a href="Profil.aspx">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Profil</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-cogs"></i><span>Dava İşlemleri</span><i class="arrow fa fa-angle-right pull-right"></i>
+                </a>
+                <ul>
+
+                    <li>
+                        <a href="dava.aspx">Dava </a>
+                    </li>
+                    <li>
+                        <a href="dava-turu.aspx">Dava Türü</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sub-menu<%-- active--%>">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-envelope"></i><span>Banka İşlemleri</span><i class="arrow fa fa-angle-right pull-right"></i>
+                </a>
+                <ul>
+                    <li class="active">
+                        <a href="bankabilgi.aspx">Banka Bilgi</a>
+                    </li>
+                    <li>
+                        <a href="banka-hesap.aspx">Banka Hesap</a>
+                    </li>
+                    <li>
+                        <a href="banka-hesap-tur.aspx">Banka Hesap Türü</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sub-menu">
+                <a href="kisiler.aspx">
+                    <i class="fa fa-user"></i><span>Kişiler</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="/login.aspx">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Çıkış Yap</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</aside>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src="/js/index.js"></script>
+<form id="form1" runat="server">
+    <div class="mainDivh">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+</form>
+</body>
+</html>

@@ -1,173 +1,187 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AnaSayfaMasterPage.master" AutoEventWireup="true" CodeFile="banka-hesap.aspx.cs" Inherits="Kullanici_banka_hesap" %>
+﻿<%@ Page Title="Banka Hesap işlemleri" Language="C#" MasterPageFile="~/AnaSayfaMaster.master" AutoEventWireup="true" CodeFile="banka-hesap.aspx.cs" Inherits="Kullanici_banka_hesap" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <title>Bank Hesap</title>
-    <link href="/CssDosyalari/bankaHesap.css" rel="stylesheet"/>
+    <link href="/CssDosyalari/bankaHesapp.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-     <div class="Dava_div">
-    <div class="bankaBilgiDiv">
-        <table class="bankaBilgiTable" border="0">
-            <tr>
-                <td class="tg-midlee" colspan="2">
-                    <asp:Label CssClass="label" runat="server">Banka Hesap</asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka: </td>
-                <td class="tg-right">
+    <div class="pageDisDiv">
+        <div class="ustDiv">
+            <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
+                <asp:Label CssClass="label" runat="server" Text="Yeni Banka Hesabı Oluştur" Font-Size="200%">Yeni Banka Hesabı Oluştur</asp:Label>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Banka:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
                     <asp:DropDownList ID="drpBanka" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpBanka_SelectedIndexChanged">
-                        <asp:ListItem Text="Banka"  Value="Banka"></asp:ListItem>
+                        <asp:ListItem Text="Banka" Value="Banka"></asp:ListItem>
                     </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Hesap Türü: </td>
-                <td class="tg-right">
-                    <asp:DropDownList ID="drpHesapTuru" runat="server" CssClass="drplist"  AutoPostBack="true" OnSelectedIndexChanged="drpHesapTuru_SelectedIndexChanged">
-                        <asp:ListItem Text="Hesap Türü"  Value="Hesap Türü"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Bakiye Tür: </td>
-                <td class="tg-right">
-                    <asp:DropDownList ID="drpBakiyeTur" runat="server" CssClass="drplist"  AutoPostBack="true" OnSelectedIndexChanged="drpBakiyeTur_SelectedIndexChanged">
-                        <asp:ListItem Text="Bakiye Türü"  Value="Bakiye Türü"></asp:ListItem>
-                    </asp:DropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Hesap Adı: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtHesapAdi" runat="server" ></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Hesap No: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtHesapNo"  runat="server" TextMode="Number"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">IBAN no: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtIbanNo" runat="server" TextMode="Number" ></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Bakiye: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBakiye"  runat="server" TextMode="Number" ></asp:TextBox>
-                </td>
-            </tr>
+                </div>
+            </div>
 
-            <tr>
-                <td class="tg-left">Açıklama: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Hesap Aktif mi: </td>
-                <td class="tgright">
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Hesap Türü:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:DropDownList ID="drpHesapTuru" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpHesapTuru_SelectedIndexChanged">
+                        <asp:ListItem Text="Hesap Türü" Value="Hesap Türü"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Bakiye Türü:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:DropDownList ID="drpBakiyeTur" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpBakiyeTur_SelectedIndexChanged">
+                        <asp:ListItem Text="Bakiye Türü" Value="Bakiye Türü"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Hesap Adı:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtHesapAdi" CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Hesap No:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtHesapNo" CssClass="TexBoxCss" runat="server" TextMode="Number"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">IBAN No:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtIbanNo" CssClass="TexBoxCss" runat="server" TextMode="Number"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Bakiye:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBakiye" CssClass="TexBoxCss" runat="server" TextMode="Number"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Hesap Aktif:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
                     <asp:CheckBox ID="chckHesapAktif" runat="server" Checked="True"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-buton" colspan="2">
-                    <button runat="server" id="btnKaydet" class="btnBankaKaydet" OnServerClick="btnKaydet_Click" Text="Kaydet">
-                        <i class="fa fa-save fa-2x"></i>Kaydet
-                    </button>
-                </td>
-            </tr>
-        </table>
-    </div>
-        <div class="davaAltDiv">
-
-           <%-- <asp:ListView ID="list2" runat="server">
-                <ItemTemplate>--%>
-                    <div class="davaListeDiv">
-                        <asp:Table ID="kisibilgi" CssClass="AltDivTablo" runat="server">
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Banka: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblBanka" runat="server" Text='<%#Eval("banka") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Hesap Türü </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblHesapTuru" runat="server" Text='<%#Eval("hesapturu") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Bakiye Türü: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblBakiyeTur" runat="server" Text='<%#Eval("bakiyetur") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Hesap Adı: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblHesapAdi" runat="server" Text='<%#Eval("hesapadi") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Hesap No: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblHesapNo" runat="server" Text='<%#Eval("hesapno") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>IBAN No: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblIban" runat="server" Text='<%#Eval("iban") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Hesap Bakiye: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblHesapBakiye" runat="server" Text='<%#Eval("bakiye") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Açıklama: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblAciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow runat="server">
-                                <asp:TableCell CssClass="tblSol">
-                                    <b>Aktif mi: </b>
-                                </asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:Label ID="lblAktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                        </asp:Table>
-                    </div>
-               <%-- </ItemTemplate>
-            </asp:ListView>--%>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Açıklama:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtHesapAciklama" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <%-- Bu divi silme. Ortalama yapması için konuldu--%>
+            </div>
+            <div class="lineOrta">
+                <button runat="server" id="Button1" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
+                    <i class="fa fa-save fa-2x"></i>Kaydet
+                </button>
+            </div>
 
         </div>
 
-    </div>
-</asp:Content>
 
+        <div class="altDiv">
+            <%--            <asp:ListView ID="list2" runat="server">
+                <ItemTemplate>--%>
+            <div class="ListeDiv">
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Banka Adı: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblBanka" runat="server" Text='<%#Eval("banka") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Hesap Türü: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblHesapTuru" runat="server" Text='<%#Eval("hesapturu") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Bakiye Türü: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblBakiyeTur" runat="server" Text='<%#Eval("bakiyetur") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Hesap Adı: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblHesapAdi" runat="server" Text='<%#Eval("hesapadi") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">HEsap No: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblHesapNo" runat="server" Text='<%#Eval("hesapno") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">IBAN No: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblIban" runat="server" Text='<%#Eval("iban") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Bakiye Bilgisi: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblHesapBakiye" runat="server" Text='<%#Eval("bakiye") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Aktif: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblAktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="lineSolDiv">
+                        <asp:Label CssClass="label" runat="server">Açıklama: </asp:Label>
+                    </div>
+                    <div class="lineSagDiv">
+                        <asp:Label ID="lblAciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
+                    </div>
+                </div>
+            </div>
+            <%--                </ItemTemplate>
+            </asp:ListView>--%>
+        </div>
+    </div>
+
+
+</asp:Content>

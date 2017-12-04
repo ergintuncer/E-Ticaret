@@ -50,7 +50,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
         {
             if (Session["kullanici"] != null)
             {
-                kullaniciTcNo = (String) Session["kullanici"];
+                kullaniciTcNo = (String)Session["kullanici"];
             }
             else
             {
@@ -88,9 +88,9 @@ public partial class Kullanici_Profil : System.Web.UI.Page
                     drpIl.Items.Add("" + tDataReader["Il"]);
                 }
                 tCon.Close();
-                
 
-                pnlProfilDuzenle.Visible = true;
+
+                pnlProfil.Visible = true;
 
 
                 tSQL = "SELECT * ,to_char(kisi_kimlik.dogumtarih,'dd.mm.YYYY') AS dogumtarihi " +
@@ -109,98 +109,98 @@ public partial class Kullanici_Profil : System.Web.UI.Page
                 tDataReader = tCommand.ExecuteReader();
                 if (tDataReader.Read())
                 {
-                    lblkuladi.Text = (String) tDataReader["ad"];
-                    lblkulsoyadi.Text = (String) tDataReader["soyad"];
+                    lblkuladi.Text = (String)tDataReader["ad"];
+                    lblkulsoyadi.Text = (String)tDataReader["soyad"];
                     lblkuldogumtarihi.Text = "" + tDataReader["dogumtarihi"];
-                    lblkulFirma.Text = (String) tDataReader["firma"];
-                    lblkulTcKimlikNo.Text = (String) tDataReader["tck"];
-                    lblkulTelNo.Text = (String) tDataReader["telefon"];
-                    lblkulMail.Text = (String) tDataReader["mail"];
-                    lblkulWebAdresi.Text = (String) tDataReader["web"];
+                    lblkulFirma.Text = (String)tDataReader["firma"];
+                    lblkulTcKimlikNo.Text = (String)tDataReader["tck"];
+                    lblkulTelNo.Text = (String)tDataReader["telefon"];
+                    lblkulMail.Text = (String)tDataReader["mail"];
+                    lblkulWebAdresi.Text = (String)tDataReader["web"];
 
-                    txtAdi.Text = (String) tDataReader["ad"];
-                    txtSoyadi.Text = (String) tDataReader["soyad"];
-                    txtTck.Text = (String) tDataReader["tck"];
-                    txtFirma.Text = (String) tDataReader["firma"];
-                    txtVergiNo.Text = (String) tDataReader["vergino"];
-                    txtVergiDaire.Text = (String) tDataReader["vergidaire"];
-                    txtAnneAdi.Text = (String) tDataReader["anneadi"];
-                    txtBabaAdi.Text = (String) tDataReader["babaadi"];
-                    txtDogumYeri.Text = (String) tDataReader["dogumyeri"];
-                    txtDin.Text = (String) tDataReader["din"];
-                    txtDogumTarihi.Text =""+tDataReader["dogumtarih"];
-                    if ((String) tDataReader["cinsiyet"] == "Erkek")
+                    txtAdi.Text = (String)tDataReader["ad"];
+                    txtSoyadi.Text = (String)tDataReader["soyad"];
+                    txtTck.Text = (String)tDataReader["tck"];
+                    txtFirma.Text = (String)tDataReader["firma"];
+                    txtVergiNo.Text = (String)tDataReader["vergino"];
+                    txtVergiDaire.Text = (String)tDataReader["vergidaire"];
+                    txtAnneAdi.Text = (String)tDataReader["anneadi"];
+                    txtBabaAdi.Text = (String)tDataReader["babaadi"];
+                    txtDogumYeri.Text = (String)tDataReader["dogumyeri"];
+                    txtDin.Text = (String)tDataReader["din"];
+                    txtDogumTarihi.Text = "" + tDataReader["dogumtarih"];
+                    if ((String)tDataReader["cinsiyet"] == "Erkek")
                     {
                         radioBTNCinsiyet.SelectedValue = "Erkek";
                     }
-                    else if ((String) tDataReader["cinsiyet"] == "Kadın")
+                    else if ((String)tDataReader["cinsiyet"] == "Kadın")
                     {
                         radioBTNCinsiyet.SelectedValue = "Kadın";
                     }
 
-                    if ((String) tDataReader["medenihal"] == "Bekar")
+                    if ((String)tDataReader["medenihal"] == "Bekar")
                     {
                         radioBtnMedeniHal.SelectedValue = "Bekar";
                     }
-                    else if ((String) tDataReader["medenihal"] == "Evli")
+                    else if ((String)tDataReader["medenihal"] == "Evli")
                     {
                         radioBtnMedeniHal.SelectedValue = "Evli";
                     }
-                    txtUyruk.Text = (String) tDataReader["uyruk"];
+                    txtUyruk.Text = (String)tDataReader["uyruk"];
 
-                    if ((String) tDataReader["kangrubu"] == "A Rh (+)")
+                    if ((String)tDataReader["kangrubu"] == "A Rh (+)")
                     {
                         radioBtnKanGrubu.SelectedValue = "A Rh (+)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "A Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "A Rh (-)")
                     {
                         radioBtnKanGrubu.SelectedValue = "A Rh (-)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "B Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "B Rh (+)")
                     {
                         radioBtnKanGrubu.SelectedValue = "B Rh (+)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "B Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "B Rh (-)")
                     {
                         radioBtnKanGrubu.SelectedValue = "B Rh (-)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "AB Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "AB Rh (+)")
                     {
                         radioBtnKanGrubu.SelectedValue = "AB Rh (+)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "AB Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "AB Rh (-)")
                     {
                         radioBtnKanGrubu.SelectedValue = "AB Rh (-)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "0 Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "0 Rh (+)")
                     {
                         radioBtnKanGrubu.SelectedValue = "0 Rh (+)";
                     }
-                    else if ((String) tDataReader["kangrubu"] == "0 Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "0 Rh (-)")
                     {
                         radioBtnKanGrubu.SelectedValue = "0 Rh (-)";
                     }
-                    drpIl.SelectedValue = (String) tDataReader["il"];
-                    drpIlce.SelectedValue = (String) tDataReader["ilce"];
-                    txtMahalle.Text = (String) tDataReader["mahkoy"];
-                    txtCiltNo.Text = (String) tDataReader["ciltno"];
-                    txtAileSiraNo.Text = (String) tDataReader["ailesirano"];
-                    txtSiraNo.Text = (String) tDataReader["sirano"];
-                    txtVerildigiYer.Text = (String) tDataReader["verildigiyer"];
-                    txtVerilisNedeni.Text = (String) tDataReader["verilisnedeni"];
-                    txtKayitNo.Text = (String) tDataReader["kayitno"];
-                    txtVerilisTarih.Text = ""+tDataReader["verilistarih"];
-                    txtVerenMakam.Text =  (String)tDataReader["verenmakam"];
-                    txtGecerlilikTarih.Text = ""+tDataReader["gecerliliktarih"];
-                    txtAciklama.Text = (String) tDataReader["aciklama"];
-                    txtAdresAdi.Text = (String) tDataReader["adresad"];
-                    txtAdres.Text = (String) tDataReader["adres"];
-                    txtTelefonAdi.Text = (String) tDataReader["telefonad"];
-                    txtTelefon.Text = (String) tDataReader["telefon"];
-                    txtMailAdi.Text = (String) tDataReader["mailad"];
-                    txtMailadresi.Text = (String) tDataReader["mail"];
-                    txtWebAdresiAdi.Text = (String) tDataReader["webad"];
-                    txtWebAdresi.Text = (String) tDataReader["web"];
+                    drpIl.SelectedValue = (String)tDataReader["il"];
+                    drpIlce.SelectedValue = (String)tDataReader["ilce"];
+                    txtMahalle.Text = (String)tDataReader["mahkoy"];
+                    txtCiltNo.Text = (String)tDataReader["ciltno"];
+                    txtAileSiraNo.Text = (String)tDataReader["ailesirano"];
+                    txtSiraNo.Text = (String)tDataReader["sirano"];
+                    txtVerildigiYer.Text = (String)tDataReader["verildigiyer"];
+                    txtVerilisNedeni.Text = (String)tDataReader["verilisnedeni"];
+                    txtKayitNo.Text = (String)tDataReader["kayitno"];
+                    txtVerilisTarih.Text = "" + tDataReader["verilistarih"];
+                    txtVerenMakam.Text = (String)tDataReader["verenmakam"];
+                    txtGecerlilikTarih.Text = "" + tDataReader["gecerliliktarih"];
+                    txtAciklama.Text = (String)tDataReader["aciklama"];
+                    txtAdresAdi.Text = (String)tDataReader["adresad"];
+                    txtAdres.Text = (String)tDataReader["adres"];
+                    txtTelefonAdi.Text = (String)tDataReader["telefonad"];
+                    txtTelefon.Text = (String)tDataReader["telefon"];
+                    txtMailAdi.Text = (String)tDataReader["mailad"];
+                    txtMailadresi.Text = (String)tDataReader["mail"];
+                    txtWebAdresiAdi.Text = (String)tDataReader["webad"];
+                    txtWebAdresi.Text = (String)tDataReader["web"];
                 }
                 tCon.Close();
             }
@@ -212,7 +212,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
 
     protected void btnDuzenle_Click(object sender, EventArgs e)
     {
-        pnlProfilDuzenle.Visible = true;
+        pnlProfil.Visible = true;
     }
 
     protected void btnKaydet_Click(object sender, EventArgs e)
@@ -220,7 +220,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
         tSQL = "UPDATE kisi_bilgi SET " +
                "ad = '" + txtAdi.Text + "'," +
                "soyad ='" + txtSoyadi.Text + "' , " +
-               "firma= '" +txtFirma.Text + "', " +
+               "firma= '" + txtFirma.Text + "', " +
                "tck = '" + txtTck.Text + "', " +
                "vergino='" + txtVergiNo.Text + "', " +
                "vergidaire='" + txtVergiDaire.Text + "' " +
@@ -228,25 +228,25 @@ public partial class Kullanici_Profil : System.Web.UI.Page
 
                "UPDATE kisi_kimlik SET " +
                "babaadi='" + txtBabaAdi.Text + "'," +
-               "dogumtarih='"+txtDogumTarihi.Text+"', " +
+               "dogumtarih='" + txtDogumTarihi.Text + "', " +
                "anneadi='" + txtAnneAdi.Text + "', " +
                "dogumyeri='" + txtDogumYeri.Text + "', " +
-               "medenihal='" + radioBtnMedeniHal.SelectedValue.ToString() +"', " +
-               "din='" + txtDin.Text +"', " +
+               "medenihal='" + radioBtnMedeniHal.SelectedValue.ToString() + "', " +
+               "din='" + txtDin.Text + "', " +
                "cinsiyet='" + radioBTNCinsiyet.SelectedValue.ToString() + "', " +
                "uyruk='" + txtUyruk.Text + "', " +
                "kangrubu='" + radioBtnKanGrubu.SelectedValue.ToString() + "', " +
                "il='" + drpIl.SelectedValue + "', " +
                "ilce='" + drpIlce.SelectedValue + "', " +
-               "mahkoy='" + txtMahalle.Text +"', " +
-               "ciltno='" +txtCiltNo.Text + "'," +
+               "mahkoy='" + txtMahalle.Text + "', " +
+               "ciltno='" + txtCiltNo.Text + "'," +
                "ailesirano='" + txtAileSiraNo.Text + "', " +
                "sirano='" + txtSiraNo.Text +
                "', verildigiyer='" + txtVergiDaire.Text + "', " +
-               "verilisnedeni='" + txtVerilisNedeni.Text +"', " +
+               "verilisnedeni='" + txtVerilisNedeni.Text + "', " +
                "kayitno='" + txtKayitNo.Text + "', " +
-               "verilistarih='"+txtVerilisTarih.Text+"', " +
-               "verenmakam='" + txtVerenMakam.Text +"', " +
+               "verilistarih='" + txtVerilisTarih.Text + "', " +
+               "verenmakam='" + txtVerenMakam.Text + "', " +
                "aciklama='" + txtAciklama.Text + "', " +
                "gecerliliktarih='" + txtGecerlilikTarih.Text + "', tarihsaat=CURRENT_TIMESTAMP" +
                " WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +

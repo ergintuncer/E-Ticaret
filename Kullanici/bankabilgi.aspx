@@ -1,155 +1,150 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AnaSayfaMasterPage.master" AutoEventWireup="true" CodeFile="bankabilgi.aspx.cs" Inherits="Kullanici_paratransferi" %>
+﻿<%@ Page Title="Yeni Banka" Language="C#" MasterPageFile="~/AnaSayfaMaster.master" AutoEventWireup="true" CodeFile="bankabilgi.aspx.cs" Inherits="Kullanici_paratransferi" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <title>Banka Bilgi</title>
-    <link href="/CssDosyalari/BankaBilgi.css" rel="stylesheet"/>
+   <link href="/CssDosyalari/BankaBilgii.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-    <div class="bankaBilgiDiv">
-        <table class="bankaBilgiTable" border="0">
-            <tr>
-                <td class="tg-midlee" colspan="2">
-                    <asp:Label CssClass="label" runat="server"> Banka Bilgi </asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Adı: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaAdi" runat="server"></asp:TextBox>
-                </td>
-
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Şube: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaSube" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Şube Kodu: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaSubeKodu" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Telefon no: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaTelefonNo" runat="server" TextMode="Phone"></asp:TextBox>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="tg-left">Banka Telefon Kodu: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaTelefonKodu" runat="server"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Adres: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Açıklama: </td>
-                <td class="tg-right">
-                    <asp:TextBox ID="txtBankaAciklama" runat="server" TextMode="MultiLine"></asp:TextBox>
-
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-left">Banka Aktif mi: </td>
-                <td class="tgright">
+    
+    
+    <div class="pageDisDiv">
+        <div class="ustDiv">
+            <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
+                <asp:Label CssClass="label" runat="server" Text="Yeni Banka Oluştur" Font-Size="200%">Yeni Banka Oluştur</asp:Label>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Banka:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                     <asp:TextBox ID="txtBankaAdi" CssClass="TexBoxCss"  runat="server"></asp:TextBox>
+                </div>
+            </div>
+           
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Şube:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaSube"  CssClass="TexBoxCss"  runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Şube Kodu:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaSubeKodu" CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Telefon Kodu:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaTelefonKodu"  CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Telefon No:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaTelefonNo" CssClass="TexBoxCss"  runat="server" TextMode="Phone"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Banka Aktif:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
                     <asp:CheckBox ID="chckBankaAktif" runat="server"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="tg-buton" colspan="2">
-                    <button runat="server" id="btnKaydet"  class="btnBankaKaydet" OnServerClick="btnKaydet_Click" Text="Kaydet">
-                        <i class="fa fa-save fa-2x"></i>Kaydet
-                    </button>
-                </td>
-            </tr>
-        </table>
-         <asp:ListView ID="list2" runat="server">
-        <ItemTemplate>
-            <div class="paylasimayar" id="paylasimayar">
-                <div class="paylasimHeaderayar">
-                    <div class="ayarheadersol">
-                        <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("bankaad") %>'></asp:Label>
-                    </div>
-                    <div class="ayarheadersag">
-                        <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">
-                            <i class="fa fa-check fa-2x"> </i>
-                        </button>
-
-                    </div>
                 </div>
-
-                <div class="paylasimIcerikayar">
-                    <asp:Table ID="kisibilgi" runat="server">
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Banka: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblil" CssClass="il" runat="server" Text='<%#Eval("bankaad") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Şube: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblilce" CssClass="lblilce" runat="server" Text='<%#Eval("bankasubead") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Şube Kodu: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lbladresadi" CssClass="lbladresadi" runat="server" Text='<%#Eval("bankasubekod") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Telefon </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lbladres" CssClass="lbladres" runat="server" Text='<%#Eval("bankasubetel1") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Adres: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblaciklama" CssClass="lblaciklama" runat="server" Text='<%#Eval("bankasubeadres") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow  class="kisiBilgitablerow" runat="server">
-                            <asp:TableCell>
-                                <b>Açıklama: </b>
-                            </asp:TableCell>
-                            <asp:TableCell>
-                                <asp:Label ID="lblaktif" CssClass="lblaktif" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                    </asp:Table>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Banka Adres:</asp:Label>
                 </div>
-
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaAdres" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Banka Hakkında:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtBankaAciklama" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
+                </div>
+            </div>
+            <div class="lineOrta">
+                <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
+                    <i class="fa fa-save fa-2x"></i>Kaydet
+                </button>
             </div>
 
-        </ItemTemplate>
-    </asp:ListView>
-    
+        </div>
+                   
+                       
+        <div class="altDiv">
+            <asp:ListView ID="list2" runat="server">
+                <ItemTemplate>
+                    <div class="ListeDiv">
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Banka Adı: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv"> 
+                                <asp:Label ID="lblil" runat="server" Text='<%#Eval("bankaad") %>'></asp:Label>
+                            </div>
+                        </div><div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Banka Şube: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblilce"  runat="server" Text='<%#Eval("bankasubead") %>'></asp:Label>
 
-
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Şube Kodu: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lbladresadi" runat="server" Text='<%#Eval("bankasubekod") %>'></asp:Label>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Telefon: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lbladres" runat="server" Text='<%#Eval("bankasubetel1") %>'></asp:Label>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Adres: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblaciklama" runat="server" Text='<%#Eval("bankasubeadres") %>'></asp:Label>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Açıklama: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblaktif" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
+                            </div>
+                        </div>
+                        <div class="lineOrtaSol">
+                            <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="buttonOnayla" title="Aktif mi?">
+                                <i class="fa fa-check fa-2x"> </i>
+                            </button>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
     </div>
 </asp:Content>

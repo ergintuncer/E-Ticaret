@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Giriş</title>
-    <link href="logincss.css" rel="stylesheet" type="text/css"/>
+    <link href="/CssDosyalari/login.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <img id="bgimg" src="image/lwbg.jpg" alt=""/>
@@ -50,7 +50,7 @@
                 </td>
                 <td class="tg-right">
                     <asp:Button ID="giris" CssClass="button" runat="server" Text="Giriş" OnClick="giris_Click"/>
-                    <asp:Button ID="kayitol" CssClass="button" runat="server" Text="Kayıt Ol" PostBackUrl="~/kayıt.aspx" OnClick="kayitol_Click"/>
+                    <asp:Button ID="kayitol" CssClass="button" runat="server" Text="Kayıt Ol" PostBackUrl="~/kayit.aspx" OnClick="kayitol_Click"/>
                 </td>
             </tr>
             </tbody>

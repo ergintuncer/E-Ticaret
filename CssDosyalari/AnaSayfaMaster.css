@@ -1,0 +1,282 @@
+﻿@import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
+
+body {
+    font-family: 'Calibri Light', sans-serif;
+    padding: 0;
+    margin: 0;
+    /*text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;*/
+}
+
+.sidebar-toggle {
+    margin-left: -240px;
+}
+
+.sidebar {
+    width: 15%;
+    height: 100%;
+    background: #293949;
+    position: fixed;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.mainDivh {
+    margin-left: 15%;
+    width: 84%;
+    height: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: 9;
+}
+/*.profildiv {
+    text-align: center;
+    border: none;
+    outline: none;
+    color: white;
+}
+
+.adminimg {
+    background-color: white;
+    width: 50%;
+    height: 50%;
+    border: 2px solid white;
+    border-radius: 50px;
+}
+
+.lblAdminAdi {
+    color: white;
+    font-size: 150%;
+}*/
+.sidebar #leftside-navigation ul,
+.sidebar #leftside-navigation ul ul {
+    margin: -2px 0 0;
+    padding: 0;
+}
+
+    .sidebar #leftside-navigation ul li {
+        list-style-type: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+        .sidebar #leftside-navigation ul li.active > a {
+            color: #1abc9c;
+        }
+
+        .sidebar #leftside-navigation ul li.active ul {
+            display: block;
+        }
+
+        .sidebar #leftside-navigation ul li a {
+            color: #aeb2b7;
+            text-decoration: none;
+            display: block;
+            padding: 18px 0 18px 25px;
+            font-size: 16px;
+            outline: 0;
+            -webkit-transition: all 200ms ease-in;
+            -moz-transition: all 200ms ease-in;
+            -o-transition: all 200ms ease-in;
+            -ms-transition: all 200ms ease-in;
+            transition: all 200ms ease-in;
+        }
+
+            .sidebar #leftside-navigation ul li a:hover {
+                color: #1abc9c;
+            }
+
+            .sidebar #leftside-navigation ul li a span {
+                display: inline-block;
+            }
+
+            .sidebar #leftside-navigation ul li a i {
+                width: 20px;
+            }
+
+                .sidebar #leftside-navigation ul li a i .fa-angle-left,
+                .sidebar #leftside-navigation ul li a i .fa-angle-right {
+                    padding-top: 3px;
+                }
+
+    .sidebar #leftside-navigation ul ul {
+        display: none;
+    }
+
+        .sidebar #leftside-navigation ul ul li {
+            background: #23313f;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            border-bottom: none;
+        }
+
+            .sidebar #leftside-navigation ul ul li a {
+                font-size: 16px;
+                padding-top: 13px;
+                padding-bottom: 13px;
+                color: #aeb2b7;
+            }
+.pageDisDiv {
+    width: 99%;
+    height: 100%;
+    padding-top: 1%;
+    padding-left: 1%;
+}
+
+.ustDiv {
+    width: 98%;
+    height: 50%;
+    padding: 1%;
+    text-align: center;
+    box-shadow: 0px 0px 3px #888888;
+    border-radius: 10px;
+    background: white;
+}
+
+.altDiv {
+    padding: 1%;
+    width: 98%;
+    height: 50%;
+    text-align: center;
+    box-shadow: 0px 0px 3px #888888;
+    border-radius: 10px;
+    background: white;
+    margin-top: 1%;
+}
+.line {
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+    
+}
+
+.lineOrta { /*Ortadaki Butonun bulunduğu kısım*/
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: inline-block;
+    width: 98%;
+    text-align: center;
+}
+.lineOrtaSol {
+    padding-top: 0.2%;
+    padding-bottom: 0.2%;
+    display: inline-block;
+    width: 98%;
+    text-align: right;
+}
+.lineSolDiv {
+    float: left;
+    width: 17%;
+}
+
+.lineSagDiv {
+    float: right;
+    width: 82%;
+}
+.ListeDiv {
+    padding: 1%;
+    margin-top: 1%;
+    text-align: left;
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 0px 0px 2px #23313f;
+}
+.TexBoxCss {
+    width: 50%;
+    height: 75%;
+    background-color: #ffffff;
+    padding: 2%;
+    text-align: left;
+    border-radius: 20px;
+    border: thin silver solid;
+}
+
+.TexBoxCss:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+    border: thin #E91E63 solid;
+    outline: none;
+}
+.drplist {
+    background-color: #ffffff;
+    padding:1%;
+    padding-left: 3%;
+    width: 54%;
+    height: 85%;
+    color:darkslategrey;
+    text-align: left;
+    border-radius: 20px;
+    border: thin silver solid;
+    
+}
+.drplist:focus {
+    border: thin #E91E63 solid;
+    outline: none;
+}
+
+.TextBoxCssMulti {
+    background-color: #ffffff;
+    max-width: 10px;
+    min-width: 48%;
+    max-height: 40px;
+    min-height: 40px;
+    padding: 3%;
+    text-align: left;
+    border-radius: 10px;
+    border: thin silver solid;
+}
+
+.TextBoxCssMulti:focus {
+    border: thin #E91E63 solid;
+    outline: none;
+}
+input:only-of-type[type=radio] {
+    float: none;
+    width: 20px;
+}
+
+input:only-of-type[type=radio]:focus {
+    background-color: white;
+}
+
+.button {
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 10px;
+    border-style: none;
+    transition: 0.5s;
+    padding: 0.5%;
+}
+
+    .button:hover {
+        background-color: #c0392b;
+        color: white;
+        transition: 0.5s;
+        outline: none;
+    }
+.buttonOnayla {
+    width: 5%;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    color: #00E676;
+    border-radius: 10px;
+    border-style: none;
+    transition: 0.5s;
+    padding: 0.5%;
+}
+    .buttonOnayla:hover {
+        background-color: white;
+        color: #c0392b;
+        transition: 0.5s;
+        outline: none;
+    }

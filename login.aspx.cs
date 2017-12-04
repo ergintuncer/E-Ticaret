@@ -64,64 +64,6 @@ public partial class login : System.Web.UI.Page
         tCon.Close();
         return tInteger;
     }
-    // -----------------------------------------------------------------------------------------------------------
-
-
-    // Select sorugular için Double
-    public double PublicExecuteScalarDouble()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int double;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
-        tCon.Close();
-        return Convert.ToDouble(tCommand.ExecuteScalar());
-    }
-    // -----------------------------------------------------------------------------------------------------------
-
-    // Select sorugular için String
-    public string PublicExecuteScalarString()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int string;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
-        tCon.Close();
-        return Convert.ToString(tCommand.ExecuteScalar());
-    }
-    // -----------------------------------------------------------------------------------------------------------
 
     // Select sorugular için Boolean
     public Boolean PublicExecuteScalarBoolean()
@@ -150,15 +92,16 @@ public partial class login : System.Web.UI.Page
         //return tCommand.ExecuteScalar();
     }
     // -----------------------------------------------------------------------------------------------------------
-    
-   
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["kullanici"] = null;
         if (!Page.IsPostBack)
         {
         }
     }
-    
+
     protected void giris_Click(object sender, EventArgs e)
     {
         tSQL =
@@ -171,15 +114,14 @@ public partial class login : System.Web.UI.Page
             if (PublicExecuteScalarInteger() > 0)
             {
                 Session.Add("kullanici", kullaniciadi.Text);
-                if (kullaniciadi.Text=="admin")
+                if (kullaniciadi.Text == "admin")
                 {
-                     Response.Redirect("/Admin/kisiler.aspx");
+                    Response.Redirect("/Admin/kisiler.aspx");
                 }
                 else
                 {
                     Response.Redirect("Kullanici/profil.aspx");
                 }
-               
             }
             else
             {
@@ -196,8 +138,9 @@ public partial class login : System.Web.UI.Page
 
     protected void kayitol_Click(object sender, EventArgs e)
     {
-        Response.Redirect("kayıt.aspx");
+        Response.Redirect("kayit.aspx");
     }
+
     protected void sifremiUnuttum_Click(object sender, EventArgs e)
     {
         Response.Redirect("/Sayfalar/sifremiunuttum.aspx");

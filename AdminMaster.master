@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>Ana Sayfa</title>
+    <link href="/CssDosyalari/anaSayfaMaster.css" rel="stylesheet"/>
+</head>
+<body>
+<aside class="sidebar">
+    <div id="leftside-navigation" class="nano">
+        <ul class="nano-content">
+           
+            <li class="sub-menu">
+                <a href="javascript:void(0);">
+                    <i class="fa fa-cogs"></i><span>Kişi işlemleri</span><i class="arrow fa fa-angle-right pull-right"></i>
+                </a>
+                <ul>
+
+                    <li>
+                        <a href="blokelikullanici.aspx">Blokeli Kullanıcı</a>
+                    </li>
+                    <li>
+                        <a href="kisiler.aspx">Kişiler</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="baro.aspx">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Baro</span>
+                </a>
+            </li>
+            <li>
+                <a href="adliye.aspx">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Adliye</span>
+                </a>
+            </li>
+            <li>
+                <a href="mahkeme.aspx">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Mahkeme</span>
+                </a>
+            </li>
+            <li class="sub-menu">
+                <a href="/login.aspx">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Çıkış Yap</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</aside>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src="/js/index.js"></script>
+<form id="form1" runat="server">
+    <div class="mainDivh">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+</form>
+</body>
+</html>

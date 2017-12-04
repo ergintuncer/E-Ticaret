@@ -1,71 +1,73 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="blokelikullanici.aspx.cs" Inherits="Admin.Admin_kayit" %>
+﻿<%@ Page Title="Blokeli Kullanıcılar" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="blokelikullanici.aspx.cs" Inherits="Admin.Admin_kayit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <title>Admin Kayit</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-       <asp:ListView ID="list2" runat="server">
-            <ItemTemplate>
-        <div class="paylasimayar" id="paylasimayar">
-            <div class="paylasimHeaderayar">
-                <div class="ayarheadersol">
-                   <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("ad_soyad") %>'></asp:Label>
-                </div>
-                <div class="ayarheadersag">
-                    <%--<button runat="server" id="kabulEt" onserverclick="KullaniciSil_OnClick" class="kabulEt" title="Onayla">
-                        <i class="fa fa-check fa-2x"> </i>
-                    </button>--%>
-                    <a href="blokelikullanici.aspx?islem=ekle&kisiid=<%#Eval("kisiid") %>"> <img src="/image/if_Tick_Mark_1398911.png" /> </a>
-                     <button runat="server" id="reddet" onserverclick="KullaniciOnayla_OnClick" class="reddet" title="Sil">
-                        <i class="fa fa-trash fa-2x"> </i>
-                    </button>
-                </div>
-            </div>
 
-                       <div class="paylasimIcerikayar">
-                <asp:Table ID="kisibilgi" runat="server">
-                     <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell><b>Kimlik Numarası:</b>  </asp:TableCell>
-                            <asp:TableCell> 
+    <div class="pageDisDiv">
+        <div class="altDiv">
+            <asp:ListView ID="list2" runat="server">
+                <ItemTemplate>
+                    <div class="ListeDiv">
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Ad Soyad: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server" Text='<%#Eval("ad_soyad") %>'></asp:Label>
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Kimlik No: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
                                 <asp:Label ID="TcKimlikNo" CssClass="kisiBilgi" runat="server" Text='<%#Eval("tck") %>'></asp:Label>
-                            </asp:TableCell>
-                     </asp:TableRow>
-
-                    <asp:TableRow ID="TableRow1" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell><b>Firma Bilgisi :</b></asp:TableCell>
-                            <asp:TableCell> 
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Firma Bilgisi: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
                                 <asp:Label ID="firma" CssClass="kisiBilgi" runat="server" Text='<%#Eval("firma") %>'></asp:Label>
-                            </asp:TableCell>
-                     </asp:TableRow>
-
-                    <asp:TableRow ID="TableRow2" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell><b>Baro Bilgisi:</b>  </asp:TableCell>
-                            <asp:TableCell> 
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Baro Adı: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
                                 <asp:Label ID="baroBilgi" CssClass="kisiBilgi" runat="server" Text='<%#Eval("baroad") %>'></asp:Label>
-                            </asp:TableCell>
-                     </asp:TableRow>
+                            </div>
+                        </div>
 
-                     <asp:TableRow ID="TableRow3" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell><b> Numarası: </b></asp:TableCell>
-                            <asp:TableCell> 
+
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Sicil No:</asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
                                 <asp:Label ID="sicilNo" CssClass="kisiBilgi" runat="server" Text='<%#Eval("sicilno") %>'></asp:Label>
-                            </asp:TableCell>
-                     </asp:TableRow>
-
-                     <asp:TableRow ID="TableRow4" class="kisiBilgitablerow" runat="server">
-                           <asp:TableCell><b>Birlik Sicil Numarası: </b></asp:TableCell>
-                            <asp:TableCell> 
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Birlik Sicil No:</asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
                                 <asp:Label ID="birlikSicilNumarası" CssClass="kisiBilgi" runat="server" Text='<%#Eval("birliksicilno") %>'></asp:Label>
-                            </asp:TableCell>
-                     </asp:TableRow>
-                </asp:Table>
-                
-            </div>
-
-                   </div>
-
-             </ItemTemplate>
-         </asp:ListView>
-
+                            </div>
+                        </div>
+                        <div class="lineOrtaSol">
+                            <a href="blokelikullanici.aspx?islem=ekle&kisiid=<%#Eval("kisiid") %>">
+                                <img src="/image/if_Tick_Mark_1398911.png"/>
+                            </a>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
+    </div>
 </asp:Content>
 

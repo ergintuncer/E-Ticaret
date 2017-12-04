@@ -1,96 +1,81 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="baro.aspx.cs" Inherits="Admin_Baro" %>
+﻿<%@ Page Title="Baro İşlemleri" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="baro.aspx.cs" Inherits="Admin_Baro" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
-    <link href="/CssDosyalari/adminbaro.css" rel="stylesheet"/>
+    <link href="/CssDosyalari/adminbarod.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="pageDisDiv">
+        <div class="ustDiv">
+            <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
+                <asp:Label CssClass="label" runat="server" Text="Yeni Oluştur" Font-Size="200%">Yeni Baro Oluştur</asp:Label>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Baro Adı:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:TextBox ID="txtbaroadi" CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                </div>
+            </div>
+           
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Aktif:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:CheckBox ID="CheckBox1" runat="server"/>
+                </div>
+            </div>
+            <div class="lineOrta">
+                <button runat="server" id="bynBaroKaydet" onserverclick="btnKaydet_Onclick" class="button" title="Baro Bilgisini Kaydet">
+                    <i class="fa fa-floppy-o fa-2x"></i>Kaydet
+                </button>
+            </div>
 
-    <div class="paylasimayar" id="paylasimayar">
-        <div class="ustpanelyazidiv">
-            <asp:Label CssClass="ustpanelyazi" runat="server"> Yeni Baro</asp:Label>
         </div>
-        <div class="baro_divsol">
-            <asp:Table ID="adliyetablosol" runat="server">
-                <asp:TableRow ID="Label" class="kisiBilgitablerow" runat="server">
-                    <asp:TableCell CssClass="tablecell">
-                        <b>Baro Adı:</b>
-                    </asp:TableCell>
-                    <asp:TableCell CssClass="tablecell">
-                        <asp:TextBox ID="txtbaroadi" runat="server"></asp:TextBox>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow ID="TableRow1" class="kisiBilgitablerow" runat="server">
-                    <asp:TableCell CssClass="tablecell">
-                        <b>Aktif: </b>
-                    </asp:TableCell>
-                    <asp:TableCell CssClass="tablecell">
-                        <asp:CheckBox ID="CheckBox1" runat="server"/>
-                    </asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow ID="TableRow2" class="navbuttonkaydetroww" runat="server">
-                    <asp:TableCell CssClass="tablecell">
-                    </asp:TableCell>
-                    <asp:TableCell CssClass="navbuttonkaydetrow">
-                        <button runat="server" id="bynBaroKaydet" onserverclick="btnKaydet_Onclick" class="buttonn" title="Baro Bilgisini Kaydet">
-                            <i class="fa fa-floppy-o fa-2x"></i>Kaydet
-                        </button>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-        </div>
+        
+        
 
+        <div class="altDiv">
+            <asp:ListView ID="list2" runat="server">
+                <ItemTemplate>
+                    <div class="ListeDiv">
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Baro Adı: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblBaroAdi" runat="server" Text='<%#Eval("baroad") %>'></asp:Label>
+
+                            </div>
+                        </div>
+                        <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Aktif: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="lblAdktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
+                            </div>
+                        </div>
+                       
+                        <div class="lineOrtaSol">
+                            <a href="baro.aspx?islem=aktif&baroid=<%#Eval("baroid") %>"> <img src="/image/checked.png" /> </a>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-      <asp:ListView ID="list2" runat="server">
-        <ItemTemplate>
-    <div class="paylasimayar" id="paylasimayar">
-        <div class="paylasimHeaderayar">
-            <div class="ayarheadersol">
-                <asp:Label ID="lblpaylasimHeaderAdi" CssClass="lblpaylasimHeaderAdi" runat="server"></asp:Label>
-            </div>
-            <div class="ayarheadersag">
-               <%-- <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="fabutton" title="Aktif mi?">--%>
-                    <a href="baro.aspx?islem=aktif&baroid=<%#Eval("baroid") %>"> <img src="/image/if_Tick_Mark_1398911.png" /> </a>
-                   <%-- <i class="fa fa-check fa-2x"> </i>--%>
-               <%-- </button>--%>
-
-            </div>
-        </div>
-
-        <div class="paylasimIcerikayar">
-            <div class="barosol">
-                <asp:Table ID="kisibilgi" runat="server">
-                    <asp:TableRow class="kisiBilgitablerow" runat="server">
-                        <asp:TableCell>
-                            <b>Baro Adı: </b>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label ID="lblBaroAdi" runat="server" Text='<%#Eval("baroad") %>'></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
-            </div>
-            <div class="barosag">
-                <asp:Table ID="adliyesag" runat="server">
-                    <asp:TableRow class="kisiBilgitablerow" runat="server">
-                        <asp:TableCell>
-                            <b>Aktif: </b>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:Label ID="lblAdktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
-            </div>
-
-
-        </div>
-
-    </div>
-
-      </ItemTemplate>
-    </asp:ListView>
-
-
+    
 </asp:Content>
