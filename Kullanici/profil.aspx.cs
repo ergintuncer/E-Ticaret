@@ -148,37 +148,37 @@ public partial class Kullanici_Profil : System.Web.UI.Page
                     }
                     txtUyruk.Text = (String)tDataReader["uyruk"];
 
-                    if ((String)tDataReader["kangrubu"] == "A Rh (+)")
+                    if ((String)tDataReader["kangrubu"] == "A(+)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "A Rh (+)";
+                        radioBtnKanGrubu.SelectedValue = "A(+)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "A Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "A(-)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "A Rh (-)";
+                        radioBtnKanGrubu.SelectedValue = "A(-)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "B Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "B(+)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "B Rh (+)";
+                        radioBtnKanGrubu.SelectedValue = "B(+)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "B Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "B(-)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "B Rh (-)";
+                        radioBtnKanGrubu.SelectedValue = "B(-)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "AB Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "AB(+)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "AB Rh (+)";
+                        radioBtnKanGrubu.SelectedValue = "AB(+)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "AB Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "AB(-)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "AB Rh (-)";
+                        radioBtnKanGrubu.SelectedValue = "AB(-)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "0 Rh (+)")
+                    else if ((String)tDataReader["kangrubu"] == "0(+)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "0 Rh (+)";
+                        radioBtnKanGrubu.SelectedValue = "0(+)";
                     }
-                    else if ((String)tDataReader["kangrubu"] == "0 Rh (-)")
+                    else if ((String)tDataReader["kangrubu"] == "0(-)")
                     {
-                        radioBtnKanGrubu.SelectedValue = "0 Rh (-)";
+                        radioBtnKanGrubu.SelectedValue = "0(-)";
                     }
                     drpIl.SelectedValue = (String)tDataReader["il"];
                     drpIlce.SelectedValue = (String)tDataReader["ilce"];
