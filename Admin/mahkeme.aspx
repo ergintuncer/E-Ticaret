@@ -56,15 +56,15 @@
 
 
         <div class="altDiv">
-<%--            <asp:ListView ID="list2" runat="server">
-                <ItemTemplate>--%>
+            <asp:ListView ID="list2" runat="server">
+                <ItemTemplate>
                     <div class="ListeDiv">
                         <div class="line">
                             <div class="lineSolDiv">
                                 <asp:Label CssClass="label" runat="server">Mahkeme Adı: </asp:Label>
                             </div>
                             <div class="lineSagDiv">
-                                <asp:Label ID="lblMahkemeAdi" CssClass="il" runat="server" Text='<%#Eval("mahkemeadi") %>'></asp:Label>
+                                <asp:Label ID="lblMahkemeAdi" CssClass="il" runat="server" Text='<%#Eval("mahkemead") %>'></asp:Label>
                             </div>
                         </div>
                         <div class="line">
@@ -72,7 +72,7 @@
                                 <asp:Label CssClass="label" runat="server">Mahkeme Türü: </asp:Label>
                             </div>
                             <div class="lineSagDiv">
-                                <asp:Label ID="lblMahkemeTuru" runat="server" Text='<%#Eval("mahkemeturu") %>'></asp:Label>
+                                <asp:Label ID="lblMahkemeTuru" runat="server" Text='<%#Eval("mahkemeturad") %>'></asp:Label>
                             </div>
                         </div>
                         <div class="line">
@@ -80,7 +80,7 @@
                                 <asp:Label CssClass="label" runat="server">Adliye Adı: </asp:Label>
                             </div>
                             <div class="lineSagDiv">
-                                <asp:Label ID="lblAdliye" runat="server" Text='<%#Eval("adliyeadi") %>'></asp:Label>
+                                <asp:Label ID="lblAdliye" runat="server" Text='<%#Eval("adliyead") %>'></asp:Label>
                             </div>
                         </div>
                         <div class="line">
@@ -93,12 +93,13 @@
                         </div>
                         
                        
-                        <div class="lineOrtaSol">
-                            <a href="<%--mahkeme.aspx?islem=bloke&kisiid=<%#Eval("adliyeid") %>--%>"> <img src="/image/cancel.png"/></a>
+                       <div class="lineOrtaSol">
+                            <a href="mahkeme.aspx?islem=aktif&mahkemeid=<%#Eval("mahkemeid") %>"> <img src="/image/cancel.png" /> </a>
+                          
                         </div>
                     </div>
-<%--                </ItemTemplate>
-            </asp:ListView>--%>
+                </ItemTemplate>
+            </asp:ListView>
         </div>
     </div>
     

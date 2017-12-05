@@ -205,32 +205,32 @@ public partial class Admin_Adliye : System.Web.UI.Page
         //throw new NotImplementedException();
     }
 
-    protected void drpil_OnSelectedIndexChanged(object sender, EventArgs e)
-    {
+    //protected void drpil_OnSelectedIndexChanged(object sender, EventArgs e)
+    //{
 
-        //tSQL = "select ilcead,ilceid from ilce_bilgi";
-        //tCon.Open();
-        //tCommand.Connection = tCon;
-        //tCommand.CommandText = tSQL;
-        //tDataReader = tCommand.ExecuteReader();
-        //while (tDataReader.Read())
-        //{
-        //    drpilce.Items.Add("" + tDataReader["ilcead"]);
-        //    TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
-        //    j++;
-        //}
-        //tCon.Close();
-        //txtaciklama.Text = ""+ drpil.SelectedValue;
-        //drpil.Items.Add("");
-        //txtaciklama.Text = "asass";
-        //throw new NotImplementedException();
-    }
+    //    //tSQL = "select ilcead,ilceid from ilce_bilgi";
+    //    //tCon.Open();
+    //    //tCommand.Connection = tCon;
+    //    //tCommand.CommandText = tSQL;
+    //    //tDataReader = tCommand.ExecuteReader();
+    //    //while (tDataReader.Read())
+    //    //{
+    //    //    drpilce.Items.Add("" + tDataReader["ilcead"]);
+    //    //    TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
+    //    //    j++;
+    //    //}
+    //    //tCon.Close();
+    //    //txtaciklama.Text = ""+ drpil.SelectedValue;
+    //    //drpil.Items.Add("");
+    //    //txtaciklama.Text = "asass";
+    //    //throw new NotImplementedException();
+    //}
 
-    protected void drpil_OnTextChanged(object sender, EventArgs e)
-    {
-        //txtaciklama.Text = "asass";
-        //throw new NotImplementedException();
-    }
+    //protected void drpil_OnTextChanged(object sender, EventArgs e)
+    //{
+    //    //txtaciklama.Text = "asass";
+    //    //throw new NotImplementedException();
+    //}
 
 
     protected void listView_yukle()
@@ -249,19 +249,11 @@ public partial class Admin_Adliye : System.Web.UI.Page
     }
 
 
-    //protected void OnSelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    txtaciklama.Text = "asass";
-
-    //    throw new NotImplementedException();
-    //}
-
-    //static int bellek;
+    
 
     protected void drpil_OnSelectedIndexChanged2(object sender, EventArgs e)
     {
-        //bellek = TilID[drpil.SelectedIndex];
-        //txtaciklama.Text = bellek + "";
+        
 
         drpilce.Items.Clear();
         tSQL = "select ilcead,ilceid from ilce_bilgi where ilid=" + TilID[drpil.SelectedIndex];
@@ -276,13 +268,6 @@ public partial class Admin_Adliye : System.Web.UI.Page
             j++;
         }
         tCon.Close();
-
-        //if (!Page.IsPostBack)
-        //{
-        //   
-
-        //txtaciklama.Text = "" + TilID[1];
-        //drpil.Items.Add("");
 
     }
 

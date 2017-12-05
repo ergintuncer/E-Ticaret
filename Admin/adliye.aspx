@@ -21,7 +21,7 @@
                     <asp:Label CssClass="label" runat="server">İl:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:DropDownList ID="drpil" CssClass="drplist" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="drpil" CssClass="drplist" runat="server" OnSelectedIndexChanged="drpil_OnSelectedIndexChanged2" AutoPostBack="true"></asp:DropDownList>
                 </div>
             </div>
            
