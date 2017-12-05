@@ -11,4 +11,16 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
     {
 
     }
+
+    protected void drpIl_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        
+
+    }
+
+    protected void btnKaydet_Click(object sender, EventArgs e)
+    {
+        
+
+    }
 }
