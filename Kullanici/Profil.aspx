@@ -53,7 +53,7 @@
         <asp:Label ID="Label9" runat="server" Text="Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAdi" MaxLength="50" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -61,7 +61,7 @@
         <asp:Label ID="Label26" runat="server" Text="Soyadı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtSoyadi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtSoyadi"  MaxLength="50" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -69,7 +69,7 @@
         <asp:Label ID="Label10" runat="server" Text="Tc Kimlik No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTck" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtTck" MaxLength="11"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -77,7 +77,7 @@
         <asp:Label ID="Label12" runat="server" Text="Firma: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtFirma" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtFirma" MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -85,7 +85,7 @@
         <asp:Label ID="Label13" runat="server" Text="Vergi No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiNo" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiNo" MaxLength="10"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -93,7 +93,7 @@
         <asp:Label ID="Label14" runat="server" Text="Vergi Daire: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiDaire" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiDaire" MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -101,7 +101,7 @@
         <asp:Label ID="Label15" runat="server" Text="Anne Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAnneAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAnneAdi"  MaxLength="20"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -109,7 +109,7 @@
         <asp:Label ID="Label16" runat="server" Text="Baba Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtBabaAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtBabaAdi" MaxLength="20"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -117,7 +117,7 @@
         <asp:Label ID="Label11" runat="server" Text="Doğum Yeri: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumYeri" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumYeri" MaxLength="20"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -144,7 +144,7 @@
         <asp:Label ID="Label19" runat="server" Text="Din: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtDin" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtDin" MaxLength="20"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -163,7 +163,7 @@
         <asp:Label ID="Label21" runat="server" Text="Uyruk: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtUyruk" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtUyruk"  MaxLength="20"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -204,7 +204,7 @@
         <asp:Label ID="Label25" runat="server" Text="Mahalle: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMahalle" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMahalle"  MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -212,7 +212,7 @@
         <asp:Label ID="Label27" runat="server" Text="Cilt No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtCiltNo" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtCiltNo" MaxLength="15"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -220,7 +220,7 @@
         <asp:Label ID="Label28" runat="server" Text="Aile Sıra No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAileSiraNo" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAileSiraNo" MaxLength="15"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -228,7 +228,7 @@
         <asp:Label ID="Label29" runat="server" Text="Sira No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtSiraNo" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtSiraNo" MaxLength="15"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -236,7 +236,7 @@
         <asp:Label ID="Label30" runat="server" Text="Verildiği Yer: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerildigiYer" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerildigiYer" MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -244,7 +244,7 @@
         <asp:Label ID="Label31" runat="server" Text="Veriliş Nedeni: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerilisNedeni" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerilisNedeni" MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -252,7 +252,7 @@
         <asp:Label ID="Label32" runat="server" Text="Kayıt No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtKayitNo" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtKayitNo" MaxLength="15"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -268,7 +268,7 @@
         <asp:Label ID="Label34" runat="server" Text="Veren Makam: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerenMakam" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerenMakam"  MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -284,7 +284,7 @@
         <asp:Label ID="Label36" runat="server" Text="Açıklama: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama"  MaxLength="250"  runat="server" TextMode="MultiLine"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -292,7 +292,7 @@
         <asp:Label ID="Label37" runat="server" Text="Adres Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAdresAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAdresAdi" MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -300,7 +300,7 @@
         <asp:Label ID="Label38" runat="server" Text="Adres: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAdres" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAdres" MaxLength="250"  runat="server" TextMode="MultiLine"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -308,7 +308,7 @@
         <asp:Label ID="Label39" runat="server" Text="Telefon Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefonAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefonAdi"  MaxLength="50"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -316,7 +316,7 @@
         <asp:Label ID="Label40" runat="server" Text="Telefon: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefon" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefon" MaxLength="11" TextMode="Phone" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -324,7 +324,7 @@
         <asp:Label ID="Label41" runat="server" Text="Mail Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMailAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMailAdi"  MaxLength="50" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -332,7 +332,7 @@
         <asp:Label ID="Label42" runat="server" Text="Mail Adresi: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMailadresi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMailadresi"  MaxLength="100" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -340,7 +340,7 @@
         <asp:Label ID="Label43" runat="server" Text="Web Adresi Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresiAdi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresiAdi"  MaxLength="50" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -348,7 +348,7 @@
         <asp:Label ID="Label44" runat="server" Text="Web Adresi: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresi" runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresi" MaxLength="250"  runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="lineOrta">
@@ -358,9 +358,12 @@
     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtFirma" ErrorMessage="Firma Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtVergiNo" ErrorMessage="Vergi Numarası Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtVergiDaire" ErrorMessage="Vergi Dairesi Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAdres" ErrorMessage="Adres Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtMailAdi" ErrorMessage="E-Mail Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="validationSummary"/>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtDogumTarihi" ErrorMessage="Geçerli bir doğum tarih giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtVerilisTarih" ErrorMessage="Geçerli birveriliş  tarih giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtGecerlilikTarih" ErrorMessage="Geçerli bir geçerlilik tarih giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtAdres" ErrorMessage="Adres Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtMailAdi" ErrorMessage="E-Mail Alanı Boş Geçilemez" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
 </div>
 <div class="lineOrta">
     <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">

@@ -16,7 +16,7 @@
                     <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:TextBox ID="txtDavaTur" CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDavaTur" CssClass="TexBoxCss" MaxLength="50" runat="server"></asp:TextBox>
                 </div>
             </div>
            
@@ -33,12 +33,17 @@
                     <asp:Label CssClass="label" runat="server">Açıklama:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" runat="server" TextMode="MultiLine"></asp:TextBox>
+                    <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" MaxLength="250" runat="server" TextMode="MultiLine"></asp:TextBox>
                     
                 </div>
             </div>
             <div class="line">
                 <%--Bu divi Silme Duruşma Aktifmi Satırıını sola yaslamak için yapıldı--%>
+            </div>
+            <div class="lineOrta">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDavaTur" ErrorMessage="Dava Türü Giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDavaAciklama" ErrorMessage="Dava Türü Hakkında Açıklama Giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+               <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
             </div>
             <div class="lineOrta">
                 <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
