@@ -51,6 +51,9 @@
                     <li>
                         <a href="banka-hesap-tur.aspx">Banka Hesap Türü</a>
                     </li>
+                    <li>
+                        <a href="para-hareket.aspx">Para İşlemleri</a>
+                    </li>
                 </ul>
             </li>
             <li class="sub-menu">
