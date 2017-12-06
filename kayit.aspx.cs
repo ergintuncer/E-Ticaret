@@ -32,8 +32,8 @@ public partial class kayıt : System.Web.UI.Page
         tCon.Open();
         tCommand.ExecuteNonQuery();
         tCon.Close();
-
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["kullanici"] = null;
@@ -57,21 +57,17 @@ public partial class kayıt : System.Web.UI.Page
     {
         try
         {
-            if (adi.Value != "" && soyadi.Value != "" && firma.Value != "" && tcno.Value != "" &&
-                baro.SelectedValue != "" &&
-                sicilno.Value != "" && birliksicilno.Value != "")
+            if (adi.Value.Trim() != "" && soyadi.Value.Trim() != "" && firma.Value.Trim() != "" && tcno.Value.Trim() != "" &&
+                baro.SelectedValue.Trim() != "" && sicilno.Value.Trim() != "" && birliksicilno.Value.Trim() != "")
             {
-                tSQL = "INSERT INTO kisi_bilgi(kisiturid,ad,soyad,firma,tck) VALUES ('" + "0" + "','" + adi.Value +
-               "','" +
-               soyadi.Value + "','" + firma.Value + "','" + tcno.Value + "');";
-                tSQL +=
-                    "INSERT INTO avukat_bilgi(kisiid,baroid,sicilno,birliksicilno) VALUES ((select max(kisiid) from kisi_bilgi), (select baroid from baro_bilgi where baroad='" +
-                    baro.SelectedValue + "'),'" + sicilno.Value +
-                    "','" + birliksicilno.Value + "');";
-
-                tSQL +=
-                    "INSERT INTO kisi_giris(kisiid,sifre,bloke) VALUES ((select max(kisiid) from kisi_bilgi),(select tck from kisi_bilgi where tck='" +
-                    tcno.Value + "')::bytea,false);";
+                tSQL = "INSERT INTO kisi_bilgi(kisiturid,ad,soyad,firma,tck) VALUES ('" + "0" + "','" + adi.Value.Trim() +
+                       "','" + soyadi.Value.Trim() + "','" + firma.Value.Trim() + "','" + tcno.Value.Trim() + "'); " +
+                      
+                       "INSERT INTO avukat_bilgi(kisiid,baroid,sicilno,birliksicilno) VALUES ((select max(kisiid) from kisi_bilgi), (select baroid from baro_bilgi where baroad='" +
+                       baro.SelectedValue.Trim() + "'),'" + sicilno.Value.Trim() + "','" + birliksicilno.Value.Trim() + "'); " +
+                      
+                       "INSERT INTO kisi_giris(kisiid,sifre,bloke) VALUES ((select max(kisiid) from kisi_bilgi),(select tck from kisi_bilgi where tck='" +
+                       tcno.Value.Trim() + "')::bytea,false);";
 
                 PublicExecuteNonQuery();
                 Response.Redirect("login.aspx");

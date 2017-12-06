@@ -54,7 +54,7 @@
                     <asp:Label CssClass="label" runat="server">Tc No:</asp:Label>
                 </td>
                 <td class="tg-right">
-                    <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" MaxLength="11"/>
+                    <input id="tcno" class="input" type="number" runat="server" placeholder="Tc kimlik numarası" maxlength="11"/>
                 </td>
             </tr>
             <tr>

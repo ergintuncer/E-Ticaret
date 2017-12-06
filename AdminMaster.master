@@ -10,13 +10,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Ana Sayfa</title>
+    <style>
+        .sidebar {
+            width: 15%;
+            height: 100%;
+            background:#4527A0 !important;
+            position: fixed;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            z-index: 100;
+        }
+    </style>
     <link href="/CssDosyalari/anaSayfaMaster.css" rel="stylesheet"/>
 </head>
 <body>
 <aside class="sidebar">
     <div id="leftside-navigation" class="nano">
+        <div class="adminSidebar" style="text-align: center">
+           <img src="/image/law1600.png" style="width: 50%; height: 50%; border-radius: 100px; border: 2px solid white; background-color: white; margin-bottom: 10%; margin-top: 10%;"/>
+        </div>
         <ul class="nano-content">
-           
+
             <li class="sub-menu">
                 <a href="javascript:void(0);">
                     <i class="fa fa-cogs"></i><span>Kişi işlemleri</span><i class="arrow fa fa-angle-right pull-right"></i>

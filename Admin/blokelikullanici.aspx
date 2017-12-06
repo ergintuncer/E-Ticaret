@@ -61,7 +61,7 @@
                         </div>
                         <div class="lineOrtaSol">
                             <a href="blokelikullanici.aspx?islem=ekle&kisiid=<%#Eval("kisiid") %>">
-                                <img src="/image/if_Tick_Mark_1398911.png"/>
+                                <img src="/image/checked.png"/>
                             </a>
                         </div>
                     </div>
