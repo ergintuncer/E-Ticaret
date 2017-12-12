@@ -13,8 +13,9 @@
                     <asp:Label CssClass="label" runat="server">İşlem Türü:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:DropDownList ID="drpIslemTuru" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpIslemTuru_SelectedIndexChanged">
-                        <asp:ListItem Text="İşlem Türü" Value="İşlem Türü"></asp:ListItem>
+                    <asp:DropDownList ID="drpIslemTuru" runat="server" CssClass="drplist" AutoPostBack="False" OnSelectedIndexChanged="drpIslemTuru_SelectedIndexChanged">
+                        <asp:ListItem Text="Kişiden Kişiye" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="Kişiden Banka Hesabına" Value="1"></asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
@@ -23,8 +24,8 @@
                     <asp:Label CssClass="label" runat="server">Gönderen:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:DropDownList ID="drpGonderen" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpGonderen_SelectedIndexChanged">
-                        <asp:ListItem Text="Gönderen" Value="Gönderen"></asp:ListItem>
+                    <asp:DropDownList ID="drpGonderen" runat="server" CssClass="drplist" AutoPostBack="False" OnSelectedIndexChanged="drpGonderen_SelectedIndexChanged">
+                        
                     </asp:DropDownList>
                 </div>
             </div>
@@ -41,8 +42,8 @@
                     <asp:Label CssClass="label" runat="server">Alıcı:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:DropDownList ID="drpAlici" runat="server" CssClass="drplist" AutoPostBack="true" OnSelectedIndexChanged="drpAlici_SelectedIndexChanged">
-                        <asp:ListItem Text="Alıcı" Value="Alıcı"></asp:ListItem>
+                    <asp:DropDownList ID="drpAlici" runat="server" CssClass="drplist" AutoPostBack="False" OnSelectedIndexChanged="drpAlici_SelectedIndexChanged">
+                        
                     </asp:DropDownList>
                 </div>
             </div>
