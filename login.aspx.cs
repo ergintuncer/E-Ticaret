@@ -107,20 +107,41 @@ public partial class login : System.Web.UI.Page
         tSQL =
             "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
             kullaniciadi.Text + "'";
-        if (PublicExecuteScalarBoolean())
+        if (PublicExecuteScalarBoolean())//Bloke edilmemişse
         {
             tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + kullaniciadi.Text + "' and tck='" + sifre.Text +
                    "'";
-            if (PublicExecuteScalarInteger() > 0)
+            if (PublicExecuteScalarInteger() > 0)//Öle bi kullanici var ise
             {
                 Session.Add("kullanici", kullaniciadi.Text);
-                if (kullaniciadi.Text == "admin")
+
+
+                   
+
+                tSQL = "SELECT kisiturid from kisi_bilgi WHERE tck = '" + kullaniciadi.Text + "';";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
                 {
-                    Response.Redirect("/Admin/kisiler.aspx");
-                }
-                else
-                {
-                    Response.Redirect("Kullanici/profil.aspx");
+                    if (Convert.ToUInt64(tDataReader["kisiturid"])==0)//Admin demek
+                    {
+                        tCon.Close();
+                        Response.Redirect("/Admin/kisiler.aspx");
+
+                    }else if (Convert.ToUInt64(tDataReader["kisiturid"]) == 1)//Avukat demek
+                    {
+                        tCon.Close();
+                        Response.Redirect("Kullanici/profil.aspx");
+                    }
+                    else//Normal kullanici demek
+                    {
+                        tCon.Close();
+                        Response.Redirect("Kisiler/profil.aspx");
+                    }
+
+
                 }
             }
             else

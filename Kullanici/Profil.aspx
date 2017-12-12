@@ -4,7 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="pageDisDiv">
-<div class="ustDiv">
+<div class="ustDiv"> 
+   
     <div class="line">
         <asp:Label ID="Label1" runat="server" Text="Adı:" Font-Bold="True"></asp:Label>
         <asp:Label ID="lblkuladi" runat="server"></asp:Label>
@@ -38,8 +39,7 @@
         <asp:Label ID="lblkulWebAdresi" runat="server"></asp:Label>
     </div>
     <div class="lineOrta">
-        <button runat="server" id="btnDuzenle" class="button" Text="Düzenle">
-            <i class="fa fa-edit fa-2x"></i>Düzenle
+        <button runat="server" id="btnDuzenle" class="btn btn-outline-success" Text="Düzenle">Düzenle
         </button>
     </div>
 
@@ -365,8 +365,7 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
 </div>
 <div class="lineOrta">
-    <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
-        <i class="fa fa-save fa-2x"></i>Kaydet
+    <button runat="server" id="btnKaydet" class="btn btn-warning" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet
     </button>
 </div>
 </div>

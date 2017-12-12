@@ -2,11 +2,9 @@
 @import url('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css');
 
 body {
-    font-family: 'Calibri Light', sans-serif;
+    font-family: 'Calibri Light', sans-serif !important;
     padding: 0;
     margin: 0;
-    /*text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;*/
 }
 
 .sidebar-toggle {
@@ -26,36 +24,7 @@ body {
     z-index: 100;
 }
 
-.mainDivh {
-    margin-left: 15%;
-    width: 84%;
-    height: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    z-index: 9;
-}
-/*.profildiv {
-    text-align: center;
-    border: none;
-    outline: none;
-    color: white;
-}
 
-.adminimg {
-    background-color: white;
-    width: 50%;
-    height: 50%;
-    border: 2px solid white;
-    border-radius: 50px;
-}
-
-.lblAdminAdi {
-    color: white;
-    font-size: 150%;
-}*/
 .sidebar #leftside-navigation ul,
 .sidebar #leftside-navigation ul ul {
     margin: -2px 0 0;
@@ -124,15 +93,27 @@ body {
                 padding-bottom: 13px;
                 color: #aeb2b7;
             }
+            
+.mainDivh {
+    margin-left: 15%;
+    width: 85%;
+    height: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: 9;
+}
 .pageDisDiv {
-    width: 99%;
+    width: 100%;
     height: 100%;
     padding-top: 1%;
     padding-left: 1%;
 }
 
 .ustDiv {
-    width: 98%;
+    width: 99%;
     height: 50%;
     padding: 1%;
     text-align: center;
@@ -143,7 +124,7 @@ body {
 
 .altDiv {
     padding: 1%;
-    width: 98%;
+    width: 99%;
     height: 50%;
     text-align: center;
     box-shadow: 0px 0px 3px #888888;
@@ -155,10 +136,9 @@ body {
     display: inline-block;
     width: 49%;
     text-align: left;
-    
-}
+    }
 
-.lineOrta { /*Ortadaki Butonun bulunduğu kısım*/
+.lineOrta { 
     padding-top: 1%;
     padding-bottom: 1%;
     display: inline-block;
@@ -173,13 +153,14 @@ body {
     text-align: right;
 }
 .lineSolDiv {
+    padding-top: 2%;
     float: left;
-    width: 17%;
+    width: 18.5%;
 }
 
 .lineSagDiv {
     float: right;
-    width: 82%;
+    width: 81.5%;
 }
 .ListeDiv {
     padding: 1%;
@@ -190,7 +171,7 @@ body {
     box-shadow: 0px 0px 2px #23313f;
 }
 .TexBoxCss {
-    width: 50%;
+    width: 55%;
     height: 75%;
     background-color: #ffffff;
     padding: 2%;
@@ -199,7 +180,7 @@ body {
     border: thin silver solid;
 }
 
-.TexBoxCss:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
+.TexBoxCss:not([type=submit]):focus { 
     border: thin #E91E63 solid;
     outline: none;
 }
@@ -223,10 +204,10 @@ body {
 .TextBoxCssMulti {
     background-color: #ffffff;
     max-width: 10px;
-    min-width: 48%;
-    max-height: 40px;
-    min-height: 40px;
-    padding: 3%;
+    min-width: 55%;
+    max-height: 60px;
+    min-height: 60px;
+    padding: 1%;
     text-align: left;
     border-radius: 10px;
     border: thin silver solid;

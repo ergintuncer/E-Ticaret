@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="AdminMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="KisiMaster.master.cs" Inherits="KisiMaster" %>
 
 <!DOCTYPE html>
 
@@ -14,7 +14,7 @@
         .sidebar {
             width: 15%;
             height: 100%;
-            background:#1A237E !important;
+            background:#BF360C !important;
             position: fixed;
             -webkit-transition: all 0.3s ease-in-out;
             -moz-transition: all 0.3s ease-in-out;
@@ -30,40 +30,27 @@
 <aside class="sidebar">
     <div id="leftside-navigation" class="nano">
         <div class="adminSidebar" style="text-align: center">
-            <img src="/image/law1600.png" class="rounded-circle" style=" border: 2px solid white; width: 50%; height: 50%; background-color: white; border-radius: 50px; margin-bottom: 10%; margin-top: 10%;"/>
+           <img src="/image/lawyerpng.png" style="width: 50%; height: 50%; border-radius: 100px; border: 2px solid white; background-color: white; margin-bottom: 10%; margin-top: 10%;"/>
         </div>
         <ul class="nano-content">
 
-            <li class="sub-menu">
-                <a href="javascript:void(0);">
-                    <i class="fa fa-cogs"></i><span>Kişi işlemleri</span><i class="arrow fa fa-angle-right pull-right"></i>
-                </a>
-                <ul>
-
-                    <li>
-                        <a href="blokelikullanici.aspx">Blokeli Kullanıcı</a>
-                    </li>
-                    <li>
-                        <a href="kisiler.aspx">Kişiler</a>
-                    </li>
-                </ul>
-            </li>
+           
             <li>
-                <a href="baro.aspx">
+                <a href="profil.aspx">
                     <i class="fa fa-dashboard"></i>
-                    <span>Baro</span>
+                    <span>Profil</span>
                 </a>
             </li>
             <li>
-                <a href="adliye.aspx">
+                <a href="dava.aspx">
                     <i class="fa fa-dashboard"></i>
-                    <span>Adliye</span>
+                    <span>Davalar</span>
                 </a>
             </li>
             <li>
-                <a href="mahkeme.aspx">
+                <a href="bakiye.aspx">
                     <i class="fa fa-dashboard"></i>
-                    <span>Mahkeme</span>
+                    <span>Bakiye</span>
                 </a>
             </li>
             <li class="sub-menu">
@@ -88,3 +75,4 @@
 </form>
 </body>
 </html>
+

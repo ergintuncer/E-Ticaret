@@ -4,6 +4,8 @@
 <head runat="server">
     <title>Giriş</title>
     <link href="/CssDosyalari/login.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css"/>
+   
 </head>
 <body>
 <img id="bgimg" src="image/lwbg.jpg" alt=""/>
@@ -26,7 +28,7 @@
                     <asp:Label CssClass="ustpanelyazi" runat="server"> Tc No:</asp:Label>
                 </td>
                 <td class="tg-right">
-                    <asp:TextBox ID="kullaniciadi" CssClass="auto-style1" runat="server" MaxLength="11"></asp:TextBox>
+                    <asp:TextBox ID="kullaniciadi" CssClass="form-control" runat="server" MaxLength="11"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -34,25 +36,27 @@
                     <asp:Label CssClass="ustpanelyazi" runat="server"> Şifre: </asp:Label>
                 </td>
                 <td class="tg-right">
-                    <asp:TextBox ID="sifre" CssClass="input" runat="server" MaxLength="11"></asp:TextBox>
+
+                    <asp:TextBox ID="sifre" CssClass="form-control" runat="server" MaxLength="11"></asp:TextBox>
                 </td>
-            </tr>
-            <tr>
+            </tr><tr>
                 <td class="tg-left">
                 </td>
                 <td class="tg-right">
+                    <button type="button" class="btn btn-success" runat="server" OnServerClick="giris_Click">Giriş</button>
+                    <button type="button" class="btn btn-danger" runat="server" Text="Kayıt Ol" PostBackUrl="~/kayit.aspx" OnServerClick="kayitol_Click">Kayıt Ol</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="tg-leftt">
+                </td>
+                <td class="tg-rightt">
                     <asp:Button ID="Button1" CssClass="sifremiunuttum" runat="server" Text="Şifremi unuttum " OnClick="sifremiUnuttum_Click"/>
+                    <%--<asp:Button ID="alert" CssClass="alert" runat="server" Text="Klik"/>--%>
                 </td>
             </tr>
 
-            <tr>
-                <td class="tg-left">
-                </td>
-                <td class="tg-right">
-                    <asp:Button ID="giris" CssClass="button" runat="server" Text="Giriş" OnClick="giris_Click"/>
-                    <asp:Button ID="kayitol" CssClass="button" runat="server" Text="Kayıt Ol" PostBackUrl="~/kayit.aspx" OnClick="kayitol_Click"/>
-                </td>
-            </tr>
+
             </tbody>
         </table>
     </div>
