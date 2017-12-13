@@ -45,7 +45,7 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
         //int tInteger;
-
+        
         if (tCon.State == System.Data.ConnectionState.Open)
         {
             tCon.Close();
@@ -220,10 +220,49 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-
-        tSQL =
-            "INSERT INTO banka_hesap(avukatid,bankaid,bankahesapturid,bakiyeturid,bankahesapad,bankahesapno,bankahesapiban,hesapbakiye,aciklama,kisiid,aktif,tarihsaat) VALUES ((select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] +"')," +tBankaID[drpBanka.SelectedIndex]+ "," + tHesapTurID[drpHesapTuru.SelectedIndex]+ "," +tBakiyeTurID[drpBakiyeTur.SelectedIndex]+ ", '" + txtHesapAdi.Text.Trim() +"','" +txtHesapNo.Text.Trim()+ "','" + txtIbanNo.Text.Trim() + "'," + txtBakiye.Text.Trim() + ",'" + txtHesapAciklama.Text.Trim() + "',(select kisiid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'),true,current_timestamp  ); ";
-        PublicExecuteNonQuery();
+        if (txtHesapAdi.Text.Length!=0)
+        {
+            if (txtBakiye.Text.Length!=0)
+            {
+                if (drpBanka.SelectedIndex != -1)
+                {
+                    if (drpHesapTuru.SelectedIndex != -1)
+                    {
+                        if (drpBakiyeTur.SelectedIndex != -1)
+                        {
+                            tSQL = "INSERT INTO banka_hesap(avukatid,bankaid,bankahesapturid,bakiyeturid,bankahesapad,bankahesapno,bankahesapiban,hesapbakiye,aciklama,kisiid,aktif,tarihsaat) VALUES ((select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')," + tBankaID[drpBanka.SelectedIndex] + "," + tHesapTurID[drpHesapTuru.SelectedIndex] + "," + tBakiyeTurID[drpBakiyeTur.SelectedIndex] + ", '" + txtHesapAdi.Text.Trim() + "','" + txtHesapNo.Text.Trim() + "','" + txtIbanNo.Text.Trim() + "'," + txtBakiye.Text.Trim() + ",'" + txtHesapAciklama.Text.Trim() + "',(select kisiid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'),true,current_timestamp  ); ";
+                            PublicExecuteNonQuery();
+                        }
+                        else
+                        {
+                            lblMesaj.Text = "Lütfen Bakiye Türü Seçiniz...";
+                            lblMesaj.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblMesaj.Text = "Lütfen Hesap Türü Seçiniz...";
+                        lblMesaj.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblMesaj.Text = "Lütfen Banka Seçiniz...";
+                    lblMesaj.Visible = true;
+                }
+            }
+            else
+            {
+                lblMesaj.Text = "Lütfen Bakiye giriniz...";
+                lblMesaj.Visible = true;
+            }
+        }
+        else
+        {
+            lblMesaj.Text = "Lütfen hesap Adı Giriniz...";
+            lblMesaj.Visible = true;
+        }
+      
 
 
     }

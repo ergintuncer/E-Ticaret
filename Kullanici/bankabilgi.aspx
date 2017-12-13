@@ -8,6 +8,9 @@
     
     <div class="pageDisDiv">
         <div class="ustDiv">
+             <div class="alert alert-danger" role="alert">
+ <asp:Label CssClass="label" ID="lblMesaj" runat="server" Text="" visible="false"></asp:Label>
+</div>
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
                 <asp:Label CssClass="label" runat="server" Text="Yeni Banka Oluştur" Font-Size="200%">Yeni Banka Oluştur</asp:Label>
             </div>
@@ -136,10 +139,19 @@
                                 <asp:Label ID="lblaktif" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
                             </div>
                         </div>
+                         <div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Aktif: </asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="Label1" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
+                            </div>
+                        </div>
                         <div class="lineOrtaSol">
-                            <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="buttonOnayla" title="Aktif mi?">
+                           <%-- <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="buttonOnayla" title="Aktif mi?">
                                 <i class="fa fa-check fa-2x"> </i>
-                            </button>
+                            </button>--%>
+                            <a href="bankabilgi.aspx?islem=bloke&kisiid=<%#Eval("bankaid") %>"> <img src="/image/cancel.png"/></a>
                         </div>
                     </div>
                 </ItemTemplate>

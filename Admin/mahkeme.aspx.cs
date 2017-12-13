@@ -201,9 +201,34 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
             tAktif = true;
         }
 
-        tSQL = "INSERT INTO mahkeme_bilgi(adliyeid,mahkemeturid,mahkemead,aktif) VALUES (" + tAdliyeID[drpAdliye.SelectedIndex] + " , " + tMahkemeTurID[drpMahkemeTuru.SelectedIndex] + ",'" + txtMahkemeAdi.Text.Trim() + "'," + tAktif + ");";
+        if (txtMahkemeAdi.Text.Length != 0)
+        {
+            if (drpAdliye.SelectedIndex != -1)
+            {
+                if (drpMahkemeTuru.SelectedIndex != -1)
+                {
+                    tSQL = "INSERT INTO mahkeme_bilgi(adliyeid,mahkemeturid,mahkemead,aktif) VALUES (" + tAdliyeID[drpAdliye.SelectedIndex] + " , " + tMahkemeTurID[drpMahkemeTuru.SelectedIndex] + ",'" + txtMahkemeAdi.Text.Trim() + "'," + tAktif + ");";
+                    PublicExecuteNonQuery();
+                }
+                else
+                {
+                    lblMesaj.Text = "Lütfen Mahkeme Türünü Seçiniz...";
+                    lblMesaj.Visible = true;
+                }
 
-        PublicExecuteNonQuery();
+            }
+            else
+            {
+                lblMesaj.Text = "Lütfen Adliye Seçiniz...";
+                lblMesaj.Visible = true;
+            }
+        }
+        else
+        {
+            lblMesaj.Text = "Lütfen Mahkeme Adını Giriniz...";
+            lblMesaj.Visible = true;
+        }
+      
         //throw new NotImplementedException();
     }
 
@@ -231,31 +256,54 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
     string mahkemeid;
     string islem;
     int id2;
+    bool tAktifMi;
     void aktif()
     {
-        try
-        {
             mahkemeid = Request.QueryString["mahkemeid"];
             islem = Request.QueryString["islem"];
-            if (ID != null)
+
+
+
+
+            if (mahkemeid != null)
             {
                 id2 = int.Parse(mahkemeid);
+
+            tSQL = "select aktif  from mahkeme_bilgi where mahkemeid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+
+            if (testAktif.HasValue)
+            {
+                tAktifMi = testAktif.Value;
             }
 
-            if (islem == "aktif")
+            tCon.Close();
+
+            }
+
+        if (islem == "aktif")
+        {
+            if (tAktifMi==true)
             {
                 tSQL = "UPDATE mahkeme_bilgi set aktif=false where mahkemeid=" + id2;
                 PublicExecuteNonQuery();
-
+            }
+            else
+            {
+                tSQL = "UPDATE mahkeme_bilgi set aktif=true where mahkemeid=" + id2;
+                PublicExecuteNonQuery();
             }
 
+        }
 
+       
             listView_yukle();
-        }
-        catch
-        {
-
-        }
+        
+       
     }
 
 
