@@ -238,19 +238,58 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-        if (drpIslemTuru.SelectedIndex == 0)
-        {
+        //if (txtTarihSaat.te)
 
-            tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerkisiid,tarihsaat) VALUES ("+ drpIslemTuru.SelectedIndex +",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" +  txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), "+ txtTutar.Text.Trim() + "," + tKisiID[drpAlici.SelectedIndex] + ",current_timestamp) ";
-            PublicExecuteNonQuery();
+        //{
+            
+        //}
+     
+         if (drpIslemTuru.SelectedIndex == 0)
+            {
+            if (txtTutar.Text.Length != 0)
+            {
+                if (drpAlici.SelectedIndex != -1)
+                {
+                    tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerkisiid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tKisiID[drpAlici.SelectedIndex] + ",current_timestamp) ";
+                    PublicExecuteNonQuery();
+                }
+                else
+                {
+                    lblMesaj.Text = "Lütfen Kişi Seçiniz...";
+                    lblMesaj.Visible = true;
+                }
+            }
 
+            else
+            {
+                lblMesaj.Text = "Lütfen Tutarı Giriniz...";
+                lblMesaj.Visible = true;
+            }
+         }
+         else if (drpIslemTuru.SelectedIndex == 1)
+         {
+            if (txtTutar.Text.Length != 0)
+            {
+                if (drpAlici.SelectedIndex != -1)
+                {
+
+                    tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerbankahesapid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tBankaHesapID[drpAlici.SelectedIndex] + ",current_timestamp) ";
+                    PublicExecuteNonQuery();
+                }
+                else
+                {
+                    lblMesaj.Text = "Lütfen Hesap Seçiniz...";
+                    lblMesaj.Visible = true;
+                }
+            }
+
+            else
+            {
+                lblMesaj.Text = "Lütfen Tutarı Giriniz...";
+                lblMesaj.Visible = true;
+            }
         }
-        else if (drpIslemTuru.SelectedIndex == 1)
-        {
-
-            tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerbankahesapid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tBankaHesapID[drpAlici.SelectedIndex] + ",current_timestamp) ";
-            PublicExecuteNonQuery();
-
-        }
+           
+           
     }
 }

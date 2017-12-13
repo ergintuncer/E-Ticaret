@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <div class="pageDisDiv">
         <div class="ustDiv">
+            <div class="alert alert-danger" role="alert">
+ <asp:Label CssClass="label" ID="lblMesaj" runat="server" Text="" visible="false"></asp:Label>
+</div>
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
                 <asp:Label CssClass="label" runat="server" Text="Para Hareket Bilgisi" Font-Size="200%">Para Hareket Bilgisi</asp:Label>
             </div>
@@ -74,7 +77,11 @@
             <div class="line">
               <%-- Bu divi Silme --%>
             </div>
-            
+            <div class="lineOrta">
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTarihSaat" ErrorMessage="Lütfen Tarihi Kontrol Ediniz..." SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
+   
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
+</div>
             <div class="lineOrta">
                 <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
                     <i class="fa fa-save fa-2x"></i>Kaydet
@@ -147,6 +154,7 @@
                     </div>
                 </ItemTemplate>
             </asp:ListView>
+
         </div>
     </div>
 

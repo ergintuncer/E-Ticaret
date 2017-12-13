@@ -190,13 +190,53 @@ public partial class Admin_Adliye : System.Web.UI.Page
             tAktif = true;
         }
 
-        if (txtadliyeadi.Text != "")
-        {
-            tSQL = "INSERT INTO adliye_bilgi(adliyead,aktif,ilid,ilceid) VALUES ('" + txtadliyeadi.Text.Trim() + "' , " + tAktif + ","+ TilID[drpil.SelectedIndex]  + ","+ TilceID[drpilce.SelectedIndex] + ");";
-            tSQL += "INSERT INTO adliye_adres(adliyeid,adliyeadresad,adres,aciklama,aktif) VALUES ((select max(adliyeid) from adliye_bilgi),'" + txtadresadi.Text.Trim() + "' , '" + txtadres.Text.Trim() + "','" + txtaciklama.Text.Trim() + "',true);";
+        
 
-            PublicExecuteNonQuery();
+        if (txtadliyeadi.Text.Length != 0)
+        {
+            if (drpil.SelectedIndex !=-1)
+            {
+                if (drpilce.SelectedIndex != -1)
+                {
+                    tSQL = "INSERT INTO adliye_bilgi(adliyead,aktif,ilid,ilceid) VALUES ('" + txtadliyeadi.Text.Trim() + "' , " + tAktif + "," + TilID[drpil.SelectedIndex] + "," + TilceID[drpilce.SelectedIndex] + ");";
+                    tSQL += "INSERT INTO adliye_adres(adliyeid,adliyeadresad,adres,aciklama,aktif) VALUES ((select max(adliyeid) from adliye_bilgi),'" + txtadresadi.Text.Trim() + "' , '" + txtadres.Text.Trim() + "','" + txtaciklama.Text.Trim() + "',true);";
+                    PublicExecuteNonQuery();
+
+                    lblMesaj.Text = "Kaydedildi....";
+                    lblMesaj.Visible = true;
+
+                    txtadliyeadi.Text = "";
+                    txtaciklama.Text = "";
+                    txtadres.Text = "";
+                    txtadresadi.Text = "";
+                    drpil.SelectedIndex = 0;
+                    drpilce.SelectedIndex = 0;
+
+
+                }
+                else
+                {
+                    lblMesaj.Text = "Lütfen İlçe Seçiniz.";
+                    lblMesaj.Visible = true;
+                }
+               
+            }
+            else
+            {
+                lblMesaj.Text = "Lütfen İl Seçiniz.";
+                lblMesaj.Visible = true;
+            }
+           
         }
+        else
+        {
+            lblMesaj.Text = "Lütfen Adliye Adını Giriniz.";
+            lblMesaj.Visible = true;
+        }
+
+       
+          
+       
 
         //throw new NotImplementedException();
     }
@@ -205,32 +245,7 @@ public partial class Admin_Adliye : System.Web.UI.Page
         //throw new NotImplementedException();
     }
 
-    //protected void drpil_OnSelectedIndexChanged(object sender, EventArgs e)
-    //{
-
-    //    //tSQL = "select ilcead,ilceid from ilce_bilgi";
-    //    //tCon.Open();
-    //    //tCommand.Connection = tCon;
-    //    //tCommand.CommandText = tSQL;
-    //    //tDataReader = tCommand.ExecuteReader();
-    //    //while (tDataReader.Read())
-    //    //{
-    //    //    drpilce.Items.Add("" + tDataReader["ilcead"]);
-    //    //    TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
-    //    //    j++;
-    //    //}
-    //    //tCon.Close();
-    //    //txtaciklama.Text = ""+ drpil.SelectedValue;
-    //    //drpil.Items.Add("");
-    //    //txtaciklama.Text = "asass";
-    //    //throw new NotImplementedException();
-    //}
-
-    //protected void drpil_OnTextChanged(object sender, EventArgs e)
-    //{
-    //    //txtaciklama.Text = "asass";
-    //    //throw new NotImplementedException();
-    //}
+   
 
 
     protected void listView_yukle()
@@ -275,20 +290,50 @@ public partial class Admin_Adliye : System.Web.UI.Page
     string kisiid;
     string islem;
     int id2;
+    bool tAktifMi;
     void bloke()
     {
-
         kisiid = Request.QueryString["kisiid"];
         islem = Request.QueryString["islem"];
+
+        
+
+       
         if (kisiid != null)
         {
             id2 = int.Parse(kisiid);
+
+
+            tSQL = "select aktif  from adliye_bilgi where adliyeid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+            if (testAktif.HasValue)
+            {
+                tAktifMi = testAktif.Value;
+            }
+
+            tCon.Close();
+
+
         }
+
 
         if (islem == "bloke")
         {
-            tSQL = "UPDATE adliye_bilgi set aktif=false WHERE adliyeid=" + id2;
-            PublicExecuteNonQuery();
+            if (tAktifMi ==true)
+            {
+                tSQL = "UPDATE adliye_bilgi set aktif=false WHERE adliyeid=" + id2;
+                PublicExecuteNonQuery();
+            }
+            else
+            {
+                tSQL = "UPDATE adliye_bilgi set aktif=true WHERE adliyeid=" + id2;
+                PublicExecuteNonQuery();
+            }
+           
 
         }
 

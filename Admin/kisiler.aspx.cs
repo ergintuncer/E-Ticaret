@@ -132,25 +132,53 @@ public partial class Admin_kisiler : System.Web.UI.Page
     string kisiid;
     string islem;
     int id2;
+    bool tAktifMi;
     void bloke()
     {
-        
-            kisiid = Request.QueryString["kisiid"];
-            islem = Request.QueryString["islem"];
-            if (kisiid != null)
+        kisiid = Request.QueryString["kisiid"];
+        islem = Request.QueryString["islem"];
+
+        if (kisiid != null)
+        {
+            id2 = int.Parse(kisiid);
+
+            tSQL = "select bloke  from kisi_giris where kisiid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+
+            if (testAktif.HasValue)
             {
-                id2 = int.Parse(kisiid);
+                tAktifMi = testAktif.Value;
             }
 
-            if (islem == "bloke")
+            tCon.Close();
+        }
+
+         
+
+        if (islem == "bloke")
+        {
+            if (tAktifMi == true)
             {
                 tSQL = "UPDATE kisi_giris set bloke=false WHERE kisiid=" + id2;
                 PublicExecuteNonQuery();
-
             }
+            else
+            {
+                tSQL = "UPDATE kisi_giris set bloke=true WHERE kisiid=" + id2;
+                PublicExecuteNonQuery();
+            }
+
+        }
+
+
+           
            
             listView_yukle();
-        }
+    }
       
     
 

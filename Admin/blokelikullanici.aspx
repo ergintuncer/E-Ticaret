@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="pageDisDiv">
+         <div class="alert alert-danger" role="alert" >
+ <asp:Label CssClass="label" ID="lblMesaj" runat="server" Text="" visible="false"></asp:Label>
+</div>
         <div class="altDiv">
             <asp:ListView ID="list2" runat="server">
                 <ItemTemplate>

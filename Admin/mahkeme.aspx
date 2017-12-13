@@ -6,6 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <div class="pageDisDiv">
         <div class="ustDiv">
+             <div class="alert alert-danger" role="alert">
+ <asp:Label CssClass="label" ID="lblMesaj" runat="server" Text="" visible="false"></asp:Label>
+</div>
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
                 <asp:Label CssClass="label" runat="server" Text="Yeni Mahkeme Oluştur" Font-Size="200%">Yeni Mahkeme Oluştur</asp:Label>
             </div>

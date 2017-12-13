@@ -155,22 +155,33 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         listView_yukle();
+        bloke();
     }
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-        if (txtBankaAdi.Text != "")
+        if (txtBankaAdi.Text.Length!=0)
         {
-            tSQL =
-                "INSERT INTO banka_bilgi(bankaad,bankasubead,bankasubekod,bankasubetel1,bankasubetel2,bankasubeadres,aciklama,aktif) VALUES ('" +
+            if (txtBankaSube.Text.Length != 0)
+            {
+                tSQL =
+                "INSERT INTO banka_bilgi(bankaad,bankasubead,bankasubekod,bankasubetel1,bankasubetel2,bankasubeadres,aciklama,aktif,avukatid) VALUES ('" +
                 txtBankaAdi.Text.Trim() + "' , '" + txtBankaSube.Text.Trim() + "','" + txtBankaSubeKodu.Text.Trim() +
-                "','" + txtBankaTelefonNo.Text.Trim() + "','"+ txtBankaTelefonKodu.Text.Trim() +"','"+txtBankaAdres.Text.Trim() +"','"+ txtBankaAciklama.Text.Trim() +"',true);";
-            PublicExecuteNonQuery();
+                "','" + txtBankaTelefonNo.Text.Trim() + "','" + txtBankaTelefonKodu.Text.Trim() + "','" + txtBankaAdres.Text.Trim() + "','" + txtBankaAciklama.Text.Trim() + "',true,(Select avukatid from kisi_bilgi where tck='" + Session["kullanici"] + "'));";
+                PublicExecuteNonQuery();
+            }
+            else
+            {
+                lblMesaj.Text = "Lütfen Şube Adı Giriniz...";
+                lblMesaj.Visible = true;
+            }
         }
-        //else
-        //{
-        //    Response.Write("Gerekli Yerleri Doldurunuz");
-        //}
+        else
+        {
+            lblMesaj.Text = "Lütfen Banka Adı Giriniz...";
+            lblMesaj.Visible = true;
+        }
+       
 
     }
 
@@ -178,7 +189,7 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
     protected void listView_yukle()
     {
 
-        tSQL = "select bankaad,bankasubead,bankasubekod,bankasubetel1,bankasubeadres,aciklama from banka_bilgi order by bankaad asc ";
+        tSQL = "select bankaad,bankasubead,bankasubekod,bankasubetel1,bankasubeadres,aciklama,bankaid,aktif from banka_bilgi order by bankaad asc ";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -195,4 +206,66 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
         throw new NotImplementedException();
 
     }
+
+
+    /////////////////////////////////////////////////
+
+    string kisiid;
+    string islem;
+    int id2;
+    bool tAktifMi;
+    void bloke()
+    {
+        kisiid = Request.QueryString["kisiid"];
+        islem = Request.QueryString["islem"];
+
+
+
+
+        if (kisiid != null)
+        {
+            id2 = int.Parse(kisiid);
+
+
+            tSQL = "select aktif  from banka_bilgi where bankaid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+            if (testAktif.HasValue)
+            {
+                tAktifMi = testAktif.Value;
+            }
+
+            tCon.Close();
+
+
+        }
+
+
+        if (islem == "bloke")
+        {
+            if (tAktifMi == true)
+            {
+                tSQL = "UPDATE banka_bilgi set aktif=false WHERE bankaid=" + id2;
+                PublicExecuteNonQuery();
+            }
+            else
+            {
+                tSQL = "UPDATE banka_bilgi set aktif=true WHERE bankaid=" + id2;
+                PublicExecuteNonQuery();
+            }
+
+
+        }
+
+        listView_yukle();
+    }
+
+
+    /////////////////////////////////////////////////////
+
+
+
 }

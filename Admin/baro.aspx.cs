@@ -178,6 +178,15 @@ public partial class Admin_Baro : System.Web.UI.Page
         {
            tSQL= "INSERT INTO baro_bilgi(baroad,aktif) VALUES ('" + txtbaroadi.Text.Trim()  + "' , "+ tAktif +");";
             PublicExecuteNonQuery();
+            lblMesaj.Text = "Kaydedildi...";
+            lblMesaj.Visible = true;
+            txtbaroadi.Text = "";
+        }
+        else
+        {
+            lblMesaj.Text = "Lütfen Baro Adını Giriniz";
+            lblMesaj.Visible = true;
+
         }
       
         //throw new NotImplementedException();
@@ -207,31 +216,57 @@ public partial class Admin_Baro : System.Web.UI.Page
     string baroid;
     string islem;
     int id2;
+    bool tAktifMi;
     void aktif()
     {
-        try
-        {
+        
             baroid = Request.QueryString["baroid"];
             islem = Request.QueryString["islem"];
-            if (ID != null)
+
+
+            if (baroid != null)
             {
                 id2 = int.Parse(baroid);
-            }
 
-            if (islem == "aktif")
+            tSQL = "select aktif  from baro_bilgi where baroid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+            if (testAktif.HasValue)
             {
-                tSQL = "UPDATE baro_bilgi set aktif=true where baroid="+ id2;
-                PublicExecuteNonQuery();
+                tAktifMi = testAktif.Value;
+            }
+
+            tCon.Close();
+            
 
             }
+
+        if (islem == "aktif")
+        {
+            if (tAktifMi == true)
+            {
+                tSQL = "UPDATE baro_bilgi set aktif=false where baroid=" + id2;
+                PublicExecuteNonQuery();
+            }
+            else
+            {
+                tSQL = "UPDATE baro_bilgi set aktif=true where baroid=" + id2;
+                PublicExecuteNonQuery();
+            }
+        }
+       
+                
+
+            
            
 
             listView_yukle();
-        }
-        catch
-        {
+       
 
-        }
+        
     }
 
 }
