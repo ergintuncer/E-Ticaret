@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -62,7 +63,7 @@ public partial class Kullanici_dava : System.Web.UI.Page
             while (tDataReader.Read())
             {
                 drpDavaTuru.Items.Add("" + tDataReader["davaturad"]);
-                tDavaTurId[i] = Int32.Parse("" + tDataReader["davaturid"]);
+                tDavaTurId[davaTurSayisi] = Int32.Parse("" + tDataReader["davaturid"]);
                 davaTurSayisi++;
             }
             tCon.Close();
@@ -113,7 +114,7 @@ public partial class Kullanici_dava : System.Web.UI.Page
 
 
         tSQL =
-            "SELECT mahkeme_bilgi.mahkemead, kisi_bilgi.ad,kisi_bilgi.soyad, dava_tur.davaturad, dava_bilgi.davano, CASE WHEN dava_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS davaaktif , dava_taraf_tur.davatarafturad, to_char(durusma_bilgi.tarihsaat,'dd.mm.YYYY') as tarihsaat ,dava_bilgi.aciklama as davaaciklama,durusma_bilgi.aciklama, CASE WHEN durusma_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif" +
+            "SELECT mahkeme_bilgi.mahkemead, kisi_bilgi.ad,kisi_bilgi.soyad, dava_tur.davaturad, dava_bilgi.davano, dava_bilgi.dosyaurl, CASE WHEN dava_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS davaaktif , dava_taraf_tur.davatarafturad, to_char(durusma_bilgi.tarihsaat,'dd.mm.YYYY') as tarihsaat ,dava_bilgi.aciklama as davaaciklama,durusma_bilgi.aciklama, CASE WHEN durusma_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif" +
             " FROM dava_bilgi" +
             " INNER JOIN dava_tur ON dava_bilgi.davaturid = dava_tur.davaturid" +
             " INNER JOIN dava_mahkeme ON dava_mahkeme.davaid = dava_bilgi.davaid" +
@@ -143,8 +144,22 @@ public partial class Kullanici_dava : System.Web.UI.Page
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-        tSQL = "INSERT INTO dava_bilgi(davaturid,avukatid,davano,aciklama,aktif,tarihsaat) VALUES ("+ tDavaTurId[drpDavaTuru.SelectedIndex] + ",(SELECT avukatid FROM kisi_bilgi WHERE tck='" + Session["kullanici"] + "'),'" + txtDavaNo.Text +
-               "','" + txtDavaAciklama.Text + "','" + chckDavaAktif.Checked + "',CURRENT_TIMESTAMP);";
+        String dosyaUrl = "";
+        HttpPostedFile yuklenecekDosya = fileUpload_Dosya.PostedFile;
+        if (yuklenecekDosya != null)
+        {
+            FileInfo dosyaBilgisi = new FileInfo(yuklenecekDosya.FileName);
+            string yuklemeYeri = Server.MapPath("~/dosyalar/" + dosyaBilgisi.Name);
+            fileUpload_Dosya.SaveAs(yuklemeYeri);
+            dosyaUrl = "/dosyalar/" + dosyaBilgisi.Name;
+        }
+
+
+        tSQL = "INSERT INTO dava_bilgi(davaturid,avukatid,davano,aciklama,aktif,tarihsaat,dosyaurl) VALUES (" +
+               tDavaTurId[drpDavaTuru.SelectedIndex] + ",(SELECT avukatid FROM kisi_bilgi WHERE tck='" +
+               Session["kullanici"] + "'),'" + txtDavaNo.Text + "','" + txtDavaAciklama.Text + "','" +
+               chckDavaAktif.Checked + "',CURRENT_TIMESTAMP,'" + dosyaUrl + "');";
+
         tSQL += " INSERT INTO dava_mahkeme(davaid, mahkemeid, tarihsaat)VALUES(" +
                 "(SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
                 Session["kullanici"] + "')),'"+ tMahkemeId[drpMahkeme.SelectedIndex] + "',CURRENT_TIMESTAMP);";

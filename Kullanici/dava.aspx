@@ -28,14 +28,7 @@
                 </div>
             </div>
 
-            <div class="line">
-                <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
-                </div>
-                <div class="lineSagDiv">
-                    <asp:CheckBox ID="chckDavaAktif" runat="server" Checked="True"/>
-                </div>
-            </div>
+            
             <div class="line">
                 <div class="lineSolDiv">
                     <asp:Label CssClass="label" runat="server">Mahkeme:</asp:Label>
@@ -90,14 +83,30 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Duruşma Aktif:</asp:Label>
+                    <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:CheckBox ID="chckDurusmaAktif" runat="server" Checked="True"/>
+                    <asp:CheckBox ID="chckDavaAktif" runat="server" Checked="True"/>
                 </div>
             </div>
             <div class="line">
-                <%--Bu divi Silme Duruşma Aktifmi Satırıını sola yaslamak için yapıldı--%>
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Duruşma Aktif:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:CheckBox ID="chckDurusmaAktif" CssClass="custom-control custom-checkbox" runat="server" Checked="True"/>
+                </div>
+            </div>
+            <div class="line">
+                <div class="lineSolDiv">
+                    <asp:Label CssClass="label" runat="server">Dosya Yükle:</asp:Label>
+                </div>
+                <div class="lineSagDiv">
+                    <asp:FileUpload ID="fileUpload_Dosya" CssClass="form-control-file" runat="server" />
+                </div>
+            </div>
+            <div class="line">
+                <%--<Silme--%>
             </div>
             <div class="lineOrta">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDavaNo" ErrorMessage="Dava Numarası Giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
@@ -107,9 +116,8 @@
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
             </div>
             <div class="lineOrta">
-                <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
-                    <i class="fa fa-save fa-2x"></i> Kaydet
-                </button>
+                <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
+            
             </div>
 
         </div>
@@ -200,8 +208,15 @@
                                 <asp:Label ID="lbldurusmaAktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
                             </div>
                         </div>
+                        <div class="line dosya">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server">Dosya için:</asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <a href='<%#Eval("dosyaurl") %>'>Tıklayınız</a>
+                            </div>
+                        </div>
                         <div class="line">
-                            <%--Bu divi Silme Duruşma Aktifmi Satırıını sola yaslamak için yapıldı--%>
                         </div>
                     </div>
                 </ItemTemplate>

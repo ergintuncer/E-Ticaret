@@ -162,4 +162,10 @@ public partial class Admin_kisiler : System.Web.UI.Page
     protected void KullaniciSil_OnClick(object sender, EventArgs e)
     {
     }
+
+    protected void btnAra_Click(object sender, EventArgs e)
+    {
+        
+
+    }
 }

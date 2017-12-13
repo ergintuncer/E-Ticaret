@@ -46,9 +46,8 @@
                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
             </div>
             <div class="lineOrta">
-                <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
-                    <i class="fa fa-save fa-2x"></i>Kaydet
-                </button>
+                <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
+            
             </div>
 
         </div>

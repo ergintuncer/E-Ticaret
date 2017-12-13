@@ -8,6 +8,12 @@
     </asp:ContentPlaceHolder>
     <link rel='stylesheet prefetch' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css"/>
+    <!-- JS dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- bootbox code -->
+    <script src="/js/bootbox.js/bootbox.min.js"></script>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Ana Sayfa</title>
     <style>

@@ -136,13 +136,14 @@ body {
     display: inline-block;
     width: 49%;
     text-align: left;
-    }
+}
 
 .lineOrta { 
     padding-top: 1%;
     padding-bottom: 1%;
     display: inline-block;
     width: 98%;
+    
     text-align: center;
 }
 .lineOrtaSol {
@@ -153,7 +154,7 @@ body {
     text-align: right;
 }
 .lineSolDiv {
-    padding-top: 2%;
+   
     float: left;
     width: 18.5%;
 }

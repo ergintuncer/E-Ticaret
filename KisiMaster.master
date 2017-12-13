@@ -10,6 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Ana Sayfa</title>
+    <!-- CSS dependencies -->
+    <link rel="stylesheet" type="text/css" href="/js/bootstrap/css/bootstrap.min.css"/>
+    <!-- JS dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- bootbox code -->
+    <script src="/js/bootbox.js/bootbox.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         .sidebar {
             width: 15%;
@@ -24,17 +32,17 @@
             z-index: 100;
         }
     </style>
-    <link href="/CssDosyalari/anaSayfaMaster.css" rel="stylesheet"/>
+    <link href="/CssDosyalari/AnaSayfaMaster.css" rel="stylesheet"/>
 </head>
 <body>
 <aside class="sidebar">
     <div id="leftside-navigation" class="nano">
         <div class="adminSidebar" style="text-align: center">
-           <img src="/image/lawyerpng.png" style="width: 50%; height: 50%; border-radius: 100px; border: 2px solid white; background-color: white; margin-bottom: 10%; margin-top: 10%;"/>
+            <img src="/image/lawyerpng.png" style="width: 50%; height: 50%; border-radius: 100px; border: 2px solid white; background-color: white; margin-bottom: 10%; margin-top: 10%;"/>
         </div>
         <ul class="nano-content">
 
-           
+
             <li>
                 <a href="profil.aspx">
                     <i class="fa fa-dashboard"></i>
@@ -67,10 +75,18 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 <script src="/js/index.js"></script>
 <form id="form1" runat="server">
-    <div class="mainDivh">
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    <div class="mainDivh">  
+     <%--   <asp:ScriptManager ID="MainScriptManager" runat="server" />
+        <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
+            <Triggers>
+                <asp:PostBackTrigger ControlID="btnKaydet"/>
+            </Triggers>
+            <ContentTemplate>--%>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
 
-        </asp:ContentPlaceHolder>
+                </asp:ContentPlaceHolder>
+  <%--          </ContentTemplate>
+        </asp:UpdatePanel>--%>
     </div>
 </form>
 </body>

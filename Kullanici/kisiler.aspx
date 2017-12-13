@@ -88,7 +88,13 @@
                     <asp:Label CssClass="label" runat="server">Bakiye:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:TextBox ID="txtBakiye" CssClass="TexBoxCss" runat="server" TextMode="Number" MaxLength="50"></asp:TextBox>
+                  
+<%--   <div class="input-group">
+                        <span class="input-group-addon">₺</span>
+                        <input type="text" class="form-control" id="txtBakiye" runat="server" aria-label="Miktar (Tl türünden)"/>
+                        <span class="input-group-addon">.00</span>
+                    </div>--%>
+                   <asp:TextBox ID="txtBakiye" CssClass="TexBoxCss" runat="server" TextMode="Number" MaxLength="50"></asp:TextBox>
                 </div>
             </div>
             <div class="line">
@@ -120,9 +126,8 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
 </div>
             <div class="lineOrta">
-                <button runat="server" id="btnKaydet" class="button" OnServerClick="btnKaydet_Click" Text="Kaydet">
-                    <i class="fa fa-save fa-2x"></i>Kaydet
-                </button>
+                <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
+            
             </div>
 
         </div>

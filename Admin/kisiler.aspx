@@ -4,7 +4,19 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <div class="pageDisDiv">
+    <div class="pageDisDiv">
+        <div class="ustDiv">
+            <div class="line">
+            <div class="lineSolDivj">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Kişilerde ara..." aria-label="Kişilerde ara..." runat="server" ID="txtAra"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" runat="server" ID="btnAra" OnServerClick="btnAra_Click">Ara!</button>
+                    </span>
+                </div>
+            </div>
+            </div>
+        </div>
         <div class="altDiv">
             <asp:ListView ID="list2" runat="server">
                 <ItemTemplate>

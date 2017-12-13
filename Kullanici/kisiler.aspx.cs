@@ -119,7 +119,8 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
                "INSERT INTO kisi_adres(kisiid, adresad, adres, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtAdresAdi.Text+"', '"+txtAdres.Text+"', CURRENT_TIMESTAMP); " +
                "INSERT INTO kisi_telefon(kisiid, telefonad, telefon, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtTelefonAdi.Text+"', '"+txtTelefonNo.Text+"', CURRENT_TIMESTAMP); " +
                "INSERT INTO kisi_mail(kisiid, mail, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtMail.Text+"', CURRENT_TIMESTAMP); " +
-               "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '1', '"+txtBakiye.Text+"'); ";
+               "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '1', '"+txtBakiye.Text.Trim()+"');" +
+               "INSERT INTO kisi_web(kisiid) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')));";
         tSQL +=" INSERT INTO kisi_giris(kisiid,bloke) VALUES ((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')),true);";
         PublicExecuteNonQuery();
         Response.Redirect("kisiler.aspx");
