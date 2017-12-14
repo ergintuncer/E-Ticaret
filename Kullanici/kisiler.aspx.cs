@@ -68,7 +68,7 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             }
             tCon.Close();
         }
-        if (Page.Buffer&&drpIl.SelectedValue!=null)
+        if (Page.Buffer && drpIl.SelectedValue!=null)
         {
             drpIlce.Items.Clear();
             tSQL = " SELECT ilcead as Ilce FROM ilce_bilgi WHERE ilid =" +
@@ -83,7 +83,13 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             }
             tCon.Close();
         }
-        //Kişilerin Gösterilmesi
+    
+        verileriGoster();
+    }
+
+    private void verileriGoster()
+    {
+            //Kişilerin Gösterilmesi
         tSQL =
             "SELECT ad,soyad,tck, kisiturad,il,ilce,telefonad,telefon,mail,kisibakiye,kisi_adres.adresad,kisi_adres.adres " +
             "FROM kisi_bilgi " +
@@ -102,8 +108,6 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
         list2.DataBind();
         tCon.Close();
 
-
-
     }
 
     protected void drpIl_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,7 +118,8 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-        tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('"+txtAdi.Text+ "','"+txtSoyadi.Text+ "','"+txtTcNo.Value+ "','"+drpKisiTuru.SelectedIndex+ "',(Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] +"')); " +
+        try
+        {  tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('"+txtAdi.Text+ "','"+txtSoyadi.Text+ "','"+txtTcNo.Value+ "','"+drpKisiTuru.SelectedIndex+ "',(Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] +"')); " +
                "INSERT INTO kisi_kimlik(kisiid, il, ilce, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+drpIl.SelectedValue+"', '"+drpIlce.SelectedValue+"', CURRENT_TIMESTAMP); " +
                "INSERT INTO kisi_adres(kisiid, adresad, adres, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtAdresAdi.Text+"', '"+txtAdres.Text+"', CURRENT_TIMESTAMP); " +
                "INSERT INTO kisi_telefon(kisiid, telefonad, telefon, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtTelefonAdi.Text+"', '"+txtTelefonNo.Text+"', CURRENT_TIMESTAMP); " +
@@ -123,6 +128,21 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
                "INSERT INTO kisi_web(kisiid) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')));";
         tSQL +=" INSERT INTO kisi_giris(kisiid,bloke) VALUES ((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')),true);";
         PublicExecuteNonQuery();
-        Response.Redirect("kisiler.aspx");
+
+        successalert.Visible = true;
+        verileriGoster();
+
+        }
+        catch (Exception exception)
+        {
+            dangeralert.Visible = true;
+        }
+      
+    }
+
+    protected void btnAra_Click(object sender, EventArgs e)
+    {
+        
+
     }
 }

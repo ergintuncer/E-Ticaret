@@ -19,7 +19,7 @@
                     <asp:TextBox ID="txtDavaTur" CssClass="TexBoxCss" MaxLength="50" runat="server"></asp:TextBox>
                 </div>
             </div>
-           
+
             <div class="line">
                 <div class="lineSolDiv">
                     <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" MaxLength="250" runat="server" TextMode="MultiLine"></asp:TextBox>
-                    
+
                 </div>
             </div>
             <div class="line">
@@ -43,11 +43,23 @@
             <div class="lineOrta">
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDavaTur" ErrorMessage="Dava Türü Giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDavaAciklama" ErrorMessage="Dava Türü Hakkında Açıklama Giriniz" SetFocusOnError="True" Display="None"></asp:RequiredFieldValidator>
-               <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="successalert" runat="server" Visible="False">
+                Kayıt Ekleme işlemi başarı ile tamalandı.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
+                Hay aksi. Bir hata oluştu.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="lineOrta">
                 <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
-            
+
             </div>
 
         </div>
@@ -60,10 +72,11 @@
                                 <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
-                                
+
                                 <asp:Label ID="Label2" runat="server" Text='<%#Eval("davaturad") %>'></asp:Label>
                             </div>
-                        </div><div class="line">
+                        </div>
+                        <div class="line">
                             <div class="lineSolDiv">
                                 <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
                             </div>
@@ -81,7 +94,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="line">
                             <div class="lineSolDiv">
                                 <asp:Label CssClass="label" runat="server">Tarih:</asp:Label>
@@ -98,5 +111,5 @@
             </asp:ListView>
         </div>
     </div>
-    
+
 </asp:Content>

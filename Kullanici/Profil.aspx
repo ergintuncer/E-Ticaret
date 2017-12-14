@@ -3,9 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:ScriptManager ID="MainScriptManager" runat="server"/>
+<asp:UpdatePanel ID="pnlHelloWorld" runat="server">
+<ContentTemplate>
 <div class="pageDisDiv">
-<div class="ustDiv"> 
-   
+<div class="ustDiv">
+
     <div class="line">
         <asp:Label ID="Label1" runat="server" Text="Adı:" Font-Bold="True"></asp:Label>
         <asp:Label ID="lblkuladi" runat="server"></asp:Label>
@@ -38,9 +41,20 @@
         <asp:Label ID="Label8" runat="server" Text="Web Adresi:" Font-Bold="True"></asp:Label>
         <asp:Label ID="lblkulWebAdresi" runat="server"></asp:Label>
     </div>
-    <div class="lineOrta">
-        <button runat="server" id="btnDuzenle" class="btn btn-outline-success" Text="Düzenle">Düzenle
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successalert" runat="server" Visible="False">
+        Kayıt Ekleme işlemi başarı ile tamalandı.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
         </button>
+    </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
+       Hay aksi. Bir hata oluştu.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="lineOrta">
+        <button runat="server" id="btnDuzenle" class="btn btn-outline-success" OnServerClick="btnDuzenle_Click" Text="Düzenle">Düzenle </button>
     </div>
 
 </div>
@@ -60,7 +74,7 @@
         <asp:Label ID="Label26" runat="server" Text="Soyadı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtSoyadi"  MaxLength="50" runat="server" AutoCompleteType="LastName"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtSoyadi" MaxLength="50" runat="server" AutoCompleteType="LastName"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -68,7 +82,7 @@
         <asp:Label ID="Label10" runat="server" Text="Tc Kimlik No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTck" MaxLength="11"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtTck" MaxLength="11" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -76,7 +90,7 @@
         <asp:Label ID="Label12" runat="server" Text="Firma: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtFirma" MaxLength="50"  runat="server" AutoCompleteType="Company"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtFirma" MaxLength="50" runat="server" AutoCompleteType="Company"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -84,7 +98,7 @@
         <asp:Label ID="Label13" runat="server" Text="Vergi No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiNo" MaxLength="10"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiNo" MaxLength="10" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -92,7 +106,7 @@
         <asp:Label ID="Label14" runat="server" Text="Vergi Daire: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiDaire" MaxLength="50"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVergiDaire" MaxLength="50" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -100,7 +114,7 @@
         <asp:Label ID="Label15" runat="server" Text="Anne Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAnneAdi"  MaxLength="20"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAnneAdi" MaxLength="20" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -108,7 +122,7 @@
         <asp:Label ID="Label16" runat="server" Text="Baba Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtBabaAdi" MaxLength="20"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtBabaAdi" MaxLength="20" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -116,7 +130,7 @@
         <asp:Label ID="Label11" runat="server" Text="Doğum Yeri: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumYeri" MaxLength="20"  runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumYeri" MaxLength="20" runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -132,7 +146,7 @@
         <asp:Label ID="Label18" runat="server" Text="Cinsiyet: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:DropDownList ID="drpCinsiyet" CssClass="drplist"  AutoPostBack="true" runat="server">
+        <asp:DropDownList ID="drpCinsiyet" CssClass="drplist" AutoPostBack="true" runat="server">
             <asp:ListItem Value="Erkek" Text="Erkek"></asp:ListItem>
             <asp:ListItem Value="Kadın" Text="Kadın"></asp:ListItem>
         </asp:DropDownList>
@@ -143,7 +157,7 @@
         <asp:Label ID="Label19" runat="server" Text="Din: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtDin" MaxLength="20"  runat="server"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtDin" MaxLength="20" runat="server"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -151,7 +165,7 @@
         <asp:Label ID="Label20" runat="server" Text="Medeni Hal: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:DropDownList ID="drpMedeniHal" CssClass="drplist"  AutoPostBack="true" runat="server">
+        <asp:DropDownList ID="drpMedeniHal" CssClass="drplist" AutoPostBack="true" runat="server">
             <asp:ListItem Value="Bekar" Text="Bekar"></asp:ListItem>
             <asp:ListItem Value="Evli" Text="Evli"></asp:ListItem>
         </asp:DropDownList>
@@ -162,7 +176,7 @@
         <asp:Label ID="Label21" runat="server" Text="Uyruk: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtUyruk"  MaxLength="20"  runat="server" AutoCompleteType="HomeCountryRegion"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtUyruk" MaxLength="20" runat="server" AutoCompleteType="HomeCountryRegion"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -170,7 +184,7 @@
         <asp:Label ID="Label22" runat="server" Text="Kan Grubu: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:DropDownList ID="drpKanGrubu" CssClass="drplist"  AutoPostBack="true" runat="server">
+        <asp:DropDownList ID="drpKanGrubu" CssClass="drplist" AutoPostBack="true" runat="server">
             <asp:ListItem Value="A Rh (+)" Text="A Rh (+)"></asp:ListItem>
             <asp:ListItem Value="A Rh (-)" Text="A Rh (-)"></asp:ListItem>
             <asp:ListItem Value="B Rh (+)" Text="B Rh (+)"></asp:ListItem>
@@ -179,7 +193,7 @@
             <asp:ListItem Value="AB Rh (-)" Text="AB Rh (-)"></asp:ListItem>
             <asp:ListItem Value="0 Rh (+)" Text="0 Rh (+)"></asp:ListItem>
             <asp:ListItem Value="0 Rh (-)" Text="0 Rh (-)"></asp:ListItem>
-            </asp:DropDownList>
+        </asp:DropDownList>
     </div>
 </div>
 <div class="line">
@@ -203,7 +217,7 @@
         <asp:Label ID="Label25" runat="server" Text="Mahalle: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMahalle"  MaxLength="50"  runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMahalle" MaxLength="50" runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -211,7 +225,7 @@
         <asp:Label ID="Label27" runat="server" Text="Cilt No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtCiltNo" MaxLength="15"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtCiltNo" MaxLength="15" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -219,7 +233,7 @@
         <asp:Label ID="Label28" runat="server" Text="Aile Sıra No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAileSiraNo" MaxLength="15"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAileSiraNo" MaxLength="15" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -227,7 +241,7 @@
         <asp:Label ID="Label29" runat="server" Text="Sira No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtSiraNo" MaxLength="15"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtSiraNo" MaxLength="15" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -235,7 +249,7 @@
         <asp:Label ID="Label30" runat="server" Text="Verildiği Yer: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerildigiYer" MaxLength="50"  runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerildigiYer" MaxLength="50" runat="server" AutoCompleteType="HomeCity"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -243,7 +257,7 @@
         <asp:Label ID="Label31" runat="server" Text="Veriliş Nedeni: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerilisNedeni" MaxLength="50"  runat="server" AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerilisNedeni" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -251,7 +265,7 @@
         <asp:Label ID="Label32" runat="server" Text="Kayıt No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtKayitNo" MaxLength="15"  runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtKayitNo" MaxLength="15" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -267,7 +281,7 @@
         <asp:Label ID="Label34" runat="server" Text="Veren Makam: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtVerenMakam"  MaxLength="50"  runat="server" AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtVerenMakam" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -283,7 +297,7 @@
         <asp:Label ID="Label36" runat="server" Text="Açıklama: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama"  MaxLength="250"  runat="server" TextMode="MultiLine"  AutoCompleteType="Notes"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama" MaxLength="250" runat="server" TextMode="MultiLine" AutoCompleteType="Notes"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -291,7 +305,7 @@
         <asp:Label ID="Label37" runat="server" Text="Adres Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtAdresAdi" MaxLength="50"  runat="server" AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtAdresAdi" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -299,7 +313,7 @@
         <asp:Label ID="Label38" runat="server" Text="Adres: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAdres" MaxLength="250"  runat="server" TextMode="MultiLine" AutoCompleteType="BusinessStreetAddress"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAdres" MaxLength="250" runat="server" TextMode="MultiLine" AutoCompleteType="BusinessStreetAddress"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -307,7 +321,7 @@
         <asp:Label ID="Label39" runat="server" Text="Telefon Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefonAdi"  MaxLength="50"  runat="server" AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtTelefonAdi" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -323,7 +337,7 @@
         <asp:Label ID="Label41" runat="server" Text="Mail Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMailAdi"  MaxLength="50" runat="server"  AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMailAdi" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -331,7 +345,7 @@
         <asp:Label ID="Label42" runat="server" Text="Mail Adresi: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtMailadresi"  MaxLength="100" runat="server" AutoCompleteType="Email"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtMailadresi" MaxLength="100" runat="server" AutoCompleteType="Email"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -339,7 +353,7 @@
         <asp:Label ID="Label43" runat="server" Text="Web Adresi Adı: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresiAdi"  MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresiAdi" MaxLength="50" runat="server" AutoCompleteType="Enabled"></asp:TextBox>
     </div>
 </div>
 <div class="line">
@@ -347,7 +361,7 @@
         <asp:Label ID="Label44" runat="server" Text="Web Adresi: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresi" MaxLength="250"  runat="server" AutoCompleteType="BusinessUrl"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtWebAdresi" MaxLength="250" runat="server" AutoCompleteType="BusinessUrl"></asp:TextBox>
     </div>
 </div>
 <div class="lineOrta">
@@ -365,11 +379,13 @@
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" CssClass="validationSummary"/>
 </div>
 <div class="lineOrta">
-    <button runat="server" id="btnKaydet" class="btn btn-warning" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet
+    <button runat="server" id="btnKaydet" class="btn btn-warning" OnServerClick="btnKaydet_Click" Text="Kaydet">
+        Kaydet
     </button>
 </div>
 </div>
 </asp:Panel>
 </div>
-
+</ContentTemplate>
+</asp:UpdatePanel>
 </asp:Content>

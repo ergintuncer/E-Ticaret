@@ -58,28 +58,40 @@ public partial class kayıt : System.Web.UI.Page
         try
         {
             if (adi.Value.Trim() != "" && soyadi.Value.Trim() != "" && firma.Value.Trim() != "" && tcno.Value.Trim() != "" &&
-                baro.SelectedValue.Trim() != "" && sicilno.Value.Trim() != "" && birliksicilno.Value.Trim() != "")
+                baro.SelectedValue.Trim() != "" && baro.SelectedIndex==0 && sicilno.Value.Trim() != "" && birliksicilno.Value.Trim() != "")
             {
-                tSQL = "INSERT INTO kisi_bilgi(kisiturid,ad,soyad,firma,tck) VALUES ('" + "0" + "','" + adi.Value.Trim() +
-                       "','" + soyadi.Value.Trim() + "','" + firma.Value.Trim() + "','" + tcno.Value.Trim() + "'); " +
-                      
-                       "INSERT INTO avukat_bilgi(kisiid,baroid,sicilno,birliksicilno) VALUES ((select max(kisiid) from kisi_bilgi), (select baroid from baro_bilgi where baroad='" +
-                       baro.SelectedValue.Trim() + "'),'" + sicilno.Value.Trim() + "','" + birliksicilno.Value.Trim() + "'); " +
-                      
-                       "INSERT INTO kisi_giris(kisiid,sifre,bloke) VALUES ((select max(kisiid) from kisi_bilgi),(select tck from kisi_bilgi where tck='" +
-                       tcno.Value.Trim() + "')::bytea,false);";
-
+                tSQL = "INSERT INTO kisi_bilgi(kisiturid,ad,soyad,firma,tck,tarihsaat)" +
+                       "VALUES('1','"+adi.Value.Trim()+"','"+soyadi.Value.Trim()+"','"+firma.Value.Trim()+"','"+tcno.Value.Trim()+"',CURRENT_TIMESTAMP);" +
+                       "INSERT INTO avukat_bilgi(kisiid, baroid, sicilno, birliksicilno, aciklama, aktif, tarihsaat)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),'"+baro.SelectedIndex+"','"+sicilno.Value.Trim()+"','"+birliksicilno.Value.Trim()+"','Açıklama girilmemiş',true,CURRENT_TIMESTAMP);" +
+                       "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),'1','0');" +
+                       "INSERT INTO kisi_kimlik(kisiid)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi));" +
+                       "INSERT INTO kisi_adres(kisiid)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi));" +
+                       "INSERT INTO kisi_telefon(kisiid)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi));" +
+                       "INSERT INTO kisi_mail(kisiid, mail, aciklama, tarihsaat)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),'"+email.Value.Trim()+"','Açıklama Yok',CURRENT_TIMESTAMP);" +
+                       "INSERT INTO kisi_web(kisiid)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi));" +
+                       "INSERT INTO kisi_giris(kisiid, bloke)" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),false);" +
+                       "UPDATE kisi_bilgi SET avukatid = (SELECT max(avukatid) FROM avukat_bilgi)" +
+                       "WHERE kisiid = (SELECT max(kisiid) FROM kisi_bilgi); ";
+                
                 PublicExecuteNonQuery();
                 Response.Redirect("login.aspx");
             }
             else
             {
-                Label1.Text = "Tüm alanları doldurmanız gerekli!!!";
+                //Label1.Text = "Tüm alanları doldurmanız gerekli!!!";
             }
         }
         catch
         {
-            //hata mesajı verilebilir...
+          
         }
     }
 }

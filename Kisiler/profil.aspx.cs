@@ -119,53 +119,310 @@ public partial class Kisiler_profil : System.Web.UI.Page
                 tDataReader = tCommand.ExecuteReader();
                 if (tDataReader.Read())
                 {
-                    lblkuladi.Text = (String) tDataReader["ad"];
-                    lblkulsoyadi.Text = (String) tDataReader["soyad"];
-                    lblkuldogumtarihi.Text = "" + tDataReader["dogumtarihi"];
-                    lblkulFirma.Text = (String) tDataReader["firma"];
-                    lblkulTcKimlikNo.Text = (String) tDataReader["tck"];
-                    lblkulTelNo.Text = (String) tDataReader["telefon"];
-                    lblkulMail.Text = (String) tDataReader["mail"];
-                    lblkulWebAdresi.Text = (String) tDataReader["web"];
-
-                    txtAdi.Text = (String) tDataReader["ad"];
-                    txtSoyadi.Text = (String) tDataReader["soyad"];
-
-                    txtTcNo.Value = (String) tDataReader["tck"];
-                    txtFirma.Text = (String) tDataReader["firma"];
-                    txtVergiNo.Text = (String) tDataReader["vergino"];
-                    txtVergiDaire.Text = (String) tDataReader["vergidaire"];
-                    txtAnneAdi.Text = (String) tDataReader["anneadi"];
-                    txtBabaAdi.Text = (String) tDataReader["babaadi"];
-                    txtDogumYeri.Text = (String) tDataReader["dogumyeri"];
-                    //txtDogumTarihi.Text = tDataReader["dogumtarih"].ToString();
-                    txtDin.Text = (String) tDataReader["din"];
-                    txtDogumTarihi.Text = "" + tDataReader["dogumtarih"];
-                    drpCinsiyet.SelectedValue = (String) tDataReader["cinsiyet"];
-                    drpMedeniHal.SelectedValue = (String) tDataReader["medenihal"];
-                    txtUyruk.Text = (String) tDataReader["uyruk"];
-                    drpKanGrubu.SelectedValue = (String) tDataReader["kangrubu"];
-                    drpIl.SelectedValue = (String) tDataReader["il"];
-                    drpIlce.SelectedValue = (String) tDataReader["ilce"];
-                    txtMahalle.Text = (String) tDataReader["mahkoy"];
-                    txtCiltNo.Text = (String) tDataReader["ciltno"];
-                    txtAileSiraNo.Text = (String) tDataReader["ailesirano"];
-                    txtSiraNo.Text = (String) tDataReader["sirano"];
-                    txtVerildigiYer.Text = (String) tDataReader["verildigiyer"];
-                    txtVerilisNedeni.Text = (String) tDataReader["verilisnedeni"];
-                    txtKayitNo.Text = (String) tDataReader["kayitno"];
-                    txtVerilisTarih.Text = "" + tDataReader["verilistarih"];
-                    txtVerenMakam.Text = (String) tDataReader["verenmakam"];
-                    txtGecerlilikTarih.Text = "" + tDataReader["gecerliliktarih"];
-                    txtAciklama.Text = (String) tDataReader["aciklama"];
-                    txtAdresAdi.Text = (String) tDataReader["adresad"];
-                    txtAdres.Text = (String) tDataReader["adres"];
-                    txtTelefonAdi.Text = (String) tDataReader["telefonad"];
-                    txtTelefon.Text = (String) tDataReader["telefon"];
-                    txtMailAdi.Text = (String) tDataReader["mailad"];
-                    txtMailadresi.Text = (String) tDataReader["mail"];
-                    txtWebAdresiAdi.Text = (String) tDataReader["webad"];
-                    txtWebAdresi.Text = (String) tDataReader["web"];
+                    if (tDataReader["ad"] != null)
+                    {
+                        lblkuladi.Text = (String)tDataReader["ad"];
+                        txtAdi.Text = (String)tDataReader["ad"];
+                    }
+                    else
+                    {
+                        lblkuladi.Text = "";
+                        txtAdi.Text = "";
+                    }
+                    if (tDataReader["soyad"] != null)
+                    {
+                        txtSoyadi.Text = (String)tDataReader["soyad"];
+                        lblkulsoyadi.Text = (String)tDataReader["soyad"];
+                    }
+                    else
+                    {
+                        lblkulsoyadi.Text = "";
+                        txtSoyadi.Text = "";
+                    }
+                    if (tDataReader["dogumtarihi"] != null)
+                    {
+                        txtDogumTarihi.Text = "" + tDataReader["dogumtarih"];
+                        lblkuldogumtarihi.Text = "" + tDataReader["dogumtarihi"];
+                    }
+                    else
+                    {
+                        txtDogumTarihi.Text = "";
+                        lblkuldogumtarihi.Text = "";
+                    }
+                    if (tDataReader["firma"] != null)
+                    {
+                        txtFirma.Text = (String)tDataReader["firma"];
+                        lblkulFirma.Text = (String)tDataReader["firma"];
+                    }
+                    else
+                    {
+                        txtFirma.Text = "";
+                        lblkulFirma.Text = "";
+                    }
+                    if (tDataReader["tck"] != null)
+                    {
+                        lblkulTcKimlikNo.Text = (String)tDataReader["tck"];
+                        txtTcNo.Value = (String)tDataReader["tck"];
+                    }
+                    else
+                    {
+                        txtTcNo.Value = "";
+                        lblkulTcKimlikNo.Text = "";
+                    }
+                    if (tDataReader["telefon"] != null)
+                    {
+                        txtTelefon.Text = (String)tDataReader["telefon"];
+                        lblkulTelNo.Text = (String)tDataReader["telefon"];
+                    }
+                    else
+                    {
+                        txtTelefon.Text = "";
+                        lblkulTelNo.Text = "";
+                    }
+                    if (tDataReader["mail"] != null)
+                    {
+                        lblkulMail.Text = (String)tDataReader["mail"];
+                        txtMailadresi.Text = (String)tDataReader["mail"];
+                    }
+                    else
+                    {
+                        lblkulMail.Text = "";
+                        txtMailadresi.Text = "";
+                    }
+                    if (tDataReader["web"] != null)
+                    {
+                        lblkulWebAdresi.Text = (String)tDataReader["web"];
+                        txtWebAdresi.Text = (String)tDataReader["web"];
+                    }
+                    else
+                    {
+                        lblkulWebAdresi.Text = "";
+                        txtWebAdresi.Text = "";
+                    }
+                    if (tDataReader["vergino"] != null)
+                    {
+                        txtVergiNo.Text = (String)tDataReader["vergino"];
+                    }
+                    else
+                    {
+                        txtVergiNo.Text = "";
+                    }
+                    if (tDataReader["vergidaire"] != null)
+                    {
+                        txtVergiDaire.Text = "" + tDataReader["vergidaire"];
+                    }
+                    else
+                    {
+                        txtVergiDaire.Text = "";
+                    }
+                    if (tDataReader["anneadi"] != null)
+                    {
+                        txtAnneAdi.Text = (String)tDataReader["anneadi"];
+                    }
+                    else
+                    {
+                        txtAnneAdi.Text = "";
+                    }
+                    if (tDataReader["babaadi"] != null)
+                    {
+                        txtBabaAdi.Text = "" + tDataReader["babaadi"];
+                    }
+                    else
+                    {
+                        txtBabaAdi.Text = "";
+                    }
+                    if (tDataReader["dogumyeri"] != null)
+                    {
+                        txtDogumYeri.Text = (String)tDataReader["dogumyeri"];
+                    }
+                    else
+                    {
+                        txtDogumYeri.Text = "";
+                    }
+                    if (tDataReader["din"] != null)
+                    {
+                        txtDin.Text = (String)tDataReader["din"];
+                    }
+                    else
+                    {
+                        txtDin.Text = "";
+                    }
+                    if (tDataReader["cinsiyet"] != null)
+                    {
+                        drpCinsiyet.SelectedValue = (String)tDataReader["cinsiyet"];
+                    }
+                    else
+                    {
+                        drpCinsiyet.SelectedIndex = 0;
+                    }
+                    if (tDataReader["medenihal"] != null)
+                    {
+                        drpMedeniHal.SelectedValue = (String)tDataReader["medenihal"];
+                    }
+                    else
+                    {
+                        drpMedeniHal.SelectedIndex = 0;
+                    }
+                    if (tDataReader["uyruk"] != null)
+                    {
+                        txtUyruk.Text = (String)tDataReader["uyruk"];
+                    }
+                    else
+                    {
+                        txtUyruk.Text = "";
+                    }
+                    if (tDataReader["kangrubu"] != null)
+                    {
+                        drpKanGrubu.SelectedValue = (String)tDataReader["kangrubu"];
+                    }
+                    else
+                    {
+                        drpKanGrubu.SelectedIndex = 0;
+                    }
+                    if (tDataReader["il"] != null)
+                    {
+                        drpIl.SelectedValue = (String)tDataReader["il"];
+                    }
+                    else
+                    {
+                        drpIl.SelectedIndex = 0;
+                    }
+                    if (tDataReader["ilce"] != null)
+                    {
+                        drpIlce.SelectedValue = (String)tDataReader["ilce"];
+                    }
+                    else
+                    {
+                        drpIlce.SelectedIndex = 0;
+                    }
+                    if (tDataReader["mahkoy"] != null)
+                    {
+                        txtMahalle.Text = (String)tDataReader["mahkoy"];
+                    }
+                    else
+                    {
+                        txtMahalle.Text = "";
+                    }
+                    if (tDataReader["ciltno"] != null)
+                    {
+                        txtCiltNo.Text = (String)tDataReader["ciltno"];
+                    }
+                    else
+                    {
+                        txtCiltNo.Text = "";
+                    }
+                    if (tDataReader["ailesirano"] != null)
+                    {
+                        txtAileSiraNo.Text = (String)tDataReader["ailesirano"];
+                    }
+                    else
+                    {
+                        txtAileSiraNo.Text = "";
+                    }
+                    if (tDataReader["sirano"] != null)
+                    {
+                        txtSiraNo.Text = (String)tDataReader["sirano"];
+                    }
+                    else
+                    {
+                        txtSiraNo.Text = "";
+                    }
+                    if (tDataReader["verildigiyer"] != null)
+                    {
+                        txtVerildigiYer.Text = (String)tDataReader["verildigiyer"];
+                    }
+                    else
+                    {
+                        txtVerildigiYer.Text = "";
+                    }
+                    if (tDataReader["verilisnedeni"] != null)
+                    {
+                        txtVerilisNedeni.Text = (String)tDataReader["verilisnedeni"];
+                    }
+                    else
+                    {
+                        txtVerilisNedeni.Text = "";
+                    }
+                    if (tDataReader["kayitno"] != null)
+                    {
+                        txtKayitNo.Text = (String)tDataReader["kayitno"];
+                    }
+                    else
+                    {
+                        txtKayitNo.Text = "";
+                    }
+                    if (tDataReader["verilistarih"] != null)
+                    {
+                        txtVerilisTarih.Text = "" + tDataReader["verilistarih"];
+                    }
+                    else
+                    {
+                        txtVerilisTarih.Text = "";
+                    }
+                    if (tDataReader["verenmakam"] != null)
+                    {
+                        txtVerenMakam.Text = (String)tDataReader["verenmakam"];
+                    }
+                    else
+                    {
+                        txtVerenMakam.Text = "";
+                    }
+                    if (tDataReader["gecerliliktarih"] != null)
+                    {
+                        txtGecerlilikTarih.Text = "" + tDataReader["gecerliliktarih"];
+                    }
+                    else
+                    {
+                        txtGecerlilikTarih.Text = "";
+                    }
+                    if (tDataReader["aciklama"] != null)
+                    {
+                        txtAciklama.Text = (String)tDataReader["aciklama"];
+                    }
+                    else
+                    {
+                        txtAciklama.Text = "";
+                    }
+                    if (tDataReader["adresad"] != null)
+                    {
+                        txtAdresAdi.Text = (String)tDataReader["adresad"];
+                    }
+                    else
+                    {
+                        txtAdresAdi.Text = "";
+                    }
+                    if (tDataReader["adres"] != null)
+                    {
+                        txtAdres.Text = (String)tDataReader["adres"];
+                    }
+                    else
+                    {
+                        txtAdres.Text = "";
+                    }
+                    if (tDataReader["telefonad"] != null)
+                    {
+                        txtTelefonAdi.Text = (String)tDataReader["telefonad"];
+                    }
+                    else
+                    {
+                        txtTelefonAdi.Text = "";
+                    }
+                    if (tDataReader["mailad"] != null)
+                    {
+                        txtMailAdi.Text = (String)tDataReader["mailad"];
+                    }
+                    else
+                    {
+                        txtMailAdi.Text = "";
+                    }
+                    if (tDataReader["webad"] != null)
+                    {
+                        txtWebAdresiAdi.Text = (String)tDataReader["webad"];
+                    }
+                    else
+                    {
+                        txtWebAdresiAdi.Text = "";
+                    }
                 }
                 tCon.Close();
             }

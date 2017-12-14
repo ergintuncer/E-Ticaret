@@ -1,6 +1,4 @@
-﻿@charset "utf-8";
-
-body {
+﻿body {
     font-family: Calibri Light;
     margin: 0;
     text-align: center;
@@ -19,105 +17,18 @@ img {
     transform: translateX(-50%) translateY(-50%);
     background-size: cover;
 }
-
-.kayitdivi {
-    position: absolute;
+.ortaDiv {
+    position: fixed;
+    float: left;
     top: 20%;
-    bottom: 20%;
-    left: 35%;
-    right: 35%;
-    width: 60%;
-    height: 70%;
-    transition: 1s;
-    text-align: center;
-    
-    /*margin: 5%;
-    margin-left: 35%;*/
-     filter: opacity(80%);/*Arkaplan Görünürlüğünü düşürdük*/
-}
-
-.kayittablo {
+    right: 35%; 
+    left: 35%; 
     padding: 3%;
-    width: 50%;
+    width: 30%;
+
+    text-align: center;
+    filter: opacity(80%);
+   
     background-color: white;
     border-radius: 10px;
-   
 }
-
-.tg-midle {
-    text-align: center;
-    font-size: 200%;
-    border-bottom: thin silver solid;
-    width: auto;
-    height: 100%;
-    padding-bottom: 5%;   
-}
-
-.tg-right {
-    text-align: center;
-    width: 50%;
-    height: 100%;
-}
-
-.tg-left {
-    text-align: left;
-    width: 40%;
-    height: 100%;   
-}
-.label {
-    color: gray;
-}
-.hataMesajı {
-    color: red;
-}
-input {
-    background-color: #ffffff;
-    padding: 5%;
-    width: 90%;
-    float: left;
-    text-align: left;
-    border-radius: 50px;
-    border: thin silver solid;
-}
-input:not([type=submit]):focus { /*Buton hariç diğerleri tıklanınca çalışır*/
-    background-color: yellow;
-    outline:none;
-}
-#tarih {
-    color: gray;
-}
-
-.drplist {
-    background-color: #ffffff;
-    padding: 5%;
-    width: 100%;
-    float: left;
-    color: gray;
-    text-align: left;
-    border-radius: 50px;
-    border: thin silver solid;
-    
-}
-.drplist:focus {
-    outline:none;
-}
-
-.button {
-    width: 100%;
-    margin-left: 1%;
-    text-align: center;
-    background-color: #e74c3c;
-    color: white;
-    border-style: none;
-    transition: 0.5s;
-}
-
-
-
-.button:hover {
-    background-color: #c0392b;
-    color: white;
-    transition: 0.5s;
-     outline:none;
-}
-
