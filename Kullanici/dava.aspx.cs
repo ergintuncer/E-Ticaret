@@ -42,7 +42,26 @@ public partial class Kullanici_dava : System.Web.UI.Page
             dangeralert.Visible = true;
         }
     }
-
+    // Select sorugular için İteger
+    public int PublicExecuteScalarInteger()
+    {
+        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
+        int tInteger = 0;
+        if (tCon.State == System.Data.ConnectionState.Open)
+        {
+            tCon.Close();
+        }
+        tCon.Open();
+        tCommand.CommandType = System.Data.CommandType.Text;
+        tCommand.CommandTimeout = 60000;
+        tCommand.CommandText = tSQL;
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
+        tCon.Close();
+        return tInteger;
+    }
     static int[] tKisiId = new int[1000];
     static int i = 0;
     static int[] tMahkemeId = new int[1000];
@@ -198,5 +217,23 @@ public partial class Kullanici_dava : System.Web.UI.Page
     {
         
 
+    }
+
+    protected void txtDavaNo_OnTextChanged(object sender, EventArgs e)
+    {
+        tSQL = "SELECT count(*) from dava_bilgi WHERE davano='" + txtDavaNo.Text.Trim() + "'";
+
+        if (PublicExecuteScalarInteger() > (Int32)0) //Öle bi dava var ise
+        {
+            lblOnTextChanged.Visible = true;
+            lblOnTextChanged.Text = "Bu Dava Numarası Sistemde Mevcut.";
+            btnKaydet.Visible = false;
+        }
+        else
+        {
+            lblOnTextChanged.Visible = false;
+            lblOnTextChanged.Text = "";
+            btnKaydet.Visible = true;
+        }
     }
 }

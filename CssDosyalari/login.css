@@ -29,55 +29,15 @@ img {
     left: 37.5%;
     right: 37.5%;
     width: 25%;
-    height: 50%;
-    transition: 0.5s;
+    height: auto;
     text-align: center;
-    filter: opacity(80%); /*Arkaplan Görünürlüğünü düşürdük*/
-}
-
-
-.giristablo {
-    width: 100%;
-    height: 100%;
     background-color: white;
     border-radius: 10px;
+    filter: opacity(80%);
 }
 
-.tg-midle {
-    text-align: center;
-    font-size: 200%;
-    border-bottom: thin silver solid;
-    width: 100%;
-    height: 30%;
-    padding-bottom: 1%;
-}
 
-.hataMesajı { color: red; }
-
-.tg-right {
-    text-align: center;
-    width: 81%;
-    height: 17%;
-    vertical-align: middle;
-    padding-right: 5%;
-    
-}
-
-.tg-left {
-    text-align: left;
-    width: 19%;
-    vertical-align: middle;
-    padding-left: 5%;
-}
-.tg-rightt {
-    text-align: center;
-    width: 81%;
-    height: 5%;
-    vertical-align: middle;
-    padding-bottom: 5%;
-    padding-right: 14%;
-}
-    .sifremiunuttum {
+.sifremiunuttum {
     color: #2196f3;
     border-style: none;
     background-color: inherit;

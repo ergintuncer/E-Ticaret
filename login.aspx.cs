@@ -104,56 +104,50 @@ public partial class login : System.Web.UI.Page
 
     protected void giris_Click(object sender, EventArgs e)
     {
-        tSQL =
-            "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
-            kullaniciadi.Text + "'";
-        if (PublicExecuteScalarBoolean())//Bloke edilmemişse
+        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + txtTcNo.Value.Trim() + "' and tck='" +
+               txtSifre.Value.Trim() + "'";
+        if (PublicExecuteScalarInteger() > 0) //Öle bi kullanici var ise
         {
-            tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + kullaniciadi.Text + "' and tck='" + sifre.Text +
-                   "'";
-            if (PublicExecuteScalarInteger() > 0)//Öle bi kullanici var ise
+            tSQL =
+                "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
+                txtTcNo.Value.Trim() + "';";
+            if (PublicExecuteScalarBoolean()) //Bloke edilmemişse
             {
-                Session.Add("kullanici", kullaniciadi.Text);
-
-
-                   
-
-                tSQL = "SELECT kisiturid from kisi_bilgi WHERE tck = '" + kullaniciadi.Text + "';";
+                Session.Add("kullanici", txtTcNo.Value.Trim());
+                tSQL = "SELECT kisiturid from kisi_bilgi WHERE tck = '" + txtTcNo.Value.Trim() + "';";
                 tCon.Open();
                 tCommand.Connection = tCon;
                 tCommand.CommandText = tSQL;
                 tDataReader = tCommand.ExecuteReader();
                 while (tDataReader.Read())
                 {
-                    if (Convert.ToUInt64(tDataReader["kisiturid"])==0)//Admin demek
+                    if (Convert.ToUInt64(tDataReader["kisiturid"]) == 0) //Admin demek
                     {
                         tCon.Close();
                         Response.Redirect("/Admin/kisiler.aspx");
-
-                    }else if (Convert.ToUInt64(tDataReader["kisiturid"]) == 1)//Avukat demek
+                    }
+                    else if (Convert.ToUInt64(tDataReader["kisiturid"]) == 1) //Avukat demek
                     {
                         tCon.Close();
                         Response.Redirect("Kullanici/profil.aspx");
                     }
-                    else//Normal kullanici demek
+                    else //Normal kullanici demek
                     {
                         tCon.Close();
                         Response.Redirect("Kisiler/profil.aspx");
                     }
-
-
                 }
             }
             else
             {
-                lbl1.Text = "Kullanıcı Adınız ve/veya Şifreniz Yanlış Girişmiştir. Lütfen Kontrol Ediniz";
+                lblHata.Text = "Şuan Bloke Edilmişsiniz";
+                dangeralert.Visible = true;
             }
         }
         else
         {
-            lbl1.Visible = true;
-
-            lbl1.Text = "Şuan Bloke Edilmişsiniz";
+            lblHata.Text = "Kullanıcı Adınız ve/veya Şifreniz Yanlış Girilşmiştir. <br/>Lütfen Kontrol Ediniz";
+            dangeralert.Visible = true;
         }
     }
 

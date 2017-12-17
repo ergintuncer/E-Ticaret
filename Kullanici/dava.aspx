@@ -4,7 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="pageDisDiv">
-<div class="ustDiv">
+<div class="ustDiv"> <asp:ScriptManager ID="MainScriptManager" runat="server"/>
+            <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
+                <ContentTemplate>
     <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
         <asp:Label CssClass="label" runat="server" Text="Yeni Dava" Font-Size="200%">Yeni Dava Oluştur</asp:Label>
     </div>
@@ -22,11 +24,12 @@
             <asp:Label CssClass="label" runat="server">Dava No:</asp:Label>
         </div>
         <div class="lineSagDiv">
-            <asp:TextBox ID="txtDavaNo" CssClass="TexBoxCss" runat="server" MaxLength="50"></asp:TextBox>
+           
+                    <asp:TextBox ID="txtDavaNo" CssClass="TexBoxCss" MaxLength="50" OnTextChanged="txtDavaNo_OnTextChanged" AutoPostBack="True" runat="server"></asp:TextBox>
+                    <br/> <asp:Label ID="lblOnTextChanged" runat="server" Visible="False" ForeColor="#F50057"></asp:Label>
+               
         </div>
     </div>
-
-
     <div class="line">
         <div class="lineSolDiv">
             <asp:Label CssClass="label" runat="server">Mahkeme:</asp:Label>
@@ -126,10 +129,9 @@
         </button>
     </div>
     <div class="lineOrta">
-        <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
-
-    </div>
-
+        <asp:Button ID="btnKaydet" CssClass="btn btn-outline-success" runat="server" Text="Kaydet" OnClick="btnKaydet_Click"/>
+    </div> </ContentTemplate>
+            </asp:UpdatePanel>
 </div>
 <div class="altDiv">
     <div class="line" style="position: sticky; background-color: white; padding-left: 30%; border-bottom: solid silver thin; padding-bottom: 0.5%;" data-spy="affix">

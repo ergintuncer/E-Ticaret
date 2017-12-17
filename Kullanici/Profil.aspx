@@ -48,7 +48,7 @@
         </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
-       Hay aksi. Bir hata oluştu.
+        Hay aksi. Bir hata oluştu.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -82,7 +82,9 @@
         <asp:Label ID="Label10" runat="server" Text="Tc Kimlik No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtTck" MaxLength="11" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox ID="txtTck" CssClass="TexBoxCss" TextMode="Number" MaxLength="11" OnTextChanged="tcNo_OnTextChanged" AutoCompleteType="Disabled" AutoPostBack="True" runat="server"></asp:TextBox>
+        <br/> 
+        <asp:Label ID="lblOnTextChanged" runat="server" Visible="False" ForeColor="#F50057"></asp:Label>
     </div>
 </div>
 <div class="line">

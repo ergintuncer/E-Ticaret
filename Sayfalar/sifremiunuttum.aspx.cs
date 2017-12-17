@@ -9,10 +9,9 @@ using System.Data.OleDb;
 using System.Net;
 using System.Net.Mail;
 using Npgsql;
+
 public partial class Sayfalar_sifremiunuttum : System.Web.UI.Page
-{ 
-
-
+{
     NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager
         .ConnectionStrings["NpgsqlConnectionStrings"].ConnectionString);
 
@@ -39,201 +38,77 @@ public partial class Sayfalar_sifremiunuttum : System.Web.UI.Page
         tCommand.ExecuteNonQuery();
         tCon.Close();
     }
-    // -----------------------------------------------------------------------------------------------------------
 
 
-    // Select sorugular için İteger
-    public int PublicExecuteScalarInteger()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        int tInteger = 0;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        if (tCommand.ExecuteScalar() != DBNull.Value)
-        {
-            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
-        }
-
-        tCon.Close();
-        return tInteger;
-    }
-    // -----------------------------------------------------------------------------------------------------------
-
-
-    // Select sorugular için Double
-    public double PublicExecuteScalarDouble()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int double;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
-        tCon.Close();
-        return Convert.ToDouble(tCommand.ExecuteScalar());
-    }
-    // -----------------------------------------------------------------------------------------------------------
-
-    // Select sorugular için String
-    public string PublicExecuteScalarString()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int string;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
-        tCon.Close();
-        return Convert.ToString(tCommand.ExecuteScalar());
-    }
-    // -----------------------------------------------------------------------------------------------------------
-
-    // Select sorugular için Boolean
-    public Boolean PublicExecuteScalarBoolean()
-    {
-        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        bool Bool = false;
-
-        if (tCon.State == System.Data.ConnectionState.Open)
-        {
-            tCon.Close();
-        }
-
-        tCon.Open();
-        tCommand.CommandType = System.Data.CommandType.Text;
-        tCommand.CommandTimeout = 60000;
-        tCommand.CommandText = tSQL;
-
-
-        if (tCommand.ExecuteScalar() != DBNull.Value)
-        {
-            Bool = Convert.ToBoolean(tCommand.ExecuteScalar());
-        }
-
-        tCon.Close();
-        return Bool;
-        //return tCommand.ExecuteScalar();
-    }
-    // -----------------------------------------------------------------------------------------------------------
-
-
-    private static int tSayilarToplami;
+    string kulemail;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-        }
+        //kulemail = "";
+        //txtTcNo.Value = "";
     }
 
-
-    //protected void giris_Click(object sender, EventArgs e)
-    //{
-    //    tSQL =
-    //        "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
-    //        kullaniciadi.Text + "'";
-    //    if (PublicExecuteScalarBoolean())
-    //    {
-    //        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + kullaniciadi.Text + "' and tck='" + sifre.Text +
-    //               "'";
-    //        if (PublicExecuteScalarInteger() > 0)
-    //        {
-    //            Session.Add("kullanici", kullaniciadi.Text);
-    //            Response.Redirect("admin.aspx");
-    //        }
-    //        else
-    //        {
-    //            lbl1.Text = "Kullanıcı Adınız ve/veya Şifreniz Yanlış Girişmiştir. Lütfen Kontrol Ediniz";
-    //        }
-    //    }
-    //    else
-    //    {
-    //        lbl1.Visible = true;
-
-    //        lbl1.Text = "Şuan Bloke Edilmişsiniz";
-    //    }
-    //}
-
-    protected void sifreyiSifirlaClick(object sender, EventArgs e)
+    private void MailGonder(string emailAdres)
     {
-
-
-        //Veritabanı bağlantısı başarılı ise(email)mevcut ise
-        if (true)
+        if (kulemail.Length > 1)
         {
-            MailMessage o = new MailMessage("ergin.tuncer@hotmail.com", "To", "Subject", "Body");
-            NetworkCredential netCred = new NetworkCredential("Sender Email", "Sender Password");
-            SmtpClient smtpobj = new SmtpClient("smtp.live.com", 587);
-            smtpobj.EnableSsl = true;
-            smtpobj.Credentials = netCred;
-            smtpobj.Send(o);
-
-
-
-            MailMessage mesaj = new MailMessage();
-            mesaj.To.Add(new MailAddress(txtemail.Text));
-            mesaj.From = new MailAddress(txtemail.Text, "tuncer_ergn@hotmail.com");
-            //mesaj.Body = "E-mail =" + dr["EMail"].ToString() + "\n" + "Kullanıcı Adı:" + dr["KullaniciAdi"].ToString() + "\n" + "Şifre:" + dr["Sifre"].ToString() + "\n";
-            mesaj.Body = "E-mail = Sıfırlama Talebi";
-            SmtpClient client = new SmtpClient();
-            client.Host = "smtp.gmail.com";
-            client.Port = 587;
-            client.Credentials = new NetworkCredential("tuncer_ergn@hotmail.com", "Tuncer.07");
-            client.EnableSsl = true;
             try
             {
-                client.Send(mesaj);
-                lbl1.Visible = true;
-              lbl1.Text="Şifreniz E-Mail adresinize gönderilmiştir. Teşekkür ederiz !";
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                smtpClient.Credentials = new System.Net.NetworkCredential("avukatbook@gmail.com", "Avuakt.Book.0107");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.EnableSsl = true;
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("avukatbook@gmail.com");
+                mail.To.Add(new MailAddress(emailAdres));
+                mail.Subject = "AvukatBook Şifre Sıfırlama İsteği";
+                mail.Body = "Merhaba Şifreniz " + txtTcNo.Value + " Olarak değiştirilmiştir";
+                smtpClient.Send(mail);
+                txtTcNo.Value = "";
+                kulemail = "";
+                successalert.Visible = true;
             }
-            catch
+            catch (Exception ex)
             {
-                lbl1.Visible = true;
-                lbl1.Text = "Mesaj Gönderilirken bir hata oluştu";
-               }
-
+                lblHata.Text = "Mail Gönderilemedi...";
+                dangeralert.Visible = true;
+            }
         }
         else
         {
+            lblHata.Text = "Kullanıcı Bulunamadı...";
+            dangeralert.Visible = true;
         }
-        //Response.Redirect("/login.aspx");
+    }
+
+    protected void SifreyiSifirla_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            tSQL =
+                "SELECT DISTINCT(TRIM(mail)) as mail FROM kisi_mail INNER JOIN kisi_bilgi ON kisi_mail.kisiid=kisi_bilgi.kisiid WHERE tck='" +
+                txtTcNo.Value.Trim() + "';";
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            tDataReader = tCommand.ExecuteReader();
+            while (tDataReader.Read())
+            {
+                kulemail = (String) tDataReader["mail"];
+            }
+            tCon.Close();
+            MailGonder(kulemail);
+        }
+        catch (Exception exception)
+        {
+            lblHata.Text = "Bağlantı hatası...";
+            dangeralert.Visible = true;
+        }
+    }
+
+    protected void GirisYap_Click(object sender, EventArgs e)
+    {
+        
+        Response.Redirect("~/login.aspx");
     }
 }

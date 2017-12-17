@@ -41,7 +41,26 @@ public partial class Kullanici_Profil : System.Web.UI.Page
 
         tCon.Close();
     }
-
+    // Select sorugular için İteger
+    public int PublicExecuteScalarInteger()
+    {
+        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
+        int tInteger = 0;
+        if (tCon.State == System.Data.ConnectionState.Open)
+        {
+            tCon.Close();
+        }
+        tCon.Open();
+        tCommand.CommandType = System.Data.CommandType.Text;
+        tCommand.CommandTimeout = 60000;
+        tCommand.CommandText = tSQL;
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
+        tCon.Close();
+        return tInteger;
+    }
     private String kullaniciTcNo;
 
     protected void Page_Load(object sender, EventArgs e)
@@ -437,7 +456,25 @@ public partial class Kullanici_Profil : System.Web.UI.Page
         {
         }
     }
+    protected void tcNo_OnTextChanged(object sender, EventArgs e)
+    {
+        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + txtTck.Text.Trim() + "'";
 
+        if (PublicExecuteScalarInteger() > (Int32)0) //Öle bi tc var ise
+        {
+            lblOnTextChanged.Visible = true;
+            lblOnTextChanged.Text = "Tc Kimlik Numarası Sistemde Mevcut.";
+            btnKaydet.Visible = false;
+            pnlProfil.Visible = true;
+        }
+        else
+        {
+            lblOnTextChanged.Visible = false;
+            lblOnTextChanged.Text = "";
+            btnKaydet.Visible = true;
+            pnlProfil.Visible = true;
+        }
+    }
     protected void btnDuzenle_Click(object sender, EventArgs e)
     {
         pnlProfil.Visible = true;
@@ -502,6 +539,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
             dangeralert.Visible = true;
         }
     }
+
 
     protected void drpIl_OnTextChanged(object sender, EventArgs e)
     {

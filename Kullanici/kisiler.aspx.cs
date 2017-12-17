@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Npgsql;
+
 public partial class Kullanici_kisiler : System.Web.UI.Page
 {
     NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager
@@ -33,13 +34,35 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
 
         tCommand.ExecuteNonQuery();
         try
-        { }
+        {
+        }
         catch (Exception e)
         {
 
         }
 
         tCon.Close();
+    }
+
+    // Select sorugular için İteger
+    public int PublicExecuteScalarInteger()
+    {
+        NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
+        int tInteger = 0;
+        if (tCon.State == System.Data.ConnectionState.Open)
+        {
+            tCon.Close();
+        }
+        tCon.Open();
+        tCommand.CommandType = System.Data.CommandType.Text;
+        tCommand.CommandTimeout = 60000;
+        tCommand.CommandText = tSQL;
+       if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
+        tCon.Close();
+        return tInteger;
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -68,7 +91,7 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             }
             tCon.Close();
         }
-        if (Page.Buffer && drpIl.SelectedValue!=null)
+        if (Page.Buffer && drpIl.SelectedValue != null)
         {
             drpIlce.Items.Clear();
             tSQL = " SELECT ilcead as Ilce FROM ilce_bilgi WHERE ilid =" +
@@ -83,13 +106,13 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             }
             tCon.Close();
         }
-    
+
         verileriGoster();
     }
 
     private void verileriGoster()
     {
-            //Kişilerin Gösterilmesi
+        //Kişilerin Gösterilmesi
         tSQL =
             "SELECT ad,soyad,tck, kisiturad,il,ilce,telefonad,telefon,mail,kisibakiye,kisi_adres.adresad,kisi_adres.adres " +
             "FROM kisi_bilgi " +
@@ -99,7 +122,7 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             "INNER JOIN kisi_telefon ON kisi_bilgi.kisiid = kisi_telefon.kisiid " +
             "INNER JOIN kisi_mail ON kisi_bilgi.kisiid = kisi_mail.kisiid " +
             "INNER JOIN kisi_tur ON kisi_bilgi.kisiturid = kisi_tur.kisiturid " +
-            "WHERE avukatid = (Select avukatid from kisi_bilgi WHERE tck = '"+Session["kullanici"]+"')";
+            "WHERE avukatid = (Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -112,37 +135,69 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
 
     protected void drpIl_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+
 
     }
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
         try
-        {  tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('"+txtAdi.Text+ "','"+txtSoyadi.Text+ "','"+txtTcNo.Value+ "','"+drpKisiTuru.SelectedIndex+ "',(Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] +"')); " +
-               "INSERT INTO kisi_kimlik(kisiid, il, ilce, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+drpIl.SelectedValue+"', '"+drpIlce.SelectedValue+"', CURRENT_TIMESTAMP); " +
-               "INSERT INTO kisi_adres(kisiid, adresad, adres, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtAdresAdi.Text+"', '"+txtAdres.Text+"', CURRENT_TIMESTAMP); " +
-               "INSERT INTO kisi_telefon(kisiid, telefonad, telefon, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtTelefonAdi.Text+"', '"+txtTelefonNo.Text+"', CURRENT_TIMESTAMP); " +
-               "INSERT INTO kisi_mail(kisiid, mail, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '"+txtMail.Text+"', CURRENT_TIMESTAMP); " +
-               "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')), '1', '"+txtBakiye.Text.Trim()+"');" +
-               "INSERT INTO kisi_web(kisiid) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')));";
-        tSQL +=" INSERT INTO kisi_giris(kisiid,bloke) VALUES ((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')),true);";
-        PublicExecuteNonQuery();
+        {
+            tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('" + txtAdi.Text + "','" +
+                   txtSoyadi.Text + "','" + txtTcNo.Text.Trim() + "','" + drpKisiTuru.SelectedIndex +
+                   "',(Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')); " +
+                   "INSERT INTO kisi_kimlik(kisiid, il, ilce, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')), '" + drpIl.SelectedValue + "', '" + drpIlce.SelectedValue +
+                   "', CURRENT_TIMESTAMP); " +
+                   "INSERT INTO kisi_adres(kisiid, adresad, adres, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')), '" + txtAdresAdi.Text + "', '" + txtAdres.Text +
+                   "', CURRENT_TIMESTAMP); " +
+                   "INSERT INTO kisi_telefon(kisiid, telefonad, telefon, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')), '" + txtTelefonAdi.Text + "', '" + txtTelefonNo.Text +
+                   "', CURRENT_TIMESTAMP); " +
+                   "INSERT INTO kisi_mail(kisiid, mail, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')), '" + txtMail.Text + "', CURRENT_TIMESTAMP); " +
+                   "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')), '1', '" + txtBakiye.Text.Trim() + "');" +
+                   "INSERT INTO kisi_web(kisiid) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                   Session["kullanici"] + "')));";
+            tSQL +=
+                " INSERT INTO kisi_giris(kisiid,bloke) VALUES ((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                Session["kullanici"] + "')),true);";
+            PublicExecuteNonQuery();
 
-        successalert.Visible = true;
-        verileriGoster();
+            successalert.Visible = true;
+            verileriGoster();
 
         }
         catch (Exception exception)
         {
             dangeralert.Visible = true;
         }
-      
+
     }
 
     protected void btnAra_Click(object sender, EventArgs e)
     {
-        
 
+
+    }
+
+    protected void tcNo_OnTextChanged(object sender, EventArgs e)
+    {
+        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + txtTcNo.Text.Trim() + "'";
+        
+        if (PublicExecuteScalarInteger() > (Int32)0) //Öle bi tc var ise
+        {
+            lblOnTextChanged.Visible = true;
+            lblOnTextChanged.Text = "Tc Kimlik Numarası Sistemde Mevcut.";
+            btnKaydet.Visible = false;
+        }
+        else
+        {
+            lblOnTextChanged.Visible = false;
+            lblOnTextChanged.Text = "";
+            btnKaydet.Visible = true;
+        }
     }
 }
