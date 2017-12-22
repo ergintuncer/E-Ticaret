@@ -170,8 +170,8 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
             //aktif();
 
         }
-
-        if (drpIslemTuru.SelectedIndex==0)
+        //drpIslemTuru.SelectedIndex = 1;
+        if (drpIslemTuru.SelectedIndex == 0)
         {
             tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
             tCon.Open();
@@ -216,11 +216,43 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
         tCon.Close();
 
 
+
     }
 
     protected void drpIslemTuru_SelectedIndexChanged(object sender, EventArgs e)
     {
-        
+        drpAlici.Items.Clear();
+        if (drpIslemTuru.SelectedIndex == 0)
+        {
+            tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            tDataReader = tCommand.ExecuteReader();
+            while (tDataReader.Read())
+            {
+                drpAlici.Items.Add("" + tDataReader["adsoyad"]);
+                tKisiID[i] = Convert.ToInt16(tDataReader["kisiid"]);
+                i++;
+            }
+            tCon.Close();
+
+        }
+        else if (drpIslemTuru.SelectedIndex == 1)
+        {
+            tSQL = "SELECT bankahesapad,bankahesapid FROM banka_hesap  where banka_hesap.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            tDataReader = tCommand.ExecuteReader();
+            while (tDataReader.Read())
+            {
+                drpAlici.Items.Add("" + tDataReader["bankahesapad"]);
+                tBankaHesapID[j] = Convert.ToInt16(tDataReader["bankahesapid"]);
+                j++;
+            }
+            tCon.Close();
+        }
 
     }
 
