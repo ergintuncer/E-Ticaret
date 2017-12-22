@@ -71,6 +71,14 @@
                                 <asp:Label ID="birlikSicilNumarası" CssClass="kisiBilgi" runat="server" Text='<%#Eval("birliksicilno") %>'></asp:Label>
                             </div>
                         </div>
+                         <%--<div class="line">
+                            <div class="lineSolDiv">
+                                <asp:Label CssClass="label" runat="server" Font-Bold="True">Aktif:</asp:Label>
+                            </div>
+                            <div class="lineSagDiv">
+                                <asp:Label ID="Label1" CssClass="kisiBilgi" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
+                            </div>
+                        </div>--%>
                         <div class="lineOrtaSol">
                             <a href="kisiler.aspx?islem=bloke&kisiid=<%#Eval("kisiid") %>"><img src="/image/cancel.png"/></a>
                         </div>

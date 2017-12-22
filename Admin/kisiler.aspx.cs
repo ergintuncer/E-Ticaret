@@ -193,7 +193,23 @@ public partial class Admin_kisiler : System.Web.UI.Page
 
     protected void btnAra_Click(object sender, EventArgs e)
     {
-        
+        arama();
 
     }
-}
+
+    void arama()
+    {
+
+        tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid where kisi_bilgi.ad like '%" + txtAra.Value + "%' or kisi_bilgi.soyad like '%"+ txtAra.Value + "%'";
+        tCon.Open();
+        tCommand.Connection = tCon;
+        tCommand.CommandText = tSQL;
+        tDataReader = tCommand.ExecuteReader();
+        list2.DataSource = tDataReader;
+        list2.DataBind();
+        tCon.Close();
+
+    }
+
+
+    }
