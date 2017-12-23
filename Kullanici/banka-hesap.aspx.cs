@@ -159,7 +159,7 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         listView_yukle();
-
+        bloke();
         if (!Page.IsPostBack)
         {
 
@@ -232,35 +232,37 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
                         {
                             tSQL = "INSERT INTO banka_hesap(avukatid,bankaid,bankahesapturid,bakiyeturid,bankahesapad,bankahesapno,bankahesapiban,hesapbakiye,aciklama,kisiid,aktif,tarihsaat) VALUES ((select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')," + tBankaID[drpBanka.SelectedIndex] + "," + tHesapTurID[drpHesapTuru.SelectedIndex] + "," + tBakiyeTurID[drpBakiyeTur.SelectedIndex] + ", '" + txtHesapAdi.Text.Trim() + "','" + txtHesapNo.Text.Trim() + "','" + txtIbanNo.Text.Trim() + "'," + txtBakiye.Text.Trim() + ",'" + txtHesapAciklama.Text.Trim() + "',(select kisiid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'),true,current_timestamp  ); ";
                             PublicExecuteNonQuery();
+                            lblacik.Text = "Kaydedildi...";
+                            successalert.Visible = true;
                         }
                         else
                         {
-                            lblMesaj.Text = "Lütfen Bakiye Türü Seçiniz...";
-                            lblMesaj.Visible = true;
+                            lblacik.Text = "Lütfen Bakiye Türü Seçiniz...";
+                            successalert.Visible = true;
                         }
                     }
                     else
                     {
-                        lblMesaj.Text = "Lütfen Hesap Türü Seçiniz...";
-                        lblMesaj.Visible = true;
+                        lblacik.Text = "Lütfen Hesap Türü Seçiniz...";
+                        successalert.Visible = true;
                     }
                 }
                 else
                 {
-                    lblMesaj.Text = "Lütfen Banka Seçiniz...";
-                    lblMesaj.Visible = true;
+                    lblacik.Text = "Lütfen Banka Seçiniz...";
+                    successalert.Visible = true;
                 }
             }
             else
             {
-                lblMesaj.Text = "Lütfen Bakiye giriniz...";
-                lblMesaj.Visible = true;
+                lblacik.Text = "Lütfen Bakiye giriniz...";
+                successalert.Visible = true;
             }
         }
         else
         {
-            lblMesaj.Text = "Lütfen hesap Adı Giriniz...";
-            lblMesaj.Visible = true;
+            lblacik.Text = "Lütfen hesap Adı Giriniz...";
+            successalert.Visible = true;
         }
       
 
@@ -288,7 +290,7 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
     protected void listView_yukle()
     {
 
-        tSQL = "select banka_bilgi.bankaad,banka_hesap_tur.bankahesapturad, bakiye_tur.bakiyeturad,banka_hesap.bankahesapad,banka_hesap.bankahesapno,banka_hesap.bankahesapiban,banka_hesap.hesapbakiye,banka_hesap.aciklama,banka_hesap.aktif from banka_hesap inner join banka_bilgi on banka_hesap.bankaid=banka_bilgi.bankaid inner join banka_hesap_tur on banka_hesap.bankahesapturid=banka_hesap_tur.bankahesapturid inner join bakiye_tur on banka_hesap.bakiyeturid=bakiye_tur.bakiyeturid inner join kisi_bilgi on banka_hesap.avukatid=kisi_bilgi.avukatid where kisi_bilgi.tck='"+ Session["kullanici"] + "'";
+        tSQL = "select banka_hesap.bankahesapid, banka_bilgi.bankaad,banka_hesap_tur.bankahesapturad, bakiye_tur.bakiyeturad,banka_hesap.bankahesapad,banka_hesap.bankahesapno,banka_hesap.bankahesapiban,banka_hesap.hesapbakiye,banka_hesap.aciklama,banka_hesap.aktif from banka_hesap inner join banka_bilgi on banka_hesap.bankaid=banka_bilgi.bankaid inner join banka_hesap_tur on banka_hesap.bankahesapturid=banka_hesap_tur.bankahesapturid inner join bakiye_tur on banka_hesap.bakiyeturid=bakiye_tur.bakiyeturid inner join kisi_bilgi on banka_hesap.avukatid=kisi_bilgi.avukatid where kisi_bilgi.tck='" + Session["kullanici"] + "'";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -301,5 +303,63 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
 
     }
 
+
+
+    string kisiid;
+    string islem;
+    int id2;
+    bool tAktifMi;
+    void bloke()
+    {
+        kisiid = Request.QueryString["kisiid"];
+        islem = Request.QueryString["islem"];
+
+
+
+
+        if (kisiid != null)
+        {
+            id2 = int.Parse(kisiid);
+
+
+            tSQL = "select aktif  from banka_hesap where bankahesapid=" + id2;
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            object tAktifMiObj = tCommand.ExecuteScalar();
+            var testAktif = tAktifMiObj as bool?;
+            if (testAktif.HasValue)
+            {
+                tAktifMi = testAktif.Value;
+            }
+
+            tCon.Close();
+
+
+        }
+
+
+        if (islem == "bloke")
+        {
+            if (tAktifMi == true)
+            {
+                tSQL = "UPDATE banka_hesap set aktif=false WHERE bankahesapid=" + id2;
+                PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "Değişiklik gerçekleştirildi.";
+            }
+            else
+            {
+                tSQL = "UPDATE banka_hesap set aktif=true WHERE bankahesapid=" + id2;
+                PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "Değişiklik gerçekleştirildi.";
+            }
+
+
+        }
+
+        listView_yukle();
+    }
 
 }

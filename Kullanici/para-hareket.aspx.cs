@@ -160,19 +160,15 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        drpAlici.Items.Clear();
-        drpGonderen.Items.Clear();
+       
+        listView_yukle();
+       
         //drpIslemTuru.Items.Clear();
         if (!Page.IsPostBack)
         {
+            drpAlici.Items.Clear();
+            drpGonderen.Items.Clear();
 
-            //aktif();
-
-        }
-        //drpIslemTuru.SelectedIndex = 1;
-        if (drpIslemTuru.SelectedIndex == 0)
-        {
             tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
             tCon.Open();
             tCommand.Connection = tCon;
@@ -186,34 +182,43 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
             }
             tCon.Close();
 
-        }
-        else if (drpIslemTuru.SelectedIndex == 1)
-        {
-            tSQL = "SELECT bankahesapad,bankahesapid FROM banka_hesap  where banka_hesap.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+
+            tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
             tDataReader = tCommand.ExecuteReader();
             while (tDataReader.Read())
             {
-                drpAlici.Items.Add("" + tDataReader["bankahesapad"]);
-                tBankaHesapID[j] = Convert.ToInt16(tDataReader["bankahesapid"]);
-                j++;
+                drpGonderen.Items.Add("" + tDataReader["adsoyad"]);
+                tGondericiKisiID[k] = Convert.ToInt16(tDataReader["kisiid"]);
+                k++;
             }
             tCon.Close();
+
+
         }
-        tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
-        tCon.Open();
-        tCommand.Connection = tCon;
-        tCommand.CommandText = tSQL;
-        tDataReader = tCommand.ExecuteReader();
-        while (tDataReader.Read())
-        {
-            drpGonderen.Items.Add("" + tDataReader["adsoyad"]);
-            tGondericiKisiID[k] = Convert.ToInt16(tDataReader["kisiid"]);
-            k++;
-        }
-        tCon.Close();
+       
+        
+            
+
+       
+        //else if (drpIslemTuru.SelectedIndex == 1)
+        //{
+        //    tSQL = "SELECT bankahesapad,bankahesapid FROM banka_hesap  where banka_hesap.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+        //    tCon.Open();
+        //    tCommand.Connection = tCon;
+        //    tCommand.CommandText = tSQL;
+        //    tDataReader = tCommand.ExecuteReader();
+        //    while (tDataReader.Read())
+        //    {
+        //        drpAlici.Items.Add("" + tDataReader["bankahesapad"]);
+        //        tBankaHesapID[j] = Convert.ToInt16(tDataReader["bankahesapid"]);
+        //        j++;
+        //    }
+        //    tCon.Close();
+        //}
+     
 
 
 
@@ -221,38 +226,38 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
 
     protected void drpIslemTuru_SelectedIndexChanged(object sender, EventArgs e)
     {
-        drpAlici.Items.Clear();
-        if (drpIslemTuru.SelectedIndex == 0)
-        {
-            tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpAlici.Items.Add("" + tDataReader["adsoyad"]);
-                tKisiID[i] = Convert.ToInt16(tDataReader["kisiid"]);
-                i++;
-            }
-            tCon.Close();
+        //drpAlici.Items.Clear();
+        //if (drpIslemTuru.SelectedIndex == 0)
+        //{
+        //    tSQL = "SELECT ad || ' ' || soyad as adsoyad, kisiid FROM kisi_bilgi  where kisi_bilgi.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+        //    tCon.Open();
+        //    tCommand.Connection = tCon;
+        //    tCommand.CommandText = tSQL;
+        //    tDataReader = tCommand.ExecuteReader();
+        //    while (tDataReader.Read())
+        //    {
+        //        drpAlici.Items.Add("" + tDataReader["adsoyad"]);
+        //        tKisiID[i] = Convert.ToInt16(tDataReader["kisiid"]);
+        //        i++;
+        //    }
+        //    tCon.Close();
 
-        }
-        else if (drpIslemTuru.SelectedIndex == 1)
-        {
-            tSQL = "SELECT bankahesapad,bankahesapid FROM banka_hesap  where banka_hesap.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpAlici.Items.Add("" + tDataReader["bankahesapad"]);
-                tBankaHesapID[j] = Convert.ToInt16(tDataReader["bankahesapid"]);
-                j++;
-            }
-            tCon.Close();
-        }
+        //}
+        //else if (drpIslemTuru.SelectedIndex == 1)
+        //{
+        //    tSQL = "SELECT bankahesapad,bankahesapid FROM banka_hesap  where banka_hesap.avukatid=(select avukatid from kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "')";
+        //    tCon.Open();
+        //    tCommand.Connection = tCon;
+        //    tCommand.CommandText = tSQL;
+        //    tDataReader = tCommand.ExecuteReader();
+        //    while (tDataReader.Read())
+        //    {
+        //        drpAlici.Items.Add("" + tDataReader["bankahesapad"]);
+        //        tBankaHesapID[j] = Convert.ToInt16(tDataReader["bankahesapid"]);
+        //        j++;
+        //    }
+        //    tCon.Close();
+        //}
 
     }
 
@@ -261,67 +266,113 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
         
 
     }
-
+     int deger ;
     protected void drpAlici_SelectedIndexChanged(object sender, EventArgs e)
     {
+
+        deger = tGondericiKisiID[drpGonderen.SelectedIndex];
         
+    }
+ 
+    protected void btnKaydet_Click(object sender, EventArgs e)
+    {
+        //if (!Page.IsPostBack)
+        //{
+        //    lblacik.Text = "Kaydedildi" + deger;
+        //    successalert.Visible = true;
+        //    //aktif();
+
+        //}
+
+        //lblacik.Text = "Kaydedildi" + deger;
+        //successalert.Visible = true;
+        //deger = ;
+        if (txtTutar.Text.Length != 0)
+        {
+            if (drpAlici.SelectedIndex != -1)
+            {
+                tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerkisiid,tarihsaat) VALUES (" + 0 + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + deger + ",current_timestamp); ";
+                tSQL += "UPDATE kisi_bakiye set kisibakiye=kisibakiye+" + txtTutar.Text.Trim() + "where kisiid=(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "');";
+                tSQL += "UPDATE kisi_bakiye set kisibakiye=kisibakiye-" + txtTutar.Text.Trim() + "where kisiid=" + deger + ";";
+                PublicExecuteNonQuery();
+                lblacik.Text = "Kaydedildi";
+                successalert.Visible = true;
+            }
+            else
+            {
+                lblacik.Text = "Lütfen Kişi Seçiniz...";
+                successalert.Visible = true;
+            }
+        }
+
+        else
+        {
+            lblacik.Text = "Lütfen Tutarı Giriniz...";
+            successalert.Visible = true;
+        }
+        listView_yukle();
+
+        //aktif();
 
     }
 
-    protected void btnKaydet_Click(object sender, EventArgs e)
+
+
+
+
+    //if (txtTarihSaat.te)
+
+    //{
+
+    //}
+
+    //if (drpIslemTuru.SelectedIndex == 0)
+    //   {
+
+    //     else if (drpIslemTuru.SelectedIndex == 1)
+    //     {
+    //        if (txtTutar.Text.Length != 0)
+    //        {
+    //            if (drpAlici.SelectedIndex != -1)
+    //            {
+
+    //                tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerbankahesapid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tBankaHesapID[drpAlici.SelectedIndex] + ",current_timestamp) ";
+    //                PublicExecuteNonQuery();
+    //                lblacik.Text = "Kaydedildi.";
+    //                successalert.Visible = true;
+    //            }
+    //            else
+    //            {
+    //                lblacik.Text = "Lütfen Hesap Seçiniz...";
+    //                successalert.Visible = true;
+    //            }
+    //        }
+
+    //        else
+    //        {
+    //            lblacik.Text = "Lütfen Tutarı Giriniz...";
+    //            successalert.Visible = true;
+    //        }
+    //    }
+
+
+    //}
+
+
+
+    protected void listView_yukle()
     {
-        //if (txtTarihSaat.te)
 
-        //{
-            
-        //}
-     
-         if (drpIslemTuru.SelectedIndex == 0)
-            {
-            if (txtTutar.Text.Length != 0)
-            {
-                if (drpAlici.SelectedIndex != -1)
-                {
-                    tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerkisiid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tKisiID[drpAlici.SelectedIndex] + ",current_timestamp) ";
-                    PublicExecuteNonQuery();
-                }
-                else
-                {
-                    lblMesaj.Text = "Lütfen Kişi Seçiniz...";
-                    lblMesaj.Visible = true;
-                }
-            }
+        tSQL = "SELECT para_hareket_bilgi.kasahareketid,para_hareket_bilgi.harekettarihsaat,para_hareket_bilgi.makbuzno,para_hareket_bilgi.aciklama,para_hareket_bilgi.tutar,kisi_bilgi.ad as alici,kisi_bilgi2.ad as gonderen from para_hareket_bilgi LEFT OUTER JOIN kisi_bilgi on para_hareket_bilgi.kisiid = kisi_bilgi.kisiid LEFT OUTER JOIN kisi_bilgi as kisi_bilgi2 on para_hareket_bilgi.digerkisiid = kisi_bilgi2.kisiid where para_hareket_bilgi.islemtur=0";
+        tCon.Open();
+        tCommand.Connection = tCon;
+        tCommand.CommandText = tSQL;
+        tDataReader = tCommand.ExecuteReader();
+        list2.DataSource = tDataReader;
+        list2.DataBind();
+        tCon.Close();
 
-            else
-            {
-                lblMesaj.Text = "Lütfen Tutarı Giriniz...";
-                lblMesaj.Visible = true;
-            }
-         }
-         else if (drpIslemTuru.SelectedIndex == 1)
-         {
-            if (txtTutar.Text.Length != 0)
-            {
-                if (drpAlici.SelectedIndex != -1)
-                {
 
-                    tSQL = "INSERT INTO para_hareket_bilgi(islemtur, harekettarihsaat, makbuzno, aciklama,kisiid, tutar,digerbankahesapid,tarihsaat) VALUES (" + drpIslemTuru.SelectedIndex + ",'" + txtTarihSaat.Text + "','" + txtMakbuzNo.Text.Trim() + "','" + txtAciklama.Text.Trim() + "',(Select kisiid From kisi_bilgi where kisi_bilgi.tck='" + Session["kullanici"] + "'), " + txtTutar.Text.Trim() + "," + tBankaHesapID[drpAlici.SelectedIndex] + ",current_timestamp) ";
-                    PublicExecuteNonQuery();
-                }
-                else
-                {
-                    lblMesaj.Text = "Lütfen Hesap Seçiniz...";
-                    lblMesaj.Visible = true;
-                }
-            }
 
-            else
-            {
-                lblMesaj.Text = "Lütfen Tutarı Giriniz...";
-                lblMesaj.Visible = true;
-            }
-        }
-           
-           
     }
 }

@@ -8,9 +8,7 @@
     
     <div class="pageDisDiv">
         <div class="ustDiv">
-             <div class="alert alert-danger" role="alert">
- <asp:Label CssClass="label" ID="lblMesaj" runat="server" Text="" visible="false"></asp:Label>
-</div>
+            
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
                 <asp:Label CssClass="label" runat="server" Text="Yeni Banka Oluştur" Font-Size="200%">Yeni Banka Oluştur</asp:Label>
             </div>
@@ -82,6 +80,21 @@
             <div class="lineOrta">
                  <button runat="server" id="btnKaydet" class="btn btn-outline-success" OnServerClick="btnKaydet_Click" Text="Kaydet">Kaydet </button>
 
+            </div>
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="successalert" runat="server" Visible="False">
+               
+                <asp:Label ID="lblacik" CssClass="label" runat="server" Font-Bold="True"> Değişiklik Gerçekleştirildi... </asp:Label>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
+                Hay aksi. Bir hata oluştu.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
         </div>

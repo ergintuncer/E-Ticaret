@@ -42,27 +42,21 @@ public partial class Admin_Adliye : System.Web.UI.Page
     public int PublicExecuteScalarInteger()
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int tInteger;
-
+        int tInteger = 0;
         if (tCon.State == System.Data.ConnectionState.Open)
         {
             tCon.Close();
         }
-
         tCon.Open();
         tCommand.CommandType = System.Data.CommandType.Text;
         tCommand.CommandTimeout = 60000;
         tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
         tCon.Close();
-        return Convert.ToInt32(tCommand.ExecuteScalar());
+        return tInteger;
     }
     // -----------------------------------------------------------------------------------------------------------
 
@@ -202,8 +196,12 @@ public partial class Admin_Adliye : System.Web.UI.Page
                     tSQL += "INSERT INTO adliye_adres(adliyeid,adliyeadresad,adres,aciklama,aktif) VALUES ((select max(adliyeid) from adliye_bilgi),'" + txtadresadi.Text.Trim() + "' , '" + txtadres.Text.Trim() + "','" + txtaciklama.Text.Trim() + "',true);";
                     PublicExecuteNonQuery();
 
-                    lblMesaj.Text = "Kaydedildi....";
-                    lblMesaj.Visible = true;
+
+                    //lblacik.Visible = true;
+                    //lblacik.Text = "Değişiklik gerçekleştirildi.";
+
+                    lblacik.Text = "Kaydedildi....";
+                    successalert.Visible = true;
 
                     txtadliyeadi.Text = "";
                     txtaciklama.Text = "";
@@ -216,22 +214,22 @@ public partial class Admin_Adliye : System.Web.UI.Page
                 }
                 else
                 {
-                    lblMesaj.Text = "Lütfen İlçe Seçiniz.";
-                    lblMesaj.Visible = true;
+                    lblacik.Text = "Lütfen İlçe Seçiniz.";
+                    successalert.Visible = true;
                 }
                
             }
             else
             {
-                lblMesaj.Text = "Lütfen İl Seçiniz.";
-                lblMesaj.Visible = true;
+                lblacik.Text = "Lütfen İl Seçiniz.";
+                successalert.Visible = true;
             }
            
         }
         else
         {
-            lblMesaj.Text = "Lütfen Adliye Adını Giriniz.";
-            lblMesaj.Visible = true;
+            lblacik.Text = "Lütfen Adliye Adını Giriniz.";
+            successalert.Visible = true;
         }
 
        
@@ -251,7 +249,7 @@ public partial class Admin_Adliye : System.Web.UI.Page
     protected void listView_yukle()
     {
 
-        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead, adliye_bilgi.adliyeid from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on il_bilgi.ilid=ilce_bilgi.ilid  ";
+        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead, adliye_bilgi.adliyeid,adliye_bilgi.aktif from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on il_bilgi.ilid=ilce_bilgi.ilid  ";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -327,11 +325,15 @@ public partial class Admin_Adliye : System.Web.UI.Page
             {
                 tSQL = "UPDATE adliye_bilgi set aktif=false WHERE adliyeid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "Değişiklik gerçekleştirildi.";
             }
             else
             {
                 tSQL = "UPDATE adliye_bilgi set aktif=true WHERE adliyeid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "Değişiklik gerçekleştirildi.";
             }
            
 
@@ -341,4 +343,43 @@ public partial class Admin_Adliye : System.Web.UI.Page
     }
 
 
+    //protected void txtadliyeadi_OnTextChanged(object sender, EventArgs e)
+    //{
+
+        
+
+
+    //}
+
+    //protected void drpil_OnTextChanged(object sender, EventArgs e)
+    //{
+    //    throw new NotImplementedException();
+    //}
+    protected void txtadliyeadi_OnTextChanged(object sender, EventArgs e)
+    {
+
+        tSQL = "SELECT count(*) from adliye_bilgi WHERE adliyead='" + txtadliyeadi.Text.Trim() + "'";
+       
+        if (PublicExecuteScalarInteger() > (Int32)0)
+        {
+            lblOnTextChanged.Text = "Adliye adı daha önce kaydedilmiş...";
+            lblOnTextChanged.Visible = true;
+            //successalert.Visible = true;
+            //lblOnTextChanged.Text = "Böyle bir baro adı bulunmaktadır..";
+            //btnKaydet.Visible = true;
+            //pnlProfil.Visible = true;
+        }
+        else
+        {
+            lblOnTextChanged.Text = "yok";
+            lblOnTextChanged.Visible = false;
+            //successalert.Visible = false;
+            //lblOnTextChanged.Visible = false;
+            //lblOnTextChanged.Text = "";
+            //.Visible = false;
+            //pnlProfil.Visible = true;
+        }
+
+        //throw new NotImplementedException();
+    }
 }

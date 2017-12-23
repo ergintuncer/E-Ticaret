@@ -119,7 +119,10 @@ public partial class Admin_kisiler : System.Web.UI.Page
 
     protected void listView_yukle()
     {
-        tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid";
+        //tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid";
+
+        tSQL = "SELECT kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad,kisi_bilgi.firma, kisi_bilgi.tck, kisi_bilgi.kisiid,avukat_bilgi.sicilno,avukat_bilgi.birliksicilno,baro_bilgi.baroad,kisi_giris.bloke from kisi_bilgi INNER JOIN avukat_bilgi on kisi_bilgi.kisiid = avukat_bilgi.kisiid INNER JOIN kisi_giris on kisi_bilgi.kisiid = kisi_giris.kisiid INNER JOIN baro_bilgi on avukat_bilgi.baroid = baro_bilgi.baroid ";
+
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -165,18 +168,20 @@ public partial class Admin_kisiler : System.Web.UI.Page
             {
                 tSQL = "UPDATE kisi_giris set bloke=false WHERE kisiid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
             }
             else
             {
                 tSQL = "UPDATE kisi_giris set bloke=true WHERE kisiid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
             }
 
         }
 
 
-           
-           
+
+        
             listView_yukle();
     }
       
