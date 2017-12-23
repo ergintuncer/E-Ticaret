@@ -17,7 +17,9 @@
                     <asp:Label CssClass="label" runat="server" Font-Bold="True">Adı: </asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:TextBox ID="txtMahkemeAdi" CssClass="TexBoxCss" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtMahkemeAdi" CssClass="TexBoxCss" runat="server" OnTextChanged="txtMahkemeAdi_OnTextChanged" AutoPostBack="True"></asp:TextBox>
+                    <br/> 
+                    <asp:Label ID="lblOnTextChanged" runat="server" Visible="False" ForeColor="#F50057" ></asp:Label>
                 </div>
             </div>
             <div class="line">
@@ -52,6 +54,22 @@
             <div class="lineOrta">
                 <button runat="server" id="btnKaydet" onserverclick="btnKaydet_Onclick" class="button" title="Adliye Bilgisini Kaydet">
                     <i class="fa fa-floppy-o fa-2x"></i>Kaydet
+                </button>
+            </div>
+            
+            
+            <div class="alert alert-success alert-dismissible fade show" role="alert" id="successalert" runat="server" Visible="False">
+               
+                <asp:Label ID="lblacik" CssClass="label" runat="server" Font-Bold="True"> Değişiklik Gerçekleştirildi... </asp:Label>
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
+                Hay aksi. Bir hata oluştu.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 

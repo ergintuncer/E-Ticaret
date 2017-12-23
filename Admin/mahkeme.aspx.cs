@@ -40,27 +40,21 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
     public int PublicExecuteScalarInteger()
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int tInteger;
-
+        int tInteger = 0;
         if (tCon.State == System.Data.ConnectionState.Open)
         {
             tCon.Close();
         }
-
         tCon.Open();
         tCommand.CommandType = System.Data.CommandType.Text;
         tCommand.CommandTimeout = 60000;
         tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
         tCon.Close();
-        return Convert.ToInt32(tCommand.ExecuteScalar());
+        return tInteger;
     }
     // -----------------------------------------------------------------------------------------------------------
 
@@ -207,26 +201,29 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
             {
                 if (drpMahkemeTuru.SelectedIndex != -1)
                 {
+
                     tSQL = "INSERT INTO mahkeme_bilgi(adliyeid,mahkemeturid,mahkemead,aktif) VALUES (" + tAdliyeID[drpAdliye.SelectedIndex] + " , " + tMahkemeTurID[drpMahkemeTuru.SelectedIndex] + ",'" + txtMahkemeAdi.Text.Trim() + "'," + tAktif + ");";
                     PublicExecuteNonQuery();
+                    lblacik.Text = "Kaydedildi....";
+                    successalert.Visible = true;
                 }
                 else
                 {
-                    lblMesaj.Text = "Lütfen Mahkeme Türünü Seçiniz...";
-                    lblMesaj.Visible = true;
+                    lblacik.Text = "Lütfen Mahkeme Türünü Seçiniz...";
+                    successalert.Visible = true;
                 }
 
             }
             else
             {
-                lblMesaj.Text = "Lütfen Adliye Seçiniz...";
-                lblMesaj.Visible = true;
+                lblacik.Text = "Lütfen Adliye Seçiniz...";
+                successalert.Visible = true;
             }
         }
         else
         {
-            lblMesaj.Text = "Lütfen Mahkeme Adını Giriniz...";
-            lblMesaj.Visible = true;
+            lblacik.Text = "Lütfen Mahkeme Adını Giriniz...";
+            successalert.Visible = true;
         }
       
         //throw new NotImplementedException();
@@ -291,11 +288,15 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
             {
                 tSQL = "UPDATE mahkeme_bilgi set aktif=false where mahkemeid=" + id2;
                 PublicExecuteNonQuery();
+                lblacik.Text = "Değişiklik Gerçekleştirildi..";
+                successalert.Visible = true;
             }
             else
             {
                 tSQL = "UPDATE mahkeme_bilgi set aktif=true where mahkemeid=" + id2;
                 PublicExecuteNonQuery();
+                lblacik.Text = "Değişiklik Gerçekleştirildi..";
+                successalert.Visible = true;
             }
 
         }
@@ -307,4 +308,30 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
     }
 
 
+    protected void txtMahkemeAdi_OnTextChanged(object sender, EventArgs e)
+    {
+        tSQL = "SELECT count(*) from mahkeme_bilgi WHERE mahkemead='" + txtMahkemeAdi.Text.Trim() + "'";
+
+        if (PublicExecuteScalarInteger() > (Int32)0)
+        {
+            lblOnTextChanged.Text = "Mahkeme adı daha önce kaydedilmiş...";
+            lblOnTextChanged.Visible = true;
+            //successalert.Visible = true;
+            //lblOnTextChanged.Text = "Böyle bir baro adı bulunmaktadır..";
+            //btnKaydet.Visible = true;
+            //pnlProfil.Visible = true;
+        }
+        else
+        {
+            lblOnTextChanged.Text = "yok";
+            lblOnTextChanged.Visible = false;
+            //successalert.Visible = false;
+            //lblOnTextChanged.Visible = false;
+            //lblOnTextChanged.Text = "";
+            //.Visible = false;
+            //pnlProfil.Visible = true;
+        }
+
+
+    }
 }

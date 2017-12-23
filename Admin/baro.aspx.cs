@@ -42,27 +42,21 @@ public partial class Admin_Baro : System.Web.UI.Page
     public int PublicExecuteScalarInteger()
     {
         NpgsqlCommand tCommand = new NpgsqlCommand(tSQL, tCon);
-        //int tInteger;
-
+        int tInteger = 0;
         if (tCon.State == System.Data.ConnectionState.Open)
         {
             tCon.Close();
         }
-
         tCon.Open();
         tCommand.CommandType = System.Data.CommandType.Text;
         tCommand.CommandTimeout = 60000;
         tCommand.CommandText = tSQL;
-
-
-        //if ( tCommand.ExecuteScalar() != DBNull.Value )
-        //{
-        // tInteger =(int)tCommand.ExecuteScalar();
-
-        //}
-
+        if (tCommand.ExecuteScalar() != DBNull.Value)
+        {
+            tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
+        }
         tCon.Close();
-        return Convert.ToInt32(tCommand.ExecuteScalar());
+        return tInteger;
     }
     // -----------------------------------------------------------------------------------------------------------
 
@@ -178,14 +172,17 @@ public partial class Admin_Baro : System.Web.UI.Page
         {
            tSQL= "INSERT INTO baro_bilgi(baroad,aktif) VALUES ('" + txtbaroadi.Text.Trim()  + "' , "+ tAktif +");";
             PublicExecuteNonQuery();
-            lblMesaj.Text = "Kaydedildi...";
-            lblMesaj.Visible = true;
+            //lblMesaj.Text = "Kaydedildi...";
+            //lblMesaj.Visible = true;
             txtbaroadi.Text = "";
+            successalert.Visible = true;
+            lblacik.Text = "Kaydedildi";
         }
         else
         {
-            lblMesaj.Text = "Lütfen Baro Adını Giriniz";
-            lblMesaj.Visible = true;
+           
+            successalert.Visible = true;
+            lblacik.Text = "Lütfen Baro Adını Giriniz";
 
         }
       
@@ -250,11 +247,15 @@ public partial class Admin_Baro : System.Web.UI.Page
             {
                 tSQL = "UPDATE baro_bilgi set aktif=false where baroid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "değişiklik gerçelştirildi";
             }
             else
             {
                 tSQL = "UPDATE baro_bilgi set aktif=true where baroid=" + id2;
                 PublicExecuteNonQuery();
+                successalert.Visible = true;
+                lblacik.Text = "değişiklik gerçelştirildi";
             }
         }
        
@@ -269,4 +270,30 @@ public partial class Admin_Baro : System.Web.UI.Page
         
     }
 
+
+    //protected void baroAdi_OnTextChanged(object sender, EventArgs e)
+    //{
+        
+    //}
+
+
+    public void txtbaroadi_TextChanged(object sender, EventArgs e)
+    {
+        tSQL = "SELECT count(*) from baro_bilgi WHERE baroad='" + txtbaroadi.Text.Trim() + "'";
+       
+        if (PublicExecuteScalarInteger() > (Int32)0)
+        {
+            lblOnTextChanged.Visible = true;
+            lblOnTextChanged.Text = "Böyle bir baro adı bulunmaktadır..";
+            //btnKaydet.Visible = true;
+            //pnlProfil.Visible = true;
+        }
+        else
+        {
+            lblOnTextChanged.Visible = false;
+            lblOnTextChanged.Text = "";
+            //.Visible = false;
+            //pnlProfil.Visible = true;
+        }
+    }
 }

@@ -169,17 +169,20 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
                 txtBankaAdi.Text.Trim() + "' , '" + txtBankaSube.Text.Trim() + "','" + txtBankaSubeKodu.Text.Trim() +
                 "','" + txtBankaTelefonNo.Text.Trim() + "','" + txtBankaTelefonKodu.Text.Trim() + "','" + txtBankaAdres.Text.Trim() + "','" + txtBankaAciklama.Text.Trim() + "',true,(Select avukatid from kisi_bilgi where tck='" + Session["kullanici"] + "'));";
                 PublicExecuteNonQuery();
+                lblacik.Text = "Kaydedildi.";
+                successalert.Visible = true;
             }
             else
             {
-                lblMesaj.Text = "Lütfen Şube Adı Giriniz...";
-                lblMesaj.Visible = true;
+               
+                lblacik.Text = "Lütfen Şube Adı Giriniz...";
+                successalert.Visible = true;
             }
         }
         else
         {
-            lblMesaj.Text = "Lütfen Banka Adı Giriniz...";
-            lblMesaj.Visible = true;
+            lblacik.Text = "Lütfen Banka Adı Giriniz...";
+            successalert.Visible = true;
         }
        
 
@@ -250,11 +253,15 @@ public partial class Kullanici_paratransferi : System.Web.UI.Page
             {
                 tSQL = "UPDATE banka_bilgi set aktif=false WHERE bankaid=" + id2;
                 PublicExecuteNonQuery();
+                lblacik.Text = "Değişiklik Gerçekleşti.";
+                successalert.Visible = true;
             }
             else
             {
                 tSQL = "UPDATE banka_bilgi set aktif=true WHERE bankaid=" + id2;
                 PublicExecuteNonQuery();
+                lblacik.Text = "Değişiklik Gerçekleşti.";
+                successalert.Visible = true;
             }
 
 
