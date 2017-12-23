@@ -43,11 +43,12 @@ public partial class Kullanici_dava : System.Web.UI.Page
     {
         try
         {
-            if (txtDavaTur.Text != "" && txtDavaAciklama.Text != "")
+            if (txtDavaTur.Text.Trim().Replace("'", "") != "" && txtDavaAciklama.Text.Trim().Replace("'", "") != "")
             {
                 tSQL =
                     "INSERT INTO dava_tur(avukatid,davaturad,aciklama,aktif,tarihsaat) VALUES((SELECT avukatid from kisi_bilgi Where tck = '" +
-                    Session["kullanici"] + "'),'" + txtDavaTur.Text + "','" + txtDavaAciklama.Text + "','" +
+                    Session["kullanici"] + "'),'" + txtDavaTur.Text.Trim().Replace("'", "") + "','" +
+                    txtDavaAciklama.Text.Trim().Replace("'", "") + "','" +
                     chckDavaAktif.Checked + "',CURRENT_TIMESTAMP); ";
                 PublicExecuteNonQuery();
                 successalert.Visible = true;
@@ -67,20 +68,20 @@ public partial class Kullanici_dava : System.Web.UI.Page
     {
         try
         {
- tSQL = "select davaturad, aciklama,  CASE WHEN aktif = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif, to_char(tarihsaat,'dd.mm.YYYY') as tarihsaat from dava_tur  WHERE (avukatid=(SELECT avukatid from kisi_bilgi Where tck = '" +
-            Session["kullanici"] + "') Or avukatid='0');";
-        tCon.Open();
-        tCommand.Connection = tCon;
-        tCommand.CommandText = tSQL;
-        tDataReader = tCommand.ExecuteReader();
-        list2.DataSource = tDataReader;
-        list2.DataBind();
-        tCon.Close();
+            tSQL =
+                "select davaturad, aciklama,  CASE WHEN aktif = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif, to_char(tarihsaat,'dd.mm.YYYY') as tarihsaat from dava_tur  WHERE (avukatid=(SELECT avukatid from kisi_bilgi Where tck = '" +
+                Session["kullanici"] + "') Or avukatid='0');";
+            tCon.Open();
+            tCommand.Connection = tCon;
+            tCommand.CommandText = tSQL;
+            tDataReader = tCommand.ExecuteReader();
+            list2.DataSource = tDataReader;
+            list2.DataBind();
+            tCon.Close();
         }
         catch (Exception e)
         {
             dangeralert.Visible = true;
         }
-       
     }
 }

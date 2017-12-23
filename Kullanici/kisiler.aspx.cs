@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using Npgsql;
 
 public partial class Kullanici_kisiler : System.Web.UI.Page
@@ -38,7 +37,6 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
         }
         catch (Exception e)
         {
-
         }
 
         tCon.Close();
@@ -57,7 +55,7 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
         tCommand.CommandType = System.Data.CommandType.Text;
         tCommand.CommandTimeout = 60000;
         tCommand.CommandText = tSQL;
-       if (tCommand.ExecuteScalar() != DBNull.Value)
+        if (tCommand.ExecuteScalar() != DBNull.Value)
         {
             tInteger = Convert.ToInt32(tCommand.ExecuteScalar());
         }
@@ -69,96 +67,122 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            tSQL = "SELECT ilad as Il FROM il_bilgi; ";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
+            try
             {
-                drpIl.Items.Add("" + tDataReader["Il"]);
-            }
-            tCon.Close();
+                tSQL = "SELECT ilad as Il FROM il_bilgi; ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpIl.Items.Add("" + tDataReader["Il"]);
+                }
+                tCon.Close();
 
-            tSQL = "SELECT kisiturad as kisitur FROM kisi_tur; ";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpKisiTuru.Items.Add("" + tDataReader["kisitur"]);
+                tSQL = "SELECT kisiturad as kisitur FROM kisi_tur; ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpKisiTuru.Items.Add("" + tDataReader["kisitur"]);
+                }
+                tCon.Close();
             }
-            tCon.Close();
+            catch (Exception exception)
+            {
+            }
         }
         if (Page.Buffer && drpIl.SelectedValue != null)
         {
-            drpIlce.Items.Clear();
-            tSQL = " SELECT ilcead as Ilce FROM ilce_bilgi WHERE ilid =" +
-                   " (Select ilid from il_bilgi WHERE ilad = '" + drpIl.SelectedValue + "'); ";
+            try
+            {
+                drpIlce.Items.Clear();
+                tSQL = " SELECT ilcead as Ilce FROM ilce_bilgi WHERE ilid =" +
+                       " (Select ilid from il_bilgi WHERE ilad = '" + drpIl.SelectedValue + "'); ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpIlce.Items.Add("" + tDataReader["Ilce"]);
+                }
+                tCon.Close();
+            }
+            catch (Exception exception)
+            {
+            }
+        }
+
+        verileriGoster("");
+    }
+
+    private void verileriGoster(String aranacakKisi)
+    {
+        try
+        {
+            //Kişilerin Gösterilmesi
+            tSQL =
+                "SELECT ad,soyad,tck, kisiturad,il,ilce,telefonad,telefon,mail,kisibakiye,kisi_adres.adresad,kisi_adres.adres " +
+                "FROM kisi_bilgi " +
+                "LEFT OUTER JOIN kisi_bakiye ON kisi_bilgi.kisiid = kisi_bakiye.kisiid " +
+                "LEFT OUTER JOIN kisi_kimlik ON kisi_bilgi.kisiid = kisi_kimlik.kisiid " +
+                "LEFT OUTER JOIN kisi_adres ON kisi_bilgi.kisiid = kisi_adres.kisiid " +
+                "LEFT OUTER JOIN kisi_telefon ON kisi_bilgi.kisiid = kisi_telefon.kisiid " +
+                "LEFT OUTER JOIN kisi_mail ON kisi_bilgi.kisiid = kisi_mail.kisiid " +
+                "LEFT OUTER JOIN kisi_tur ON kisi_bilgi.kisiturid = kisi_tur.kisiturid " +
+                "WHERE LOWER(kisi_bilgi.ad) LIKE'%" + aranacakKisi.ToLower() +
+                "%' AND avukatid = (Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] +
+                "')  ORDER BY kisi_bilgi.kisiid";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
             tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
+            list2.DataSource = tDataReader;
+            list2.DataBind();
+            if (""+ tDataReader["kisiturad"] != "Avukat")
             {
-                drpIlce.Items.Add("" + tDataReader["Ilce"]);
+                Response.Redirect("Profil.aspx");
+                list2.Style.Add("background-color", "red");
             }
             tCon.Close();
         }
-
-        verileriGoster();
-    }
-
-    private void verileriGoster()
-    {
-        //Kişilerin Gösterilmesi
-        tSQL =
-            "SELECT ad,soyad,tck, kisiturad,il,ilce,telefonad,telefon,mail,kisibakiye,kisi_adres.adresad,kisi_adres.adres " +
-            "FROM kisi_bilgi " +
-            "INNER JOIN kisi_bakiye ON kisi_bilgi.kisiid = kisi_bakiye.kisiid " +
-            "INNER JOIN kisi_kimlik ON kisi_bilgi.kisiid = kisi_kimlik.kisiid " +
-            "INNER JOIN kisi_adres ON kisi_bilgi.kisiid = kisi_adres.kisiid " +
-            "INNER JOIN kisi_telefon ON kisi_bilgi.kisiid = kisi_telefon.kisiid " +
-            "INNER JOIN kisi_mail ON kisi_bilgi.kisiid = kisi_mail.kisiid " +
-            "INNER JOIN kisi_tur ON kisi_bilgi.kisiturid = kisi_tur.kisiturid " +
-            "WHERE avukatid = (Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')";
-        tCon.Open();
-        tCommand.Connection = tCon;
-        tCommand.CommandText = tSQL;
-        tDataReader = tCommand.ExecuteReader();
-        list2.DataSource = tDataReader;
-        list2.DataBind();
-        tCon.Close();
-
+        catch (Exception e)
+        {
+        }
     }
 
     protected void drpIl_SelectedIndexChanged(object sender, EventArgs e)
     {
-
-
     }
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
         try
         {
-            tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('" + txtAdi.Text + "','" +
-                   txtSoyadi.Text + "','" + txtTcNo.Text.Trim() + "','" + drpKisiTuru.SelectedIndex +
+            tSQL = "INSERT INTO kisi_bilgi(ad,soyad,tck,kisiturid,avukatid) VALUES('" +
+                   txtAdi.Text.Trim().Replace("'", "") + "','" +
+                   txtSoyadi.Text.Trim().Replace("'", "") + "','" + txtTcNo.Text.Trim().Replace("'", "") + "','" +
+                   drpKisiTuru.SelectedIndex +
                    "',(Select avukatid from kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')); " +
                    "INSERT INTO kisi_kimlik(kisiid, il, ilce, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
                    Session["kullanici"] + "')), '" + drpIl.SelectedValue + "', '" + drpIlce.SelectedValue +
                    "', CURRENT_TIMESTAMP); " +
                    "INSERT INTO kisi_adres(kisiid, adresad, adres, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                   Session["kullanici"] + "')), '" + txtAdresAdi.Text + "', '" + txtAdres.Text +
+                   Session["kullanici"] + "')), '" + txtAdresAdi.Text.Trim().Replace("'", "") + "', '" +
+                   txtAdres.Text.Trim().Replace("'", "") +
                    "', CURRENT_TIMESTAMP); " +
                    "INSERT INTO kisi_telefon(kisiid, telefonad, telefon, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                   Session["kullanici"] + "')), '" + txtTelefonAdi.Text + "', '" + txtTelefonNo.Text +
+                   Session["kullanici"] + "')), '" + txtTelefonAdi.Text.Trim().Replace("'", "") + "', '" +
+                   txtTelefonNo.Text.Trim().Replace("'", "") +
                    "', CURRENT_TIMESTAMP); " +
                    "INSERT INTO kisi_mail(kisiid, mail, tarihsaat) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                   Session["kullanici"] + "')), '" + txtMail.Text + "', CURRENT_TIMESTAMP); " +
+                   Session["kullanici"] + "')), '" + txtMail.Text.Trim().Replace("'", "") + "', CURRENT_TIMESTAMP); " +
                    "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                   Session["kullanici"] + "')), '1', '" + txtBakiye.Text.Trim() + "');" +
+                   Session["kullanici"] + "')), '1', '" + txtBakiye.Text.Trim().Replace("'", "") + "');" +
                    "INSERT INTO kisi_web(kisiid) VALUES((SELECT MAX(kisiid) FROM kisi_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
                    Session["kullanici"] + "')));";
             tSQL +=
@@ -167,27 +191,24 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
             PublicExecuteNonQuery();
 
             successalert.Visible = true;
-            verileriGoster();
-
+            verileriGoster("");
         }
         catch (Exception exception)
         {
             dangeralert.Visible = true;
         }
-
     }
 
     protected void btnAra_Click(object sender, EventArgs e)
     {
-
-
+        verileriGoster(txtAra.Value);
     }
 
     protected void tcNo_OnTextChanged(object sender, EventArgs e)
     {
         tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + txtTcNo.Text.Trim() + "'";
-        
-        if (PublicExecuteScalarInteger() > (Int32)0) //Öle bi tc var ise
+
+        if (PublicExecuteScalarInteger() > (Int32) 0) //Öle bi tc var ise
         {
             lblOnTextChanged.Visible = true;
             lblOnTextChanged.Text = "Tc Kimlik Numarası Sistemde Mevcut.";

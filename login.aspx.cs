@@ -89,10 +89,7 @@ public partial class login : System.Web.UI.Page
 
         tCon.Close();
         return Bool;
-        //return tCommand.ExecuteScalar();
     }
-    // -----------------------------------------------------------------------------------------------------------
-
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -104,17 +101,17 @@ public partial class login : System.Web.UI.Page
 
     protected void giris_Click(object sender, EventArgs e)
     {
-        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + txtTcNo.Value.Trim() + "' and tck='" +
-               txtSifre.Value.Trim() + "'";
+        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + sqlDuzenle(txtTcNo.Value.Trim()) + "' and tck='" +
+               sqlDuzenle(txtSifre.Value.Trim()) + "'";
         if (PublicExecuteScalarInteger() > 0) //Öle bi kullanici var ise
         {
             tSQL =
                 "select kisi_giris.bloke from  kisi_bilgi Inner Join kisi_giris ON kisi_bilgi.kisiid=kisi_giris.kisiid WHERE kisi_bilgi.tck='" +
-                txtTcNo.Value.Trim() + "';";
+                sqlDuzenle(txtTcNo.Value.Trim()) + "';";
             if (PublicExecuteScalarBoolean()) //Bloke edilmemişse
             {
-                Session.Add("kullanici", txtTcNo.Value.Trim());
-                tSQL = "SELECT kisiturid from kisi_bilgi WHERE tck = '" + txtTcNo.Value.Trim() + "';";
+                Session.Add("kullanici", sqlDuzenle(txtTcNo.Value.Trim()));
+                tSQL = "SELECT kisiturid from kisi_bilgi WHERE tck = '" + sqlDuzenle(txtTcNo.Value.Trim()) + "';";
                 tCon.Open();
                 tCommand.Connection = tCon;
                 tCommand.CommandText = tSQL;
@@ -149,6 +146,11 @@ public partial class login : System.Web.UI.Page
             lblHata.Text = "Kullanıcı Adınız ve/veya Şifreniz Yanlış Girilşmiştir. <br/>Lütfen Kontrol Ediniz";
             dangeralert.Visible = true;
         }
+    }
+
+    private string sqlDuzenle(string text)
+    {
+        return text.Replace("'", "");
     }
 
     protected void kayitol_Click(object sender, EventArgs e)

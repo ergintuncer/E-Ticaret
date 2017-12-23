@@ -48,7 +48,7 @@
         </button>
     </div>
     <div class="alert alert-danger alert-dismissible fade show" role="alert" id="dangeralert" runat="server" Visible="False">
-        Hay aksi. Bir hata oluştu.
+        <asp:Label ID="lblHata" runat="server" Text="Hay aksi. Bir hata oluştu."></asp:Label>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -56,7 +56,11 @@
     <div class="lineOrta">
         <button runat="server" id="btnDuzenle" class="btn btn-outline-success" OnServerClick="btnDuzenle_Click" Text="Düzenle">Düzenle </button>
     </div>
-
+    <div class="progress">
+        <div class="progress-bar bg-success" role="progressbar"  style="width: 0%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="progress" runat="server">
+            <asp:Label ID="lblProfilDolulukYuzesi" runat="server" Text="25%"></asp:Label>
+        </div>
+    </div>
 </div>
 <asp:Panel ID="pnlProfil" runat="server">
 <div class="altDiv">
@@ -82,7 +86,7 @@
         <asp:Label ID="Label10" runat="server" Text="Tc Kimlik No: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox ID="txtTck" CssClass="TexBoxCss" TextMode="Number" MaxLength="11" OnTextChanged="tcNo_OnTextChanged" AutoCompleteType="Disabled" AutoPostBack="True" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtTck" CssClass="TexBoxCss" TextMode="Number" MaxLength="11" OnTextChanged="tcNo_OnTextChanged" AutoCompleteType="Disabled" ReadOnly="True" AutoPostBack="True" runat="server"></asp:TextBox>
         <br/> 
         <asp:Label ID="lblOnTextChanged" runat="server" Visible="False" ForeColor="#F50057"></asp:Label>
     </div>

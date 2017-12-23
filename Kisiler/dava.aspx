@@ -6,11 +6,11 @@
     <div class="pageDisDiv">
         <div class="ustDiv">
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
-                <asp:Label CssClass="label" runat="server" Text="Yeni Dava" Font-Size="200%">Yeni Dava Oluştur</asp:Label>
+                <asp:Label   runat="server" Text="Yeni Dava" Font-Size="200%">Yeni Dava Oluştur</asp:Label>
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Dava Türü:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:DropDownList ID="drpDavaTuru" runat="server" CssClass="drplist" AutoPostBack="true">
@@ -19,7 +19,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava No:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Dava No:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDavaNo" CssClass="TexBoxCss" runat="server" MaxLength="50"></asp:TextBox>
@@ -29,7 +29,7 @@
           
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Mahkeme:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Mahkeme:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:DropDownList ID="drpMahkeme" runat="server" CssClass="drplist" AutoPostBack="true">
@@ -38,7 +38,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Taraf Türü:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Taraf Türü:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:DropDownList ID="drpTarafTur" runat="server" CssClass="drplist" AutoPostBack="true"> </asp:DropDownList>
@@ -47,7 +47,7 @@
             
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Taraf Adı:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Taraf Adı:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:DropDownList ID="drpKisiAdiSoyadi" runat="server" CssClass="drplist" AutoPostBack="true"> </asp:DropDownList>
@@ -57,7 +57,7 @@
 
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Duruşma Tarihi:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Duruşma Tarihi:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDurusmaTarihi" CssClass="TexBoxCss" runat="server" TextMode="Date"></asp:TextBox>
@@ -65,7 +65,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Hakkında:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Dava Hakkında:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" runat="server" MaxLength="250" TextMode="MultiLine"></asp:TextBox>
@@ -73,14 +73,14 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Duruşma Hakkında:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Duruşma Hakkında:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDurusmaAciklama" CssClass="TextBoxCssMulti" runat="server" MaxLength="250" TextMode="MultiLine"></asp:TextBox>
                 </div>
             </div>  <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Dava Aktif:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:CheckBox ID="chckDavaAktif" runat="server" Checked="True"/>
@@ -88,7 +88,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Duruşma Aktif:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Duruşma Aktif:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:CheckBox ID="chckDurusmaAktif"  runat="server" Checked="True"/>
@@ -96,7 +96,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dosya Yükle:</asp:Label>
+                    <asp:Label  Font-Bold="True"  runat="server">Dosya Yükle:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:FileUpload ID="fileUpload_Dosya" CssClass="form-control-file" runat="server" />
@@ -128,7 +128,7 @@
                     <div class="ListeDiv">
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Dava Türü:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDavaTuru" runat="server" Text='<%#Eval("davaturad") %>'></asp:Label>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava No:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Dava No:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDavaNo" runat="server" Text='<%#Eval("davano") %>'></asp:Label>
@@ -145,7 +145,7 @@
 
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Dava Aktif:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDavaAktif" runat="server" Text='<%#Eval("davaaktif") %>'></asp:Label>
@@ -154,7 +154,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Mahkeme:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Mahkeme:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblMahkeme" runat="server" Text='<%#Eval("mahkemead") %>'></asp:Label>
@@ -162,7 +162,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Taraf Türü:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Taraf Türü:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblTarafTuru" runat="server" Text='<%#Eval("davatarafturad") %>'></asp:Label>
@@ -170,7 +170,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Taraf Adı:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Taraf Adı:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="Label1" runat="server" Text='<%#Eval("ad") %>'></asp:Label>
@@ -178,7 +178,7 @@
                         </div> 
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Hak.:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Dava Hak.:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDavaAciklama" runat="server" Text='<%#Eval("davaaciklama") %>'></asp:Label>
@@ -186,7 +186,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Duruşma Tarih:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Durşma Tarih:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDurusmaTarihi" runat="server" Text='<%#Eval("tarihsaat") %>'></asp:Label>
@@ -195,7 +195,7 @@
                       
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Duruşma Hak.:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Durşma Hak.:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblDurusmaAciklama" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
@@ -203,7 +203,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Duruşma Aktif:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Durşma Aktif:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lbldurusmaAktif" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
@@ -211,7 +211,7 @@
                         </div>
                         <div class="line dosya">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dosya için:</asp:Label>
+                                <asp:Label  Font-Bold="True"  runat="server">Dosya için:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <a href='<%#Eval("dosyaurl") %>'>Tıklayınız</a>

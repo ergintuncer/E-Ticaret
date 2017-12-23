@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Npgsql;
+
 public partial class AnaSayfaMaster : System.Web.UI.MasterPage
 {
     NpgsqlConnection tCon = new NpgsqlConnection(System.Configuration.ConfigurationManager
@@ -39,28 +40,34 @@ public partial class AnaSayfaMaster : System.Web.UI.MasterPage
 
         tCon.Close();
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        if (Session["kullanici"] != null)
+        try
         {
-            tSQL = "SELECT kisiturid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "'; ";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
+            if (Session["kullanici"] != null)
             {
-                if ((Int64)tDataReader["kisiturid"] != 1)
+                tSQL = "SELECT kisiturid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "'; ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
                 {
-                    Response.Redirect("/Sayfalar/error.html");
+                    if ((Int64) tDataReader["kisiturid"] != 1)
+                    {
+                        Response.Redirect("/Sayfalar/error.html");
+                    }
                 }
+                tCon.Close();
             }
-            tCon.Close();
+            else
+            {
+                Response.Redirect("/login.aspx");
+            }
         }
-        else
+        catch (Exception exception)
         {
-            Response.Redirect("/login.aspx");
         }
     }
 }

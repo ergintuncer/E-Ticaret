@@ -133,10 +133,10 @@ public partial class Kullanici_dava : System.Web.UI.Page
         }
 
 
-        verileriGostaer();
+        verileriGostaer("");
     }
 
-    private void verileriGostaer()
+    private void verileriGostaer(String davaNo)
     {
         tSQL =
             "SELECT mahkeme_bilgi.mahkemead, kisi_bilgi.ad,kisi_bilgi.soyad, dava_tur.davaturad, dava_bilgi.davano, dava_bilgi.dosyaurl, CASE WHEN dava_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS davaaktif , dava_taraf_tur.davatarafturad, to_char(durusma_bilgi.tarihsaat,'dd.mm.YYYY') as tarihsaat ,dava_bilgi.aciklama as davaaciklama,durusma_bilgi.aciklama, CASE WHEN durusma_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif" +
@@ -148,7 +148,7 @@ public partial class Kullanici_dava : System.Web.UI.Page
             " INNER JOIN durusma_bilgi ON durusma_bilgi.davaid = dava_bilgi.davaid" +
             " INNER JOIN kisi_bilgi ON kisi_bilgi.kisiid = dava_taraf.kisiid" +
             " INNER JOIN mahkeme_bilgi ON mahkeme_bilgi.mahkemeid = dava_mahkeme.mahkemeid" +
-            " WHERE dava_bilgi.avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "')";
+            " WHERE LOWER(dava_bilgi.davano) LIKE'%" + davaNo.ToLower() + "%' AND dava_bilgi.avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] + "') ORDER BY dava_bilgi.davano";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -183,7 +183,7 @@ public partial class Kullanici_dava : System.Web.UI.Page
 
             tSQL = "INSERT INTO dava_bilgi(davaturid,avukatid,davano,aciklama,aktif,tarihsaat,dosyaurl) VALUES (" +
                    tDavaTurId[drpDavaTuru.SelectedIndex] + ",(SELECT avukatid FROM kisi_bilgi WHERE tck='" +
-                   Session["kullanici"] + "'),'" + txtDavaNo.Text + "','" + txtDavaAciklama.Text + "','" +
+                   Session["kullanici"] + "'),'" + txtDavaNo.Text.Replace("'", "") + "','" + txtDavaAciklama.Text.Replace("'", "") + "','" +
                    chckDavaAktif.Checked + "',CURRENT_TIMESTAMP,'" + dosyaUrl + "');";
 
             tSQL += " INSERT INTO dava_mahkeme(davaid, mahkemeid, tarihsaat)VALUES(" +
@@ -199,29 +199,28 @@ public partial class Kullanici_dava : System.Web.UI.Page
                 "INSERT INTO durusma_bilgi(davaid, tarihsaat, aciklama, aktif,islemtarihsaat)" +
                 " VALUES((SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
                 Session["kullanici"] + "'))," +
-                "'" + txtDurusmaTarihi.Text + "','" + txtDurusmaAciklama.Text + "','" + chckDurusmaAktif.Checked +
+                "'" + txtDurusmaTarihi.Text.Replace("'", "") + "','" + txtDurusmaAciklama.Text.Replace("'", "") + "','" + chckDurusmaAktif.Checked +
                 "',CURRENT_TIMESTAMP); ";
 
             PublicExecuteNonQuery();
             successalert.Visible = true;
-            verileriGostaer();
+            verileriGostaer("");
         }
         catch (Exception exception)
         {
             dangeralert.Visible = true;
         }
-        //Response.Redirect("dava.aspx");
     }
 
     protected void btnAra_Click(object sender, EventArgs e)
     {
         
-
+        verileriGostaer(txtAra.Value.ToLower());
     }
 
     protected void txtDavaNo_OnTextChanged(object sender, EventArgs e)
     {
-        tSQL = "SELECT count(*) from dava_bilgi WHERE davano='" + txtDavaNo.Text.Trim() + "'";
+        tSQL = "SELECT count(*) from dava_bilgi WHERE davano='" + txtDavaNo.Text.Trim().Replace("'", "") + "'";
 
         if (PublicExecuteScalarInteger() > (Int32)0) //Öle bi dava var ise
         {

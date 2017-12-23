@@ -48,6 +48,9 @@ public partial class Kisiler_profil : System.Web.UI.Page
     {
         try
         {
+            txtDogumTarihi.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtVerilisTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtGecerlilikTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             if (Session["kullanici"] != null)
             {
                 kullaniciTcNo = (String) Session["kullanici"];
@@ -441,52 +444,51 @@ public partial class Kisiler_profil : System.Web.UI.Page
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
         tSQL = "UPDATE kisi_bilgi SET " +
-               "ad = '" + txtAdi.Text.Trim() + "'," +
-               "soyad ='" + txtSoyadi.Text.Trim() + "' , " +
-               "firma= '" + txtFirma.Text.Trim() + "', " +
-               "tck = '" + txtTcNo.Value.Trim() + "', " +
-               "vergino='" + txtVergiNo.Text.Trim() + "', " +
-               "vergidaire='" + txtVergiDaire.Text.Trim() + "' " +
+               "ad = '" + txtAdi.Text.Trim().Replace("'", "") + "'," +
+               "soyad ='" + txtSoyadi.Text.Trim().Replace("'", "") + "' , " +
+               "firma= '" + txtFirma.Text.Trim().Replace("'", "") + "', " +
+               "tck = '" + txtTcNo.Value.Trim().Replace("'", "") + "', " +
+               "vergino='" + txtVergiNo.Text.Trim().Replace("'", "") + "', " +
+               "vergidaire='" + txtVergiDaire.Text.Trim().Replace("'", "") + "' " +
                "WHERE tck='" + kullaniciTcNo + "' ; " +
                "UPDATE kisi_kimlik SET " +
-               "babaadi='" + txtBabaAdi.Text.Trim() + "'," +
-               "dogumtarih='" + txtDogumTarihi.Text.Trim() + "', " +
-               "anneadi='" + txtAnneAdi.Text.Trim() + "', " +
-               "dogumyeri='" + txtDogumYeri.Text.Trim() + "', " +
+               "babaadi='" + txtBabaAdi.Text.Trim().Replace("'", "") + "'," +
+               "dogumtarih='" + txtDogumTarihi.Text.Trim().Replace("'", "") + "', " +
+               "anneadi='" + txtAnneAdi.Text.Trim().Replace("'", "") + "', " +
+               "dogumyeri='" + txtDogumYeri.Text.Trim().Replace("'", "") + "', " +
                "medenihal='" + drpMedeniHal.SelectedValue + "', " +
-               "din='" + txtDin.Text.Trim() + "', " +
+               "din='" + txtDin.Text.Trim().Replace("'", "") + "', " +
                "cinsiyet='" + drpCinsiyet.SelectedValue + "', " +
-               "uyruk='" + txtUyruk.Text.Trim() + "', " +
+               "uyruk='" + txtUyruk.Text.Trim().Replace("'", "") + "', " +
                "kangrubu='" + drpKanGrubu.SelectedValue + "', " +
                "il='" + drpIl.SelectedValue + "', " +
                "ilce='" + drpIlce.SelectedValue + "', " +
-               "mahkoy='" + txtMahalle.Text.Trim() + "', " +
-               "ciltno='" + txtCiltNo.Text.Trim() + "'," +
-               "ailesirano='" + txtAileSiraNo.Text.Trim() + "', " +
-               "sirano='" + txtSiraNo.Text.Trim() + "', " +
-               "verildigiyer='" + txtVergiDaire.Text.Trim() + "', " +
-               "verilisnedeni='" + txtVerilisNedeni.Text.Trim() + "', " +
-               "kayitno='" + txtKayitNo.Text.Trim() + "', " +
-               "verilistarih='" + txtVerilisTarih.Text.Trim() + "', " +
-               "verenmakam='" + txtVerenMakam.Text.Trim() + "', " +
-               "aciklama='" + txtAciklama.Text.Trim() + "', " +
-               "gecerliliktarih='" + txtGecerlilikTarih.Text.Trim() + "', tarihsaat=CURRENT_TIMESTAMP" +
+               "mahkoy='" + txtMahalle.Text.Trim().Replace("'", "") + "', " +
+               "ciltno='" + txtCiltNo.Text.Trim().Replace("'", "") + "'," +
+               "ailesirano='" + txtAileSiraNo.Text.Trim().Replace("'", "") + "', " +
+               "sirano='" + txtSiraNo.Text.Trim().Replace("'", "") + "', " +
+               "verildigiyer='" + txtVergiDaire.Text.Trim().Replace("'", "") + "', " +
+               "verilisnedeni='" + txtVerilisNedeni.Text.Trim().Replace("'", "") + "', " +
+               "kayitno='" + txtKayitNo.Text.Trim().Replace("'", "") + "', " +
+               "verilistarih='" + txtVerilisTarih.Text.Trim().Replace("'", "") + "', " +
+               "verenmakam='" + txtVerenMakam.Text.Trim().Replace("'", "") + "', " +
+               "aciklama='" + txtAciklama.Text.Trim().Replace("'", "") + "', " +
+               "gecerliliktarih='" + txtGecerlilikTarih.Text.Trim().Replace("'", "") + "', tarihsaat=CURRENT_TIMESTAMP" +
                " WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_adres SET adresad='" + txtAdresAdi.Text.Trim() + "', adres='" + txtAdres.Text.Trim() +
+               "UPDATE kisi_adres SET adresad='" + txtAdresAdi.Text.Trim().Replace("'", "") + "', adres='" + txtAdres.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_telefon SET telefonad='" + txtTelefonAdi.Text.Trim() + "', telefon='" +
-               txtTelefon.Text.Trim() +
+               "UPDATE kisi_telefon SET telefonad='" + txtTelefonAdi.Text.Trim().Replace("'", "") + "', telefon='" +
+               txtTelefon.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_mail SET mailad='" + txtMailAdi.Text.Trim() + "', mail='" + txtMailadresi.Text.Trim() +
+               "UPDATE kisi_mail SET mailad='" + txtMailAdi.Text.Trim().Replace("'", "") + "', mail='" + txtMailadresi.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_web  SET webad='" + txtWebAdresiAdi.Text.Trim() + "', web='" + txtWebAdresi.Text.Trim() +
+               "UPDATE kisi_web  SET webad='" + txtWebAdresiAdi.Text.Trim().Replace("'", "") + "', web='" + txtWebAdresi.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); ";
 
         PublicExecuteNonQuery();
         pnlProfil.Visible = false;
         verileriGoster();
         successalert.Visible = true;
-        //Response.Redirect("~/Kisiler/Profil.aspx");
     }
 
     protected void drpIl_OnTextChanged(object sender, EventArgs e)

@@ -22,7 +22,7 @@
         .sidebar {
             width: 15%;
             height: 100%;
-            background:#BF360C !important;
+            background: #BF360C !important;
             position: fixed;
             -webkit-transition: all 0.3s ease-in-out;
             -moz-transition: all 0.3s ease-in-out;
@@ -45,20 +45,14 @@
 
             <li>
                 <a href="profil.aspx">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-user"></i>
                     <span>Profil</span>
                 </a>
             </li>
             <li>
                 <a href="dava.aspx">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-arrow-right"></i>
                     <span>Davalar</span>
-                </a>
-            </li>
-            <li>
-                <a href="bakiye.aspx">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Bakiye</span>
                 </a>
             </li>
             <li class="sub-menu">
@@ -75,20 +69,11 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
 <script src="/js/index.js"></script>
 <form id="form1" runat="server">
-    <div class="mainDivh">  
-     <%--   <asp:ScriptManager ID="MainScriptManager" runat="server" />
-        <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
-            <Triggers>
-                <asp:PostBackTrigger ControlID="btnKaydet"/>
-            </Triggers>
-            <ContentTemplate>--%>
-                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    <div class="mainDivh">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
 
-                </asp:ContentPlaceHolder>
-  <%--          </ContentTemplate>
-        </asp:UpdatePanel>--%>
+        </asp:ContentPlaceHolder>
     </div>
 </form>
 </body>
 </html>
-

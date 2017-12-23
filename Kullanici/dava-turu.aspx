@@ -9,11 +9,11 @@
     <div class="pageDisDiv">
         <div class="ustDiv">
             <div class="lineOrta" style="border-bottom: solid silver thin; margin-bottom: 2%;">
-                <asp:Label CssClass="label" runat="server" Text="Yeni Dava Türü" Font-Size="200%">Yeni Dava Türü Oluştur</asp:Label>
+                <asp:Label runat="server" Text="Yeni Dava Türü" Font-Size="200%">Yeni Dava Türü Oluştur</asp:Label>
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
+                    <asp:Label Font-Bold="True"  runat="server">Dava Türü:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDavaTur" CssClass="TexBoxCss" MaxLength="50" runat="server"></asp:TextBox>
@@ -22,7 +22,7 @@
 
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
+                    <asp:Label Font-Bold="True"  runat="server">Dava Aktif:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:CheckBox ID="chckDavaAktif" runat="server" Checked="True"/>
@@ -30,7 +30,7 @@
             </div>
             <div class="line">
                 <div class="lineSolDiv">
-                    <asp:Label CssClass="label" runat="server">Açıklama:</asp:Label>
+                    <asp:Label Font-Bold="True"  runat="server">Açıklama:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
                     <asp:TextBox ID="txtDavaAciklama" CssClass="TextBoxCssMulti" MaxLength="250" runat="server" TextMode="MultiLine"></asp:TextBox>
@@ -69,7 +69,7 @@
                     <div class="ListeDiv">
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Türü:</asp:Label>
+                                <asp:Label Font-Bold="True"  runat="server">Dava Türü:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
 
@@ -78,7 +78,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Aktif:</asp:Label>
+                                <asp:Label Font-Bold="True"  runat="server">Dava Aktif:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="Label4" runat="server" Text='<%#Eval("aktif") %>'></asp:Label>
@@ -87,7 +87,7 @@
                         </div>
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Dava Açıklama:</asp:Label>
+                                <asp:Label Font-Bold="True"  runat="server">Dava Hak.:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="Label3" runat="server" Text='<%#Eval("aciklama") %>'></asp:Label>
@@ -97,16 +97,13 @@
 
                         <div class="line">
                             <div class="lineSolDiv">
-                                <asp:Label CssClass="label" runat="server">Tarih:</asp:Label>
+                                <asp:Label Font-Bold="True"  runat="server">Tarih:</asp:Label>
                             </div>
                             <div class="lineSagDiv">
                                 <asp:Label ID="lblTarih" runat="server" Text='<%#Eval("tarihsaat") %>'></asp:Label>
                             </div>
                         </div>
-                        <div class="line">
-                            <%--Bu divi Silme Duruşma Aktifmi Satırıını sola yaslamak için yapıldı--%>
-                        </div>
-                    </div>
+                       </div>
                 </ItemTemplate>
             </asp:ListView>
         </div>

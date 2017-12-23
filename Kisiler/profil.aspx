@@ -130,7 +130,7 @@
         <asp:Label ID="Label17" runat="server" Text="Doğum Tarihi: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumTarihi" runat="server" TextMode="Date" AutoCompleteType="Disabled"></asp:TextBox>
+        <asp:TextBox CssClass="TexBoxCss" ID="txtDogumTarihi" runat="server" TextMode="Date" AutoCompleteType="Disabled" ></asp:TextBox>
     </div>
 </div>
 <div class="line">

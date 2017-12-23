@@ -50,72 +50,78 @@ public partial class Kisiler_dava : System.Web.UI.Page
     static int MahkemeSayisi = 0;
     static int[] tDavaTurId = new int[1000];
     static int davaTurSayisi = 0;
-   
+
     protected void Page_Load(object sender, EventArgs e)
-    { verileriGoster();
-        successalert.Visible = false;
-        txtDurusmaTarihi.Text = DateTime.Now.ToString("yyyy-MM-dd");
-        if (!IsPostBack)
+    {
+        try
         {
-            drpDavaTuru.Items.Clear();
-            tSQL = " SELECT davaturid, davaturad FROM dava_tur WHERE avukatid =" +
-                   "(Select avukatid from kisi_bilgi WHERE tck ='" + Session["kullanici"] + "'); ";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
+            verileriGoster();
+            successalert.Visible = false;
+            txtDurusmaTarihi.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            if (!IsPostBack)
             {
-                drpDavaTuru.Items.Add("" + tDataReader["davaturad"]);
-                tDavaTurId[davaTurSayisi] = Int32.Parse("" + tDataReader["davaturid"]);
-                davaTurSayisi++;
-            }
-            tCon.Close();
+                drpDavaTuru.Items.Clear();
+                tSQL = " SELECT davaturid, davaturad FROM dava_tur WHERE avukatid =" +
+                       "(Select avukatid from kisi_bilgi WHERE tck ='" + Session["kullanici"] + "'); ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpDavaTuru.Items.Add("" + tDataReader["davaturad"]);
+                    tDavaTurId[davaTurSayisi] = Int32.Parse("" + tDataReader["davaturid"]);
+                    davaTurSayisi++;
+                }
+                tCon.Close();
 
-            drpMahkeme.Items.Clear();
-            tSQL = "SELECT mahkemeid, mahkemead FROM mahkeme_bilgi;";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpMahkeme.Items.Add("" + tDataReader["mahkemead"]);
-                tMahkemeId[MahkemeSayisi] = Int32.Parse("" + tDataReader["mahkemeid"]);
-                MahkemeSayisi++;
-            }
-            tCon.Close();
+                drpMahkeme.Items.Clear();
+                tSQL = "SELECT mahkemeid, mahkemead FROM mahkeme_bilgi;";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpMahkeme.Items.Add("" + tDataReader["mahkemead"]);
+                    tMahkemeId[MahkemeSayisi] = Int32.Parse("" + tDataReader["mahkemeid"]);
+                    MahkemeSayisi++;
+                }
+                tCon.Close();
 
-            drpTarafTur.Items.Clear();
-            tSQL = "SELECT davatarafturad FROM dava_taraf_tur;";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpTarafTur.Items.Add("" + tDataReader["davatarafturad"]);
-            }
-            tCon.Close();
+                drpTarafTur.Items.Clear();
+                tSQL = "SELECT davatarafturad FROM dava_taraf_tur;";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpTarafTur.Items.Add("" + tDataReader["davatarafturad"]);
+                }
+                tCon.Close();
 
 
-            drpKisiAdiSoyadi.Items.Clear();
-            tSQL =
-                "SELECT kisiid,ad, soyad FROM kisi_bilgi Where avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                Session["kullanici"] + "'); ";
-            tCon.Open();
-            tCommand.Connection = tCon;
-            tCommand.CommandText = tSQL;
-            tDataReader = tCommand.ExecuteReader();
-            while (tDataReader.Read())
-            {
-                drpKisiAdiSoyadi.Items.Add("" + tDataReader["ad"] + " " + tDataReader["soyad"]);
-                tKisiId[i] = Int32.Parse("" + tDataReader["kisiid"]);
-                i++;
+                drpKisiAdiSoyadi.Items.Clear();
+                tSQL =
+                    "SELECT kisiid,ad, soyad FROM kisi_bilgi Where avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                    Session["kullanici"] + "'); ";
+                tCon.Open();
+                tCommand.Connection = tCon;
+                tCommand.CommandText = tSQL;
+                tDataReader = tCommand.ExecuteReader();
+                while (tDataReader.Read())
+                {
+                    drpKisiAdiSoyadi.Items.Add("" + tDataReader["ad"] + " " + tDataReader["soyad"]);
+                    tKisiId[i] = Int32.Parse("" + tDataReader["kisiid"]);
+                    i++;
+                }
+                tCon.Close();
             }
-            tCon.Close();
         }
-       
+        catch (Exception exception)
+        {
+        }
     }
 
     private void verileriGoster()
@@ -132,7 +138,8 @@ public partial class Kisiler_dava : System.Web.UI.Page
                 " LEFT OUTER JOIN durusma_bilgi ON durusma_bilgi.davaid = dava_bilgi.davaid" +
                 " LEFT OUTER JOIN kisi_bilgi ON kisi_bilgi.kisiid = dava_taraf.kisiid" +
                 " LEFT OUTER JOIN mahkeme_bilgi ON mahkeme_bilgi.mahkemeid = dava_mahkeme.mahkemeid" +
-                " WHERE dava_bilgi.avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"]+ "') ORDER BY dava_bilgi.davano";
+                " WHERE dava_bilgi.avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" + Session["kullanici"] +
+                "') ORDER BY dava_bilgi.davano";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
@@ -148,48 +155,54 @@ public partial class Kisiler_dava : System.Web.UI.Page
 
     protected void btnKaydet_Click(object sender, EventArgs e)
     {
-           
-        if (txtDavaNo.Text != "" && txtDavaAciklama.Text!=""&&txtDurusmaAciklama.Text!="")
+        try
         {
-            String dosyaUrl = "";
-           HttpPostedFile yuklenecekDosya = fileUpload_Dosya.PostedFile;
-            if (yuklenecekDosya != null)
+            if (txtDavaNo.Text != "" && txtDavaAciklama.Text != "" && txtDurusmaAciklama.Text != "")
             {
-                FileInfo dosyaBilgisi = new FileInfo(yuklenecekDosya.FileName);
-                string yuklemeYeri = Server.MapPath("~/dosyalar/" + dosyaBilgisi.Name);
-                fileUpload_Dosya.SaveAs(yuklemeYeri);
-                dosyaUrl = "/dosyalar/" + dosyaBilgisi.Name;
+                String dosyaUrl = "";
+                HttpPostedFile yuklenecekDosya = fileUpload_Dosya.PostedFile;
+                if (yuklenecekDosya != null)
+                {
+                    FileInfo dosyaBilgisi = new FileInfo(yuklenecekDosya.FileName);
+                    string yuklemeYeri = Server.MapPath("~/dosyalar/" + dosyaBilgisi.Name);
+                    fileUpload_Dosya.SaveAs(yuklemeYeri);
+                    dosyaUrl = "/dosyalar/" + dosyaBilgisi.Name;
+                }
+
+                tSQL = "INSERT INTO dava_bilgi(davaturid,avukatid,davano,aciklama,aktif,tarihsaat,dosyaurl) VALUES (" +
+                       tDavaTurId[drpDavaTuru.SelectedIndex] + ",(SELECT avukatid FROM kisi_bilgi WHERE tck='" +
+                       Session["kullanici"] + "'),'" + txtDavaNo.Text.Trim().Replace("'", "") + "','" + txtDavaAciklama.Text.Trim().Replace("'", "") + "','" +
+                       chckDavaAktif.Checked + "',CURRENT_TIMESTAMP,'" + dosyaUrl + "');";
+
+                tSQL += " INSERT INTO dava_mahkeme(davaid, mahkemeid, tarihsaat)VALUES(" +
+                        "(SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                        Session["kullanici"] + "')),'" + tMahkemeId[drpMahkeme.SelectedIndex] + "',CURRENT_TIMESTAMP);";
+
+                tSQL += " INSERT INTO dava_taraf(davaid, davatarafturid, kisiid,  tarihsaat) VALUES(" +
+                        "(SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                        Session["kullanici"] + "'))," +
+                        "(SELECT davatarafturid from dava_taraf_tur WHERE davatarafturad = '" +
+                        drpTarafTur.SelectedValue + "'),'" + tKisiId[drpKisiAdiSoyadi.SelectedIndex] +
+                        "',CURRENT_TIMESTAMP); ";
+
+                tSQL += "INSERT INTO durusma_bilgi(davaid, tarihsaat, aciklama, aktif,islemtarihsaat)" +
+                        " VALUES((SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
+                        Session["kullanici"] + "')), '" + txtDurusmaTarihi.Text.Trim().Replace("'", "") + "','" + txtDurusmaAciklama.Text.Trim().Replace("'", "") +
+                        "','" +
+                        chckDurusmaAktif.Checked +
+                        "',CURRENT_TIMESTAMP); ";
+
+
+                txtDavaNo.Text = "";
+                txtDavaAciklama.Text = "";
+                txtDurusmaAciklama.Text = "";
+                PublicExecuteNonQuery();
+                successalert.Visible = true;
+                verileriGoster();
             }
-            
-            tSQL = "INSERT INTO dava_bilgi(davaturid,avukatid,davano,aciklama,aktif,tarihsaat,dosyaurl) VALUES (" +
-                   tDavaTurId[drpDavaTuru.SelectedIndex] + ",(SELECT avukatid FROM kisi_bilgi WHERE tck='" +
-                   Session["kullanici"] + "'),'" + txtDavaNo.Text + "','" + txtDavaAciklama.Text + "','" +
-                   chckDavaAktif.Checked + "',CURRENT_TIMESTAMP,'"+dosyaUrl+"');";
-
-            tSQL += " INSERT INTO dava_mahkeme(davaid, mahkemeid, tarihsaat)VALUES(" +
-                    "(SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                    Session["kullanici"] + "')),'" + tMahkemeId[drpMahkeme.SelectedIndex] + "',CURRENT_TIMESTAMP);";
-
-            tSQL += " INSERT INTO dava_taraf(davaid, davatarafturid, kisiid,  tarihsaat) VALUES(" +
-                    "(SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                    Session["kullanici"] + "'))," +
-                    "(SELECT davatarafturid from dava_taraf_tur WHERE davatarafturad = '" +
-                    drpTarafTur.SelectedValue + "'),'" + tKisiId[drpKisiAdiSoyadi.SelectedIndex] +
-                    "',CURRENT_TIMESTAMP); ";
-
-            tSQL += "INSERT INTO durusma_bilgi(davaid, tarihsaat, aciklama, aktif,islemtarihsaat)" +
-                    " VALUES((SELECT MAX(davaid) FROM dava_bilgi WHERE avukatid = (SELECT avukatid FROM kisi_bilgi WHERE tck = '" +
-                    Session["kullanici"] + "')), '" + txtDurusmaTarihi.Text + "','" + txtDurusmaAciklama.Text + "','" +
-                    chckDurusmaAktif.Checked +
-                    "',CURRENT_TIMESTAMP); ";
-
-            
-            txtDavaNo.Text = "";
-            txtDavaAciklama.Text = "";
-            txtDurusmaAciklama.Text = "";
-            PublicExecuteNonQuery();
-            successalert.Visible = true;
-            verileriGoster();
+        }
+        catch (Exception exception)
+        {
         }
     }
 }
