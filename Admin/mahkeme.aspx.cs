@@ -206,6 +206,7 @@ public partial class Admin_Mahkeme : System.Web.UI.Page
                     PublicExecuteNonQuery();
                     lblacik.Text = "Kaydedildi....";
                     successalert.Visible = true;
+                    listView_yukle();
                 }
                 else
                 {

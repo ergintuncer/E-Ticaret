@@ -195,7 +195,7 @@ public partial class Admin_Adliye : System.Web.UI.Page
                     tSQL = "INSERT INTO adliye_bilgi(adliyead,aktif,ilid,ilceid) VALUES ('" + txtadliyeadi.Text.Trim() + "' , " + tAktif + "," + TilID[drpil.SelectedIndex] + "," + TilceID[drpilce.SelectedIndex] + ");";
                     tSQL += "INSERT INTO adliye_adres(adliyeid,adliyeadresad,adres,aciklama,aktif) VALUES ((select max(adliyeid) from adliye_bilgi),'" + txtadresadi.Text.Trim() + "' , '" + txtadres.Text.Trim() + "','" + txtaciklama.Text.Trim() + "',true);";
                     PublicExecuteNonQuery();
-
+                    listView_yukle();
 
                     //lblacik.Visible = true;
                     //lblacik.Text = "Değişiklik gerçekleştirildi.";
@@ -249,7 +249,7 @@ public partial class Admin_Adliye : System.Web.UI.Page
     protected void listView_yukle()
     {
 
-        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead, adliye_bilgi.adliyeid,adliye_bilgi.aktif from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on il_bilgi.ilid=ilce_bilgi.ilid  ";
+        tSQL = "select adliye_bilgi.adliyead, adliye_adres.adliyeadresad,adliye_adres.adres,adliye_adres.aciklama,adliye_bilgi.aktif,il_bilgi.ilad,ilce_bilgi.ilcead, adliye_bilgi.adliyeid,adliye_bilgi.aktif from adliye_bilgi INNER JOIN adliye_adres on adliye_bilgi.adliyeid=adliye_adres.adliyeid INNER JOIN il_bilgi on adliye_bilgi.ilid=il_bilgi.ilid INNER JOIN ilce_bilgi on adliye_bilgi.ilceid=ilce_bilgi.ilceid   ";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;
@@ -268,19 +268,19 @@ public partial class Admin_Adliye : System.Web.UI.Page
     {
         
 
-        drpilce.Items.Clear();
-        tSQL = "select ilcead,ilceid from ilce_bilgi where ilid=" + TilID[drpil.SelectedIndex];
-        tCon.Open();
-        tCommand.Connection = tCon;
-        tCommand.CommandText = tSQL;
-        tDataReader = tCommand.ExecuteReader();
-        while (tDataReader.Read())
-        {
-            drpilce.Items.Add("" + tDataReader["ilcead"]);
-            TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
-            j++;
-        }
-        tCon.Close();
+        //drpilce.Items.Clear();
+        //tSQL = "select ilcead,ilceid from ilce_bilgi where ilid=" + TilID[drpil.SelectedIndex];
+        //tCon.Open();
+        //tCommand.Connection = tCon;
+        //tCommand.CommandText = tSQL;
+        //tDataReader = tCommand.ExecuteReader();
+        //while (tDataReader.Read())
+        //{
+        //    drpilce.Items.Add("" + tDataReader["ilcead"]);
+        //    TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
+        //    j++;
+        //}
+        //tCon.Close();
 
     }
 
@@ -381,5 +381,24 @@ public partial class Admin_Adliye : System.Web.UI.Page
         }
 
         //throw new NotImplementedException();
+    }
+
+    protected void drpil_OnTextChanged(object sender, EventArgs e)
+    {
+
+        drpilce.Items.Clear();
+        tSQL = "select ilcead,ilceid from ilce_bilgi where ilid=" + TilID[drpil.SelectedIndex];
+        tCon.Open();
+        tCommand.Connection = tCon;
+        tCommand.CommandText = tSQL;
+        tDataReader = tCommand.ExecuteReader();
+        while (tDataReader.Read())
+        {
+            drpilce.Items.Add("" + tDataReader["ilcead"]);
+            TilceID[j] = Convert.ToInt16(tDataReader["ilceid"]);
+            j++;
+        }
+        tCon.Close();
+
     }
 }

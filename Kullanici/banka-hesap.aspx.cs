@@ -185,7 +185,7 @@ public partial class Kullanici_banka_hesap : System.Web.UI.Page
         tCon.Close();
 
 
-        tSQL = "select bankahesapturid,bankahesapturad from banka_hesap_tur INNER JOIN kisi_bilgi on banka_hesap_tur.avukatid=kisi_bilgi.avukatid where kisi_bilgi.tck='" + Session["kullanici"] + "'";
+        tSQL = "select bankahesapturid,bankahesapturad from banka_hesap_tur  ";
         tCon.Open();
         tCommand.Connection = tCon;
         tCommand.CommandText = tSQL;

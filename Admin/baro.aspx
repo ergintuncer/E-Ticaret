@@ -86,7 +86,7 @@
                         </div>
                        
                         <div class="lineOrtaSol">
-                            <a href="baro.aspx?islem=aktif&baroid=<%#Eval("baroid") %>"> <img src="/image/checked.png" /> </a>
+                            <a href="baro.aspx?islem=aktif&baroid=<%#Eval("baroid") %>"> <img src="/image/shuffle.png" /> </a>
                         </div>
                     </div>
                 </ItemTemplate>
