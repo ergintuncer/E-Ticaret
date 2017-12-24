@@ -164,7 +164,7 @@
                            <%-- <button runat="server" id="aktiflik" onserverclick="Aktiflik_OnClick" class="buttonOnayla" title="Aktif mi?">
                                 <i class="fa fa-check fa-2x"> </i>
                             </button>--%>
-                            <a href="bankabilgi.aspx?islem=bloke&kisiid=<%#Eval("bankaid") %>"> <img src="/image/cancel.png"/></a>
+                            <a href="bankabilgi.aspx?islem=bloke&kisiid=<%#Eval("bankaid") %>"> <img src="/image/shuffle.png"/></a>
                         </div>
                     </div>
                 </ItemTemplate>

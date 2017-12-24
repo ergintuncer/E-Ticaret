@@ -297,6 +297,7 @@ public partial class Kullanici_para_hareket : System.Web.UI.Page
                 PublicExecuteNonQuery();
                 lblacik.Text = "Kaydedildi";
                 successalert.Visible = true;
+                listView_yukle();
             }
             else
             {
