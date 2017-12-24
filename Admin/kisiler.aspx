@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="lineOrtaSol">
-                            <a href="kisiler.aspx?islem=bloke&kisiid=<%#Eval("kisiid") %>"><img src="/image/cancel.png"/></a>
+                            <a href="kisiler.aspx?islem=bloke&kisiid=<%#Eval("kisiid") %>"><img src="/image/shuffle.png"/></a>
                         </div>
                     </div>
                 </ItemTemplate>

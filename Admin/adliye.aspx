@@ -26,7 +26,7 @@
                     <asp:Label CssClass="label" runat="server">İl:</asp:Label>
                 </div>
                 <div class="lineSagDiv">
-                    <asp:DropDownList ID="drpil" CssClass="drplist" runat="server" AutoPostBack="True"></asp:DropDownList>
+                    <asp:DropDownList ID="drpil" CssClass="drplist" runat="server" OnTextChanged="drpil_OnTextChanged" AutoPostBack="True"></asp:DropDownList>
                 </div>
             </div>
            
@@ -164,7 +164,7 @@
                        
                        
                         <div class="lineOrtaSol">
-                            <a href="adliye.aspx?islem=bloke&kisiid=<%#Eval("adliyeid") %>"> <img src="/image/cancel.png"/></a>
+                            <a href="adliye.aspx?islem=bloke&kisiid=<%#Eval("adliyeid") %>"> <img src="/image/shuffle.png"/></a>
                         </div>
                     </div>
                 </ItemTemplate>

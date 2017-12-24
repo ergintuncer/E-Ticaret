@@ -115,7 +115,7 @@
                         
                        
                        <div class="lineOrtaSol">
-                            <a href="mahkeme.aspx?islem=aktif&mahkemeid=<%#Eval("mahkemeid") %>"> <img src="/image/cancel.png" /> </a>
+                            <a href="mahkeme.aspx?islem=aktif&mahkemeid=<%#Eval("mahkemeid") %>"> <img src="/image/shuffle.png" /> </a>
                           
                         </div>
                     </div>
