@@ -303,7 +303,7 @@
         <asp:Label ID="Label36" runat="server" Text="Açıklama: "></asp:Label>
     </div>
     <div class="lineSagDiv">
-        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama" MaxLength="250" runat="server" TextMode="MultiLine" AutoCompleteType="Notes"></asp:TextBox>
+        <asp:TextBox CssClass="TextBoxCssMulti" ID="txtAciklama" MaxLength="250" runat="server" TextMode="MultiLine"></asp:TextBox>
     </div>
 </div>
 <div class="line">

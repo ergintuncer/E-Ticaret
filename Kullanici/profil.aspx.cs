@@ -72,7 +72,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
         {
             txtDogumTarihi.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             txtVerilisTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
-            txtGecerlilikTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtGecerlilikTarih.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
             if (Session["kullanici"].ToString().Length > 1)
             {
                 kullaniciTcNo = (String) Session["kullanici"];
@@ -129,7 +129,7 @@ public partial class Kullanici_Profil : System.Web.UI.Page
 
                 try
                 {
-                    tSQL = "SELECT * ,to_char(kisi_kimlik.dogumtarih,'dd.mm.YYYY') AS dogumtarihi " +
+                    tSQL = "SELECT * ,to_char(kisi_kimlik.dogumtarih,'dd.mm.YYYY') AS dogumtarihi , kisi_bilgi.aciklama AS kisiaciklama " +
                            "FROM kisi_bilgi " +
                            "LEFT OUTER JOIN kisi_bakiye on kisi_bilgi.kisiid = kisi_bakiye.kisiid  " +
                            "LEFT OUTER JOIN kisi_kimlik on kisi_bilgi.kisiid = kisi_kimlik.kisiid " +
@@ -431,9 +431,9 @@ public partial class Kullanici_Profil : System.Web.UI.Page
                         {
                             txtGecerlilikTarih.Text = "";
                         }
-                        if (tDataReader["aciklama"].ToString().Length > 1)
+                        if (tDataReader["kisiaciklama"].ToString().Length > 0)
                         {
-                            txtAciklama.Text = "" + tDataReader["aciklama"];
+                            txtAciklama.Text = "" + tDataReader["kisiaciklama"];
                             yuzde++;
                         }
                         else

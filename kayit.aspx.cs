@@ -54,20 +54,23 @@ public partial class kayıt : System.Web.UI.Page
         tCon.Close();
         return tInteger;
     }
-
+    static int[] baroId = new int[1000];
+    static int i = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["kullanici"] = null;
         if (!Page.IsPostBack)
         {
-            tSQL = "select baroAd from baro_bilgi";
+            tSQL = "select baroad, baroid from baro_bilgi";
             tCon.Open();
             tCommand.Connection = tCon;
             tCommand.CommandText = tSQL;
             tDataReader = tCommand.ExecuteReader();
             while (tDataReader.Read())
             {
-                baro.Items.Add("" + tDataReader["baroAd"]);
+                baro.Items.Add("" + tDataReader["baroad"]);
+                baroId[i] = Int32.Parse("" + tDataReader["baroid"]);
+                i++;
             }
             tCon.Close();
         }
@@ -75,7 +78,7 @@ public partial class kayıt : System.Web.UI.Page
 
     protected void tcNo_OnTextChanged(object sender, EventArgs e)
     {
-        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + tcno.Text.Trim() + "'";
+        tSQL = "SELECT count(*) from kisi_bilgi WHERE tck='" + tcno.Text.Trim().Replace("'","") + "'";
 
         if (PublicExecuteScalarInteger() > (Int32) 0) //Öle bi tc var ise
         {
@@ -104,7 +107,7 @@ public partial class kayıt : System.Web.UI.Page
                        "VALUES('1','" + adi.Value.Trim() + "','" + soyadi.Value.Trim() + "','" + firma.Value.Trim() +
                        "','" + tcno.Text.Trim() + "',CURRENT_TIMESTAMP);" +
                        "INSERT INTO avukat_bilgi(kisiid, baroid, sicilno, birliksicilno, aciklama, aktif, tarihsaat)" +
-                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),'" + baro.SelectedIndex + "','" +
+                       "VALUES((SELECT max(kisiid) FROM kisi_bilgi),'" + baroId[baro.SelectedIndex] + "','" +
                        sicilno.Value.Trim() + "','" + birliksicilno.Value.Trim() +
                        "','Açıklama girilmemiş',true,CURRENT_TIMESTAMP);" +
                        "INSERT INTO kisi_bakiye(kisiid, bakiyeturid, kisibakiye)" +

@@ -192,6 +192,15 @@ public partial class Kullanici_kisiler : System.Web.UI.Page
 
             successalert.Visible = true;
             verileriGoster("");
+            txtTcNo.Text = "";
+            txtAdi.Text = "";
+            txtSoyadi.Text = "";
+            txtTelefonAdi.Text = "";
+            txtTelefonNo.Text = "";
+            txtMail.Text = "";
+            txtBakiye.Text = "";
+            txtAdresAdi.Text = "";
+            txtAdres.Text = "";
         }
         catch (Exception exception)
         {

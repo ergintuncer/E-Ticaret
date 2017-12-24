@@ -194,7 +194,7 @@
                         <asp:Label  Font-Bold="True"  runat="server">Taraf Adı:</asp:Label>
                     </div>
                     <div class="lineSagDiv">
-                        <asp:Label ID="Label1" runat="server" Text='<%#Eval("ad") %>'></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text='<%#Eval("ad_soyad") %>'></asp:Label>
                     </div>
                 </div>
                 <div class="line">

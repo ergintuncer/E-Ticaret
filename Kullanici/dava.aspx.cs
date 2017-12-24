@@ -139,7 +139,7 @@ public partial class Kullanici_dava : System.Web.UI.Page
     private void verileriGostaer(String davaNo)
     {
         tSQL =
-            "SELECT mahkeme_bilgi.mahkemead, kisi_bilgi.ad,kisi_bilgi.soyad, dava_tur.davaturad, dava_bilgi.davano, dava_bilgi.dosyaurl, CASE WHEN dava_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS davaaktif , dava_taraf_tur.davatarafturad, to_char(durusma_bilgi.tarihsaat,'dd.mm.YYYY') as tarihsaat ,dava_bilgi.aciklama as davaaciklama,durusma_bilgi.aciklama, CASE WHEN durusma_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif" +
+            "SELECT mahkeme_bilgi.mahkemead, kisi_bilgi.ad  || ' ' || kisi_bilgi.soyad as ad_soyad, dava_tur.davaturad, dava_bilgi.davano, dava_bilgi.dosyaurl, CASE WHEN dava_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS davaaktif , dava_taraf_tur.davatarafturad, to_char(durusma_bilgi.tarihsaat,'dd.mm.YYYY') as tarihsaat ,dava_bilgi.aciklama as davaaciklama,durusma_bilgi.aciklama, CASE WHEN durusma_bilgi.aktif  = 'f' THEN 'Hayır' ELSE 'Evet' END AS aktif" +
             " FROM dava_bilgi" +
             " INNER JOIN dava_tur ON dava_bilgi.davaturid = dava_tur.davaturid" +
             " INNER JOIN dava_mahkeme ON dava_mahkeme.davaid = dava_bilgi.davaid" +
@@ -205,6 +205,9 @@ public partial class Kullanici_dava : System.Web.UI.Page
             PublicExecuteNonQuery();
             successalert.Visible = true;
             verileriGostaer("");
+            txtDavaAciklama.Text = "";
+            txtDavaNo.Text = "";
+            txtDurusmaAciklama.Text = "";
         }
         catch (Exception exception)
         {

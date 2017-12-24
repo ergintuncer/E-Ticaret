@@ -53,6 +53,8 @@ public partial class Kullanici_dava : System.Web.UI.Page
                 PublicExecuteNonQuery();
                 successalert.Visible = true;
                 verileriGostaer();
+                txtDavaAciklama.Text = "";
+                txtDavaTur.Text = "";
             }
             else
             {

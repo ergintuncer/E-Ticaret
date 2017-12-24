@@ -50,10 +50,10 @@ public partial class Kisiler_profil : System.Web.UI.Page
         {
             txtDogumTarihi.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
             txtVerilisTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
-            txtGecerlilikTarih.Attributes["max"] = DateTime.Now.ToString("yyyy-MM-dd");
+            txtGecerlilikTarih.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
             if (Session["kullanici"] != null)
             {
-                kullaniciTcNo = (String) Session["kullanici"];
+                kullaniciTcNo = "" + Session["kullanici"];
             }
             else
             {
@@ -124,8 +124,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                 {
                     if (tDataReader["ad"] != null)
                     {
-                        lblkuladi.Text = (String)tDataReader["ad"];
-                        txtAdi.Text = (String)tDataReader["ad"];
+                        lblkuladi.Text = "" + tDataReader["ad"];
+                        txtAdi.Text = "" + tDataReader["ad"];
                     }
                     else
                     {
@@ -134,8 +134,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["soyad"] != null)
                     {
-                        txtSoyadi.Text = (String)tDataReader["soyad"];
-                        lblkulsoyadi.Text = (String)tDataReader["soyad"];
+                        txtSoyadi.Text = "" + tDataReader["soyad"];
+                        lblkulsoyadi.Text = "" + tDataReader["soyad"];
                     }
                     else
                     {
@@ -154,8 +154,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["firma"] != null)
                     {
-                        txtFirma.Text = (String)tDataReader["firma"];
-                        lblkulFirma.Text = (String)tDataReader["firma"];
+                        txtFirma.Text = "" + tDataReader["firma"];
+                        lblkulFirma.Text = "" + tDataReader["firma"];
                     }
                     else
                     {
@@ -164,8 +164,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["tck"] != null)
                     {
-                        lblkulTcKimlikNo.Text = (String)tDataReader["tck"];
-                        txtTcNo.Value = (String)tDataReader["tck"];
+                        lblkulTcKimlikNo.Text = "" + tDataReader["tck"];
+                        txtTcNo.Value = "" + tDataReader["tck"];
                     }
                     else
                     {
@@ -174,8 +174,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["telefon"] != null)
                     {
-                        txtTelefon.Text = (String)tDataReader["telefon"];
-                        lblkulTelNo.Text = (String)tDataReader["telefon"];
+                        txtTelefon.Text = "" + tDataReader["telefon"];
+                        lblkulTelNo.Text = "" + tDataReader["telefon"];
                     }
                     else
                     {
@@ -184,8 +184,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["mail"] != null)
                     {
-                        lblkulMail.Text = (String)tDataReader["mail"];
-                        txtMailadresi.Text = (String)tDataReader["mail"];
+                        lblkulMail.Text = "" + tDataReader["mail"];
+                        txtMailadresi.Text = "" + tDataReader["mail"];
                     }
                     else
                     {
@@ -194,8 +194,8 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["web"] != null)
                     {
-                        lblkulWebAdresi.Text = (String)tDataReader["web"];
-                        txtWebAdresi.Text = (String)tDataReader["web"];
+                        lblkulWebAdresi.Text = "" + tDataReader["web"];
+                        txtWebAdresi.Text = "" + tDataReader["web"];
                     }
                     else
                     {
@@ -204,7 +204,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["vergino"] != null)
                     {
-                        txtVergiNo.Text = (String)tDataReader["vergino"];
+                        txtVergiNo.Text = "" + tDataReader["vergino"];
                     }
                     else
                     {
@@ -220,7 +220,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["anneadi"] != null)
                     {
-                        txtAnneAdi.Text = (String)tDataReader["anneadi"];
+                        txtAnneAdi.Text = "" + tDataReader["anneadi"];
                     }
                     else
                     {
@@ -236,7 +236,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["dogumyeri"] != null)
                     {
-                        txtDogumYeri.Text = (String)tDataReader["dogumyeri"];
+                        txtDogumYeri.Text = "" + tDataReader["dogumyeri"];
                     }
                     else
                     {
@@ -244,7 +244,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["din"] != null)
                     {
-                        txtDin.Text = (String)tDataReader["din"];
+                        txtDin.Text = "" + tDataReader["din"];
                     }
                     else
                     {
@@ -252,7 +252,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["cinsiyet"] != null)
                     {
-                        drpCinsiyet.SelectedValue = (String)tDataReader["cinsiyet"];
+                        drpCinsiyet.SelectedValue = "" + tDataReader["cinsiyet"];
                     }
                     else
                     {
@@ -260,7 +260,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["medenihal"] != null)
                     {
-                        drpMedeniHal.SelectedValue = (String)tDataReader["medenihal"];
+                        drpMedeniHal.SelectedValue = "" + tDataReader["medenihal"];
                     }
                     else
                     {
@@ -268,7 +268,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["uyruk"] != null)
                     {
-                        txtUyruk.Text = (String)tDataReader["uyruk"];
+                        txtUyruk.Text = "" + tDataReader["uyruk"];
                     }
                     else
                     {
@@ -276,7 +276,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["kangrubu"] != null)
                     {
-                        drpKanGrubu.SelectedValue = (String)tDataReader["kangrubu"];
+                        drpKanGrubu.SelectedValue = "" + tDataReader["kangrubu"];
                     }
                     else
                     {
@@ -284,7 +284,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["il"] != null)
                     {
-                        drpIl.SelectedValue = (String)tDataReader["il"];
+                        drpIl.SelectedValue = "" + tDataReader["il"];
                     }
                     else
                     {
@@ -292,7 +292,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["ilce"] != null)
                     {
-                        drpIlce.SelectedValue = (String)tDataReader["ilce"];
+                        drpIlce.SelectedValue = "" + tDataReader["ilce"];
                     }
                     else
                     {
@@ -300,7 +300,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["mahkoy"] != null)
                     {
-                        txtMahalle.Text = (String)tDataReader["mahkoy"];
+                        txtMahalle.Text = "" + tDataReader["mahkoy"];
                     }
                     else
                     {
@@ -308,7 +308,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["ciltno"] != null)
                     {
-                        txtCiltNo.Text = (String)tDataReader["ciltno"];
+                        txtCiltNo.Text = "" + tDataReader["ciltno"];
                     }
                     else
                     {
@@ -316,7 +316,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["ailesirano"] != null)
                     {
-                        txtAileSiraNo.Text = (String)tDataReader["ailesirano"];
+                        txtAileSiraNo.Text = "" + tDataReader["ailesirano"];
                     }
                     else
                     {
@@ -324,7 +324,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["sirano"] != null)
                     {
-                        txtSiraNo.Text = (String)tDataReader["sirano"];
+                        txtSiraNo.Text = "" + tDataReader["sirano"];
                     }
                     else
                     {
@@ -332,7 +332,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["verildigiyer"] != null)
                     {
-                        txtVerildigiYer.Text = (String)tDataReader["verildigiyer"];
+                        txtVerildigiYer.Text = "" + tDataReader["verildigiyer"];
                     }
                     else
                     {
@@ -340,7 +340,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["verilisnedeni"] != null)
                     {
-                        txtVerilisNedeni.Text = (String)tDataReader["verilisnedeni"];
+                        txtVerilisNedeni.Text = "" + tDataReader["verilisnedeni"];
                     }
                     else
                     {
@@ -348,7 +348,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["kayitno"] != null)
                     {
-                        txtKayitNo.Text = (String)tDataReader["kayitno"];
+                        txtKayitNo.Text = "" + tDataReader["kayitno"];
                     }
                     else
                     {
@@ -364,7 +364,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["verenmakam"] != null)
                     {
-                        txtVerenMakam.Text = (String)tDataReader["verenmakam"];
+                        txtVerenMakam.Text = "" + tDataReader["verenmakam"];
                     }
                     else
                     {
@@ -380,7 +380,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["aciklama"] != null)
                     {
-                        txtAciklama.Text = (String)tDataReader["aciklama"];
+                        txtAciklama.Text = "" + tDataReader["aciklama"];
                     }
                     else
                     {
@@ -388,7 +388,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["adresad"] != null)
                     {
-                        txtAdresAdi.Text = (String)tDataReader["adresad"];
+                        txtAdresAdi.Text = "" + tDataReader["adresad"];
                     }
                     else
                     {
@@ -396,7 +396,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["adres"] != null)
                     {
-                        txtAdres.Text = (String)tDataReader["adres"];
+                        txtAdres.Text = "" + tDataReader["adres"];
                     }
                     else
                     {
@@ -404,7 +404,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["telefonad"] != null)
                     {
-                        txtTelefonAdi.Text = (String)tDataReader["telefonad"];
+                        txtTelefonAdi.Text = "" + tDataReader["telefonad"];
                     }
                     else
                     {
@@ -412,7 +412,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["mailad"] != null)
                     {
-                        txtMailAdi.Text = (String)tDataReader["mailad"];
+                        txtMailAdi.Text = "" + tDataReader["mailad"];
                     }
                     else
                     {
@@ -420,7 +420,7 @@ public partial class Kisiler_profil : System.Web.UI.Page
                     }
                     if (tDataReader["webad"] != null)
                     {
-                        txtWebAdresiAdi.Text = (String)tDataReader["webad"];
+                        txtWebAdresiAdi.Text = "" + tDataReader["webad"];
                     }
                     else
                     {
@@ -473,16 +473,20 @@ public partial class Kisiler_profil : System.Web.UI.Page
                "verilistarih='" + txtVerilisTarih.Text.Trim().Replace("'", "") + "', " +
                "verenmakam='" + txtVerenMakam.Text.Trim().Replace("'", "") + "', " +
                "aciklama='" + txtAciklama.Text.Trim().Replace("'", "") + "', " +
-               "gecerliliktarih='" + txtGecerlilikTarih.Text.Trim().Replace("'", "") + "', tarihsaat=CURRENT_TIMESTAMP" +
+               "gecerliliktarih='" + txtGecerlilikTarih.Text.Trim().Replace("'", "") +
+               "', tarihsaat=CURRENT_TIMESTAMP" +
                " WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_adres SET adresad='" + txtAdresAdi.Text.Trim().Replace("'", "") + "', adres='" + txtAdres.Text.Trim().Replace("'", "") +
+               "UPDATE kisi_adres SET adresad='" + txtAdresAdi.Text.Trim().Replace("'", "") + "', adres='" +
+               txtAdres.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
                "UPDATE kisi_telefon SET telefonad='" + txtTelefonAdi.Text.Trim().Replace("'", "") + "', telefon='" +
                txtTelefon.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_mail SET mailad='" + txtMailAdi.Text.Trim().Replace("'", "") + "', mail='" + txtMailadresi.Text.Trim().Replace("'", "") +
+               "UPDATE kisi_mail SET mailad='" + txtMailAdi.Text.Trim().Replace("'", "") + "', mail='" +
+               txtMailadresi.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); " +
-               "UPDATE kisi_web  SET webad='" + txtWebAdresiAdi.Text.Trim().Replace("'", "") + "', web='" + txtWebAdresi.Text.Trim().Replace("'", "") +
+               "UPDATE kisi_web  SET webad='" + txtWebAdresiAdi.Text.Trim().Replace("'", "") + "', web='" +
+               txtWebAdresi.Text.Trim().Replace("'", "") +
                "' WHERE kisiid=(SELECT kisiid FROM kisi_bilgi WHERE tck='" + kullaniciTcNo + "'); ";
 
         PublicExecuteNonQuery();
